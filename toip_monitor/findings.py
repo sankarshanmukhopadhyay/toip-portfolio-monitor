@@ -7,6 +7,10 @@ from pathlib import Path
 from typing import Any
 
 VALID_STATUSES = {"open", "accepted", "resolved", "suppressed"}
+CLASSIFICATION_SUMMARY = (
+    "Monitor taxonomy does not yet classify this active repository. "
+    "This is a monitor taxonomy gap, not an upstream ToIP repository defect or obligation."
+)
 
 
 def finding_id(category: str, subject: str, key: str) -> str:
@@ -33,7 +37,8 @@ def build_findings(snapshot: dict[str, Any]) -> list[dict[str, Any]]:
     findings: list[dict[str, Any]] = []
     for assertion in snapshot.get("assertions", []):
         if assertion["category"] in {"classification", "collection"}:
-            findings.append(_finding(assertion["category"], assertion["subject"], assertion["id"], assertion["summary"], int(assertion["materiality"]), 3 if assertion["category"] == "collection" else 2, 2, assertion.get("evidence", [])))
+            summary = CLASSIFICATION_SUMMARY if assertion["category"] == "classification" else assertion["summary"]
+            findings.append(_finding(assertion["category"], assertion["subject"], assertion["id"], summary, int(assertion["materiality"]), 3 if assertion["category"] == "collection" else 2, 2, assertion.get("evidence", [])))
     for change in snapshot.get("lifecycle_changes", []):
         if change["type"] in {"missing", "lifecycle", "portfolio"}:
             materiality = 4 if change["type"] in {"missing", "lifecycle"} else 3
