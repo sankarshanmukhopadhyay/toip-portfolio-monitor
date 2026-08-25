@@ -37,6 +37,31 @@ def _add_taxonomy_nav(text: str) -> str:
     return text.replace(marker, addition) if "taxonomy.html" not in text else text
 
 
+def _add_catalog_nav(text: str, catalog_href: str) -> str:
+    """Add a persistent route back to the root ecosystem catalog.
+
+    Normal ecosystem pages have a shared sticky header. Archived weekly pages
+    predate that navigation shell, so they receive a small return link directly
+    after the opening body tag instead.
+    """
+    if "All ecosystems" in text:
+        return text
+    escaped_href = html.escape(catalog_href, quote=True)
+    brand = f'<span class="brand">{PROJECT_TITLE}</span>'
+    if brand in text:
+        return text.replace(
+            brand,
+            brand + f'<a class="catalog-link" href="{escaped_href}">All ecosystems</a>',
+            1,
+        )
+    body = "<body>"
+    fallback = (
+        f'<div style="max-width:1180px;margin:1rem auto 0;padding:0 1.4rem">'
+        f'<a href="{escaped_href}">← All ecosystems</a></div>'
+    )
+    return text.replace(body, body + fallback, 1) if body in text else text
+
+
 def _render_taxonomy(snapshot: dict, docs: Path) -> None:
     profile = snapshot.get("ecosystem_profile", {})
     repositories = snapshot.get("repositories", [])
@@ -85,12 +110,14 @@ def render_site(root: str | Path = ".") -> None:
 
     for path in docs.glob("*.html"):
         text = _brand_html(path.read_text(encoding="utf-8"), profile)
-        path.write_text(_add_taxonomy_nav(text), encoding="utf-8")
+        text = _add_taxonomy_nav(text)
+        path.write_text(_add_catalog_nav(text, "../index.html"), encoding="utf-8")
 
     reports = docs / "reports"
     if reports.exists():
         for path in reports.glob("*.html"):
-            path.write_text(_brand_html(path.read_text(encoding="utf-8"), profile), encoding="utf-8")
+            text = _brand_html(path.read_text(encoding="utf-8"), profile)
+            path.write_text(_add_catalog_nav(text, "../../index.html"), encoding="utf-8")
 
 
 def _ecosystem_cards(root: Path) -> list[dict]:
