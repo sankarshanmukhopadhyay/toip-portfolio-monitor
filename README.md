@@ -2,111 +2,104 @@
 
 > An independent, evidence-backed observatory for GitHub-based trust ecosystems.
 
-Trust Ecosystem Monitor discovers repositories through organization profiles, classifies them into ecosystem-specific portfolios and lifecycle states, records auditable activity evidence, consolidates related activity into reviewable change units, and publishes decision-oriented weekly reporting about material movement.
+Trust Ecosystem Monitor discovers repositories from configured organization profiles, classifies them into ecosystem-specific portfolios and lifecycle states, records auditable GitHub activity evidence, consolidates related activity into reviewable change units, and publishes decision-oriented weekly reporting.
 
-The monitor is independently maintained. It is not an official publication of any monitored organization.
+It is independently maintained. Monitoring an ecosystem does **not** make this project an official publication of that ecosystem.
+
+## Monitored ecosystems
+
+The current profiles are:
+
+- **Trust Over IP Foundation** — `organizations/trustoverip/profile.toml`
+- **Decentralized Identity Foundation (DIF)** — `organizations/decentralized-identity/profile.toml`
+
+Each ecosystem retains its own taxonomy, snapshots, dispositions and generated report tree. One ecosystem run cannot overwrite another.
 
 ## Why this exists
 
-GitHub exposes repository-by-repository activity. It does not naturally answer ecosystem-level questions such as:
+GitHub exposes repository-level activity. It does not naturally answer portfolio questions such as:
 
-- What materially changed this week?
-- Which specifications, workgroups, or implementation efforts are advancing?
+- What materially changed across an ecosystem this week?
+- Which specifications, workgroups or implementations are advancing?
 - Where has new work appeared?
-- Which repositories changed lifecycle state or still need monitor-side classification?
+- Which repositories changed lifecycle state?
+- Which repositories are not yet classified by the monitor taxonomy?
 - Where are cross-portfolio review seams emerging?
 - Which observations require attention, and what evidence supports them?
 
-This project adds that portfolio-intelligence layer while keeping interpretation subordinate to traceable evidence.
-
-## Current monitored ecosystem
-
-The first organization profile is TrustOverIP:
-
-```text
-organizations/trustoverip/profile.toml
-```
-
-It defines the `trustoverip` GitHub organization and the ordered portfolio rules for DTG, AIMWG, KERI Suite, CTWG, TSWG, EGWG, vLEI/EGF, Spec-Up, governance, legacy deliverables, and explicit `Unclassified` fall-through.
-
-TrustOverIP-specific taxonomy and disclaimers belong to that profile. They are no longer the identity of the monitor itself.
-
-A Decentralized Identity Foundation profile is planned as the next ecosystem onboarding step. It will be grounded in DIF's own working-group and work-item lifecycle model rather than cloning the TrustOverIP taxonomy.
+The monitor adds this portfolio-intelligence layer while keeping interpretation subordinate to traceable evidence.
 
 ## Architecture
 
-The architecture is informed by `sankarshanmukhopadhyay/dtg-portfolio-monitor` v0.5.x, particularly its separation of collection, normalization, lifecycle-aware findings, machine-addressable assertions, provenance, decision-first reporting, bounded evidence retention, and governed finding disposition.
-
-Trust Ecosystem Monitor adds an organization-profile boundary above that machinery:
-
 ```text
-organization profile
-      |
-      v
-repository discovery + taxonomy
-      |
-      v
-normalized evidence
-      |
-      +--> change units
-      +--> lifecycle deltas
-      +--> cross-portfolio review seams
-      +--> stable findings + dispositions
-      |
-      v
-weekly Pages + machine-readable evidence
+Trust Ecosystem Monitor
+        │
+        ├── organization profile
+        │     ├── GitHub organization
+        │     ├── display metadata
+        │     └── ordered portfolio taxonomy
+        │
+        ├── organization-neutral collector
+        ├── change-unit and lifecycle analysis
+        ├── findings + governed dispositions
+        └── profile-scoped publication
+
+organizations/
+├── trustoverip/profile.toml
+└── decentralized-identity/profile.toml
+
+data/
+├── trustoverip/
+│   ├── snapshots/
+│   └── dispositions.json
+└── decentralized-identity/
+    ├── snapshots/
+    └── dispositions.json
+
+docs/
+├── index.html                 # ecosystem catalog
+├── ecosystems.json            # machine-readable catalog
+├── trustoverip/               # ToIP report surface
+└── decentralized-identity/    # DIF report surface
 ```
 
-The profile carries organization identity, report metadata, disclaimer text, and ordered portfolio rules. The engine owns collection and evidence semantics; profiles own ecosystem-specific interpretation inputs.
+The original pre-multi-profile ToIP state under `data/snapshots/` is treated as a legacy migration seed. The first scoped ToIP collection carries that history forward rather than resetting lifecycle comparison.
 
-See `docs/organization-profiles.md`.
+## Evidence model
 
-## Current capabilities
+The monitor keeps several layers distinct:
 
-The implementation provides:
+1. **Raw evidence** — repository metadata, commits, issues, pull requests and releases from the GitHub REST API.
+2. **Change units** — conservative consolidation of related activity so a single work item is not represented as unrelated noise.
+3. **Lifecycle deltas** — changes against the immediately preceding retained observation for the same ecosystem.
+4. **Review seams** — evidence-graded reasons to inspect activity across portfolio boundaries. A seam is not automatically a formal dependency.
+5. **Findings** — stable observations with separate materiality, urgency and assurance-impact dimensions.
+6. **Dispositions** — explicit maintainer decisions such as `accepted`, `resolved` or `suppressed`, with authority, rationale, timestamp and evidence.
 
-- profile-selected discovery of public GitHub organization repositories;
-- externally configured deterministic portfolio classification;
-- repository-kind and active/dormant/archived lifecycle classification;
-- bounded collection of recent commits, issues, pull requests, and releases;
-- correct commit timestamp normalization from GitHub commit metadata;
-- per-stream collection isolation so one upstream failure does not abort the whole run;
-- conservative consolidated change units over the raw evidence stream;
-- comparison with the previous retained snapshot for repository lifecycle, portfolio, branch, discovery, and disappearance changes;
-- explicit-reference and weaker related-co-movement cross-portfolio review seams;
-- stable decision-grade findings with separate materiality, urgency, and assurance-impact dimensions;
-- a governed finding disposition ledger requiring authority, rationale, timestamp, and evidence for non-open states;
-- provenance in every generated snapshot and bounded snapshot retention;
-- a decision-first multi-page GitHub Pages site plus machine-readable latest JSON;
-- profile compatibility tests that prevent silent taxonomy drift; and
-- scheduled/manual GitHub Actions collection and Pages deployment.
+Historical `toip-*` stable identifiers are intentionally preserved where they already exist. They are an identifier namespace, not the current product name; rewriting them would break dispositions and longitudinal references.
 
-## Canonical package and CLI
+## Classification boundary
 
-The canonical Python package is:
+Portfolio taxonomy is profile-specific and deterministic. The first matching rule wins.
 
-```text
-trust_ecosystem_monitor
-```
+A repository that does not match a profile rule remains **`Unclassified`**. This means the monitor taxonomy does not yet classify the repository. It does **not** imply a defect, governance failure or obligation in the upstream project.
 
-The canonical command is:
+The initial DIF profile is deliberately conservative. It is grounded in DIF's working-group/work-item structure and is expected to improve through review of the first real baseline rather than through speculative classification.
 
-```bash
-trust-ecosystem-monitor
-```
+See `docs/organization-profiles.md` and `docs/dif-onboarding.md`.
 
-During the rename transition, the former `toip_monitor` import path and `toip-monitor` console command remain as compatibility aliases. New integrations should use the canonical names.
+## Local use
 
-Local operation:
+Python 3.11 or later is sufficient; the monitor uses the standard library.
+
+Run tests and source validation:
 
 ```bash
 python -m unittest discover -s tests
 python -m trust_ecosystem_monitor validate
-GITHUB_TOKEN=... python -m trust_ecosystem_monitor collect --lookback-days 7
-python -m trust_ecosystem_monitor site
 ```
 
-To select a profile explicitly:
+Collect one ecosystem:
 
 ```bash
 GITHUB_TOKEN=... python -m trust_ecosystem_monitor collect \
@@ -114,69 +107,68 @@ GITHUB_TOKEN=... python -m trust_ecosystem_monitor collect \
   --lookback-days 7
 ```
 
-Python 3.11 or later is sufficient; the monitor uses only the standard library, including `tomllib` for organization profiles.
+or:
 
-## GitHub Pages information architecture
+```bash
+GITHUB_TOKEN=... python -m trust_ecosystem_monitor collect \
+  --profile organizations/decentralized-identity/profile.toml \
+  --lookback-days 7
+```
 
-The generated publication separates the decision surface from the evidence surface:
+Render the top-level catalog after one or more profile runs:
 
-- `docs/index.html` — weekly executive overview and priority findings;
-- `docs/findings.html` — stable finding register and disposition status;
-- `docs/portfolios.html` — ecosystem portfolio and repository registry;
-- `docs/lifecycle.html` — state changes against the prior retained observation;
-- `docs/seams.html` — evidence-graded cross-portfolio review seams;
-- `docs/evidence.html` — normalized source evidence register;
-- `docs/methodology.html` — interpretation and governance boundaries;
-- `docs/data/latest.json` — latest complete machine-readable state; and
-- `docs/data/site-manifest.json` — publication manifest and counts.
+```bash
+python -m trust_ecosystem_monitor site
+```
 
-The selected profile supplies the monitored organization and ecosystem-specific disclaimer. The product shell remains Trust Ecosystem Monitor.
+Validate that every configured profile has current generated evidence:
+
+```bash
+python -m trust_ecosystem_monitor validate --require-generated
+```
+
+The former `toip-monitor` / `toip_monitor` entry points remain temporary compatibility aliases; new usage should use the canonical Trust Ecosystem Monitor names.
 
 ## Weekly operation
 
-The `Collect and publish weekly ecosystem brief` workflow can be run manually and is scheduled for Sunday 21:30 UTC. It currently defaults to the TrustOverIP profile and:
+The **Collect and publish weekly ecosystem briefs** workflow runs manually or on Sunday at 21:30 UTC. It:
 
-1. runs the test suite, including profile compatibility checks;
-2. loads the selected organization profile;
-3. discovers the organization and collects seven days of evidence;
-4. builds change units, lifecycle deltas, seams, and findings;
-5. applies any authorized durable dispositions;
-6. renders the decision-grade Pages site using the canonical project identity plus profile-specific context;
-7. validates generated state;
-8. commits changed `data/` and `docs/` evidence back to the repository; and
-9. deploys `docs/` through GitHub Pages Actions.
+1. runs the test suite;
+2. collects TrustOverIP into its scoped state/report tree;
+3. collects DIF into its scoped state/report tree;
+4. renders the top-level ecosystem catalog;
+5. validates current generated state for every configured profile;
+6. commits changed `data/` and `docs/` evidence; and
+7. deploys `docs/` through GitHub Pages Actions.
 
-## Compatibility and evidence continuity
+The workflow uses current Node.js 24-capable major versions of the first-party Actions used directly by this repository.
 
-The project was originally bootstrapped as `toip-portfolio-monitor`. The repository was renamed after organization discovery and taxonomy were externalized behind profiles.
+## Pages information architecture
 
-The rename does **not** rewrite historical evidence. In particular, existing stable `toip-*` assertion/finding IDs are retained as a historical identifier namespace so durable dispositions and longitudinal references do not break. New project branding does not invalidate previously recorded evidence.
+The root Pages site is a catalog of monitored ecosystems. Each ecosystem report then exposes its own decision and evidence surfaces:
 
-The TrustOverIP profile compatibility contract compares profile-derived classifications with the retained ToIP snapshot. A mismatch fails CI, making taxonomy changes explicit review decisions rather than accidental consequences of engine refactoring.
+- `index.html` — weekly executive overview;
+- `findings.html` — stable finding register and disposition state;
+- `portfolios.html` — portfolio/repository registry;
+- `lifecycle.html` — state changes against the prior retained observation;
+- `seams.html` — evidence-graded cross-portfolio review seams;
+- `evidence.html` — normalized source evidence;
+- `methodology.html` — method and interpretation boundaries;
+- `data/latest.json` — complete machine-readable current state.
 
-## Evidence and interpretation boundary
+## Cross-ecosystem boundary
 
-Raw GitHub events and repository metadata remain the evidence layer. Change units, lifecycle deltas, portfolio classification, review seams, scoring, and findings are deterministic transformations preserved in the snapshot.
-
-An active repository that does not match a known portfolio rule is surfaced as `Unclassified`; it is not silently omitted. This means the **monitor taxonomy** has not yet classified the repository. It does not imply a defect or obligation in the upstream repository.
-
-A cross-portfolio seam is a reason for review, not an assertion that a formal dependency exists. `explicit-reference` is stronger evidence than `related-co-movement`, and the distinction remains machine-readable.
-
-## Finding governance
-
-Generated observations do not erase human review decisions. `data/dispositions.json` records durable finding states using stable finding IDs.
-
-Supported states are `open`, `accepted`, `resolved`, and `suppressed`. Any non-open state must record an explicit authority, rationale, timestamp, and evidence. The monitor applies these decisions deterministically but never creates them automatically. See `docs/finding-dispositions.md`.
+ToIP and DIF appearing in the same catalog does **not** establish a relationship between them. Cross-ecosystem dependency, convergence or standards-seam analysis is a separate capability and should only be added when supported by explicit evidence.
 
 ## Governance boundary
 
-The monitor observes public upstream activity. It does not automatically open issues, submit comments, merge changes, or modify repositories in monitored organizations. Upstream engagement remains a human governance decision.
+The monitor observes public upstream activity. It does not automatically open issues, submit comments, merge changes or modify monitored upstream repositories. Upstream engagement remains a human governance decision.
 
 ## Licensing
 
 This repository uses a dual-license model:
 
 - **Source code:** Apache License 2.0.
-- **Documentation, reports, diagrams, and other non-code content:** Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0), unless otherwise stated.
+- **Documentation, reports, diagrams and other non-code content:** Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0), unless otherwise stated.
 
-See `LICENSE`, `LICENSE-CONTENT.md`, and `LICENSES.md` for details.
+See `LICENSE`, `LICENSE-CONTENT.md`, and `LICENSES.md`.
