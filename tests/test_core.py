@@ -5,8 +5,15 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 from toip_monitor.core import classify_kind, classify_portfolio, lifecycle, normalize_event, score_event, validate
+from toip_monitor.engine import configure_core
 from toip_monitor.findings import apply_dispositions, build_findings, validate_dispositions
 from toip_monitor.intelligence import consolidate_change_units, detect_cross_portfolio_seams, detect_lifecycle_changes
+from toip_monitor.profile import load_profile
+
+# Core no longer embeds an organization or portfolio taxonomy. Tests that
+# exercise the legacy core classification API configure it exactly as the CLI
+# does: through the default organization profile.
+configure_core(load_profile())
 
 
 class ClassificationTests(unittest.TestCase):
