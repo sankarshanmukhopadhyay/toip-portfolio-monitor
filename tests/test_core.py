@@ -2,7 +2,7 @@ import unittest
 from datetime import datetime, timezone
 
 from toip_monitor.core import classify_kind, classify_portfolio, lifecycle, normalize_event, score_event
-from toip_monitor.intelligence import consolidate_change_units
+from toip_monitor.intelligence import consolidate_change_units, detect_lifecycle_changes
 
 
 class ClassificationTests(unittest.TestCase):
@@ -46,6 +46,15 @@ class ClassificationTests(unittest.TestCase):
         self.assertEqual(len(units), 1)
         self.assertEqual(units[0]["event_count"], 2)
         self.assertEqual(units[0]["materiality"], 4)
+
+    def test_lifecycle_changes_compare_snapshots(self):
+        previous = [{"full_name": "trustoverip/example", "portfolio": "Test", "lifecycle": "active", "default_branch": "main", "url": "https://example.test"}]
+        current = [{"full_name": "trustoverip/example", "portfolio": "Test", "lifecycle": "archived", "default_branch": "main", "url": "https://example.test"}]
+        changes = detect_lifecycle_changes(current, previous)
+        self.assertEqual(len(changes), 1)
+        self.assertEqual(changes[0]["type"], "lifecycle")
+        self.assertEqual(changes[0]["from"], "active")
+        self.assertEqual(changes[0]["to"], "archived")
 
 
 if __name__ == "__main__":
