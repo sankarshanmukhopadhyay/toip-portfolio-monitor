@@ -4,6 +4,7 @@ import argparse
 import sys
 
 from .core import collect, validate
+from .site import render_site
 
 
 def main() -> int:
@@ -14,6 +15,9 @@ def main() -> int:
     collect_cmd.add_argument("--lookback-days", type=int, default=7)
     collect_cmd.add_argument("--output-root", default=".")
 
+    site_cmd = sub.add_parser("site", help="Render the decision-grade GitHub Pages information architecture from latest evidence")
+    site_cmd.add_argument("--root", default=".")
+
     validate_cmd = sub.add_parser("validate", help="Validate repository and generated snapshot structure")
     validate_cmd.add_argument("--root", default=".")
 
@@ -21,6 +25,10 @@ def main() -> int:
     if args.command == "collect":
         path = collect(args.lookback_days, args.output_root)
         print(path)
+        return 0
+    if args.command == "site":
+        render_site(args.root)
+        print("site rendered")
         return 0
 
     errors = validate(args.root)
