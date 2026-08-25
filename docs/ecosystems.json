@@ -1,0 +1,25 @@
+{
+  "project": "trust-ecosystem-monitor",
+  "ecosystems": [
+    {
+      "id": "decentralized-identity",
+      "display_name": "Decentralized Identity Foundation",
+      "organization": "decentralized-identity",
+      "generated_at": "2026-08-25T12:30:14.161714+00:00",
+      "repositories": 268,
+      "active": 63,
+      "open_findings": 69,
+      "unclassified": 27
+    },
+    {
+      "id": "trustoverip",
+      "display_name": "Trust Over IP Foundation",
+      "organization": "trustoverip",
+      "generated_at": "2026-08-25T12:30:04.257997+00:00",
+      "repositories": 111,
+      "active": 42,
+      "open_findings": 43,
+      "unclassified": 5
+    }
+  ]
+}

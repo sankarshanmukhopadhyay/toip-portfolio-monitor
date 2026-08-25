@@ -1,0 +1,22 @@
+{
+  "generated_at": "2026-08-25T12:30:04.257997+00:00",
+  "week": "2026-W35",
+  "pages": [
+    "index.html",
+    "findings.html",
+    "portfolios.html",
+    "lifecycle.html",
+    "seams.html",
+    "evidence.html",
+    "methodology.html"
+  ],
+  "counts": {
+    "repositories": 111,
+    "events": 110,
+    "change_units": 77,
+    "findings": 43,
+    "open_findings": 43,
+    "lifecycle_changes": 0,
+    "cross_portfolio_seams": 30
+  }
+}
