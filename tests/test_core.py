@@ -1,7 +1,8 @@
 import unittest
 from datetime import datetime, timezone
 
-from toip_monitor.core import classify_kind, classify_portfolio, lifecycle, score_event
+from toip_monitor.core import classify_kind, classify_portfolio, lifecycle, normalize_event, score_event
+from toip_monitor.intelligence import consolidate_change_units
 
 
 class ClassificationTests(unittest.TestCase):
@@ -28,6 +29,23 @@ class ClassificationTests(unittest.TestCase):
         self.assertEqual(score_event({"kind": "release", "repo_kind": "repository"}), 5)
         self.assertEqual(score_event({"kind": "pull_request", "state": "merged", "repo_kind": "specification"}), 5)
         self.assertEqual(score_event({"kind": "commit", "repo_kind": "repository"}), 1)
+
+    def test_commit_timestamp_uses_nested_metadata(self):
+        repo = {"full_name": "trustoverip/example", "portfolio": "Unclassified", "kind": "repository"}
+        item = {"sha": "abc", "html_url": "https://example.test/abc", "commit": {"message": "docs: update", "committer": {"date": "2026-08-25T01:02:03Z"}}}
+        event = normalize_event("commit", repo, item)
+        self.assertEqual(event["timestamp"], "2026-08-25T01:02:03Z")
+        self.assertEqual(event["sha"], "abc")
+
+    def test_change_units_group_numbered_events(self):
+        events = [
+            {"kind": "issue", "repository": "trustoverip/example", "portfolio": "Test", "repo_kind": "repository", "timestamp": "2026-08-25T01:00:00Z", "title": "Track feature", "url": "https://example.test/issues/7", "number": 7, "materiality": 2},
+            {"kind": "pull_request", "repository": "trustoverip/example", "portfolio": "Test", "repo_kind": "repository", "timestamp": "2026-08-25T02:00:00Z", "title": "Implement feature", "url": "https://example.test/pull/7", "number": 7, "state": "merged", "materiality": 4},
+        ]
+        units = consolidate_change_units(events)
+        self.assertEqual(len(units), 1)
+        self.assertEqual(units[0]["event_count"], 2)
+        self.assertEqual(units[0]["materiality"], 4)
 
 
 if __name__ == "__main__":
