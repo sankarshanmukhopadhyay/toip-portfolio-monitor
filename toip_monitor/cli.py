@@ -18,8 +18,13 @@ def main() -> int:
     site_cmd = sub.add_parser("site", help="Render the decision-grade GitHub Pages information architecture from latest evidence")
     site_cmd.add_argument("--root", default=".")
 
-    validate_cmd = sub.add_parser("validate", help="Validate repository and generated snapshot structure")
+    validate_cmd = sub.add_parser("validate", help="Validate repository structure and, when requested, current generated evidence")
     validate_cmd.add_argument("--root", default=".")
+    validate_cmd.add_argument(
+        "--require-generated",
+        action="store_true",
+        help="Require docs/data/latest.json to use the current schema and include all generated intelligence collections",
+    )
 
     args = parser.parse_args()
     if args.command == "collect":
@@ -31,7 +36,7 @@ def main() -> int:
         print("site rendered")
         return 0
 
-    errors = validate(args.root)
+    errors = validate(args.root, require_generated=args.require_generated)
     if errors:
         for error in errors:
             print(f"ERROR: {error}", file=sys.stderr)
