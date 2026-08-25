@@ -1,4 +1,4 @@
-name: Collect and publish weekly ecosystem brief
+name: Collect and publish weekly ecosystem briefs
 
 on:
   workflow_dispatch:
@@ -21,19 +21,29 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
         with:
           fetch-depth: 0
-      - uses: actions/setup-python@v5
+      - uses: actions/setup-python@v7
         with:
           python-version: '3.11'
       - name: Run tests
         run: python -m unittest discover -s tests
-      - name: Collect ecosystem evidence
+      - name: Collect TrustOverIP evidence
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: python -m trust_ecosystem_monitor collect --lookback-days 7
-      - name: Render decision-grade Pages site
+        run: >-
+          python -m trust_ecosystem_monitor collect
+          --profile organizations/trustoverip/profile.toml
+          --lookback-days 7
+      - name: Collect DIF evidence
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: >-
+          python -m trust_ecosystem_monitor collect
+          --profile organizations/decentralized-identity/profile.toml
+          --lookback-days 7
+      - name: Render ecosystem catalog
         run: python -m trust_ecosystem_monitor site
       - name: Validate current generated state
         run: python -m trust_ecosystem_monitor validate --require-generated
@@ -46,10 +56,10 @@ jobs:
             git commit -m "chore(monitor): update weekly ecosystem observations"
             git push
           fi
-      - uses: actions/configure-pages@v5
-      - uses: actions/upload-pages-artifact@v3
+      - uses: actions/configure-pages@v6
+      - uses: actions/upload-pages-artifact@v5
         with:
           path: docs
       - name: Deploy GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v4
+        uses: actions/deploy-pages@v5

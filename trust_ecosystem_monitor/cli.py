@@ -3,10 +3,10 @@ from __future__ import annotations
 import argparse
 import sys
 
-from .core import validate
 from .engine import collect
 from .profile import DEFAULT_PROFILE_PATH
-from .site import render_site
+from .site import render_catalog
+from .validation import validate
 
 
 def main() -> int:
@@ -15,7 +15,7 @@ def main() -> int:
 
     collect_cmd = sub.add_parser(
         "collect",
-        help="Discover repositories from an organization profile, collect evidence, and render the ecosystem brief",
+        help="Collect one ecosystem profile into profile-scoped evidence and reporting",
     )
     collect_cmd.add_argument("--lookback-days", type=int, default=7)
     collect_cmd.add_argument("--output-root", default=".")
@@ -27,19 +27,19 @@ def main() -> int:
 
     site_cmd = sub.add_parser(
         "site",
-        help="Render the decision-grade GitHub Pages information architecture from latest evidence",
+        help="Render the top-level Trust Ecosystem Monitor catalog from generated ecosystem reports",
     )
     site_cmd.add_argument("--root", default=".")
 
     validate_cmd = sub.add_parser(
         "validate",
-        help="Validate repository structure and, when requested, current generated evidence",
+        help="Validate repository structure and, when requested, every configured ecosystem's generated evidence",
     )
     validate_cmd.add_argument("--root", default=".")
     validate_cmd.add_argument(
         "--require-generated",
         action="store_true",
-        help="Require docs/data/latest.json to use the current schema and include all generated intelligence collections",
+        help="Require a current generated report for every configured organization profile",
     )
 
     args = parser.parse_args()
@@ -48,8 +48,8 @@ def main() -> int:
         print(path)
         return 0
     if args.command == "site":
-        render_site(args.root)
-        print("site rendered")
+        render_catalog(args.root)
+        print("ecosystem catalog rendered")
         return 0
 
     errors = validate(args.root, require_generated=args.require_generated)

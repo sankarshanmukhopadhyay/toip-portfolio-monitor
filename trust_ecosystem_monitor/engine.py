@@ -1,6 +1,9 @@
 from __future__ import annotations
 
 import json
+import os
+import shutil
+import tempfile
 import urllib.error
 import urllib.parse
 import urllib.request
@@ -9,7 +12,7 @@ from typing import Any
 
 from . import core_backend as core
 from .profile import DEFAULT_PROFILE_PATH, OrganizationProfile, load_profile, profile_metadata
-from .site import render_site
+from .site import render_catalog, render_site
 
 
 class GitHubClient(core.GitHubClient):
@@ -20,7 +23,7 @@ class GitHubClient(core.GitHubClient):
         url = f"{core.API}{path}" + (f"?{query}" if query else "")
         headers = {
             "Accept": "application/vnd.github+json",
-            "User-Agent": "trust-ecosystem-monitor/0.1",
+            "User-Agent": "trust-ecosystem-monitor/0.2",
             "X-GitHub-Api-Version": "2022-11-28",
         }
         if self.token:
@@ -56,24 +59,86 @@ def _normalize_project_identity(snapshot: dict[str, Any], profile: OrganizationP
             )
 
 
+def _seed_snapshots(root: Path, work_root: Path, profile: OrganizationProfile) -> None:
+    """Seed profile work state, preserving the pre-scope ToIP baseline once."""
+    scoped = root / "data" / profile.id / "snapshots"
+    legacy = root / "data" / "snapshots"
+    source = scoped if scoped.exists() else legacy if profile.id == "trustoverip" and legacy.exists() else None
+    if source:
+        target = work_root / "data" / "snapshots"
+        target.parent.mkdir(parents=True, exist_ok=True)
+        shutil.copytree(source, target, dirs_exist_ok=True)
+
+
+def _seed_dispositions(root: Path, work_root: Path, profile: OrganizationProfile) -> None:
+    scoped = root / "data" / profile.id / "dispositions.json"
+    legacy = root / "data" / "dispositions.json"
+    source = scoped if scoped.exists() else legacy if profile.id == "trustoverip" and legacy.exists() else None
+    if source:
+        target = work_root / "data" / "dispositions.json"
+        target.parent.mkdir(parents=True, exist_ok=True)
+        shutil.copyfile(source, target)
+
+
+def _persist_profile_state(root: Path, work_root: Path, profile: OrganizationProfile) -> Path:
+    data_root = root / "data" / profile.id
+    docs_root = root / "docs" / profile.id
+    data_root.mkdir(parents=True, exist_ok=True)
+
+    work_snapshots = work_root / "data" / "snapshots"
+    scoped_snapshots = data_root / "snapshots"
+    if scoped_snapshots.exists():
+        shutil.rmtree(scoped_snapshots)
+    shutil.copytree(work_snapshots, scoped_snapshots)
+
+    work_dispositions = work_root / "data" / "dispositions.json"
+    scoped_dispositions = data_root / "dispositions.json"
+    if work_dispositions.exists() and not scoped_dispositions.exists():
+        shutil.copyfile(work_dispositions, scoped_dispositions)
+
+    if docs_root.exists():
+        shutil.rmtree(docs_root)
+    shutil.copytree(work_root / "docs", docs_root)
+
+    snapshots = sorted(scoped_snapshots.glob("*.json"), reverse=True)
+    if not snapshots:
+        raise RuntimeError(f"profile {profile.id} produced no retained snapshot")
+    return snapshots[0]
+
+
 def collect(
     lookback_days: int = 7,
     output_root: str | Path = ".",
     profile_path: str | Path = DEFAULT_PROFILE_PATH,
 ) -> Path:
+    """Collect one ecosystem into profile-scoped durable state and Pages output."""
     profile = load_profile(profile_path)
     configure_core(profile)
-    root = Path(output_root)
-    path = core.collect(lookback_days=lookback_days, output_root=root)
+    root = Path(output_root).resolve()
 
-    snapshot = json.loads(path.read_text(encoding="utf-8"))
-    _normalize_project_identity(snapshot, profile)
-    serialized = json.dumps(snapshot, indent=2) + "\n"
-    path.write_text(serialized, encoding="utf-8")
+    with tempfile.TemporaryDirectory(prefix=f"trust-monitor-{profile.id}-") as temporary:
+        work_root = Path(temporary)
+        _seed_snapshots(root, work_root, profile)
+        _seed_dispositions(root, work_root, profile)
 
-    latest = root / "docs" / "data" / "latest.json"
-    latest.parent.mkdir(parents=True, exist_ok=True)
-    latest.write_text(serialized, encoding="utf-8")
+        prior_cwd = Path.cwd()
+        try:
+            os.chdir(work_root)
+            path = core.collect(lookback_days=lookback_days, output_root=work_root)
+        finally:
+            os.chdir(prior_cwd)
 
-    render_site(root)
-    return path
+        snapshot = json.loads(path.read_text(encoding="utf-8"))
+        _normalize_project_identity(snapshot, profile)
+        serialized = json.dumps(snapshot, indent=2) + "\n"
+        path.write_text(serialized, encoding="utf-8")
+
+        latest = work_root / "docs" / "data" / "latest.json"
+        latest.parent.mkdir(parents=True, exist_ok=True)
+        latest.write_text(serialized, encoding="utf-8")
+        render_site(work_root)
+
+        persisted = _persist_profile_state(root, work_root, profile)
+
+    render_catalog(root)
+    return persisted
