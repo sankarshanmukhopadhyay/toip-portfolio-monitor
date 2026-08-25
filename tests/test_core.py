@@ -2,6 +2,7 @@ import unittest
 from datetime import datetime, timezone
 
 from toip_monitor.core import classify_kind, classify_portfolio, lifecycle, normalize_event, score_event
+from toip_monitor.findings import apply_dispositions, build_findings, validate_dispositions
 from toip_monitor.intelligence import consolidate_change_units, detect_cross_portfolio_seams, detect_lifecycle_changes
 
 
@@ -65,6 +66,18 @@ class ClassificationTests(unittest.TestCase):
         explicit = [s for s in seams if s["strength"] == "explicit-reference"]
         self.assertEqual(len(explicit), 1)
         self.assertEqual(explicit[0]["target_portfolio"], "TSWG")
+
+    def test_non_open_disposition_requires_governance_fields(self):
+        with self.assertRaises(ValueError):
+            validate_dispositions([{"finding_id": "f1", "status": "resolved"}])
+        validate_dispositions([{"finding_id": "f1", "status": "resolved", "authority": "maintainer", "rationale": "reviewed", "timestamp": "2026-08-25T00:00:00Z", "evidence": ["https://example.test/review"]}])
+
+    def test_disposition_is_applied_by_stable_id(self):
+        snapshot = {"assertions": [{"id": "a1", "category": "classification", "subject": "trustoverip/example", "summary": "Needs classification", "materiality": 2, "evidence": []}], "lifecycle_changes": [], "cross_portfolio_seams": [], "change_units": []}
+        findings = build_findings(snapshot)
+        disposition = [{"finding_id": findings[0]["id"], "status": "accepted", "authority": "maintainer", "rationale": "known exception", "timestamp": "2026-08-25T00:00:00Z", "evidence": ["https://example.test/decision"]}]
+        apply_dispositions(findings, disposition)
+        self.assertEqual(findings[0]["status"], "accepted")
 
 
 if __name__ == "__main__":
