@@ -16,7 +16,11 @@ from typing import Any
 
 from .intelligence import analyze_snapshot
 
-ORG = "trustoverip"
+# Organization identity and portfolio rules are configured by toip_monitor.engine
+# from an external organization profile before collection begins. Keeping these
+# runtime slots here preserves the existing collector API without embedding a
+# TrustOverIP taxonomy in the engine.
+ORG = ""
 API = "https://api.github.com"
 CURRENT_SCHEMA_VERSION = "0.2"
 
@@ -28,18 +32,7 @@ class Rule:
     contains: tuple[str, ...] = ()
 
 
-RULES = (
-    Rule("DTG", prefixes=("dtgwg-",)),
-    Rule("AIMWG", prefixes=("aimwg-",)),
-    Rule("KERI Suite", prefixes=("kswg-",), contains=("keri", "acdc", "kerisuite")),
-    Rule("CTWG", prefixes=("ctwg-",), contains=("concepts-and-terminology",)),
-    Rule("TSWG", prefixes=("tswg-",), contains=("technology-stack",)),
-    Rule("EGWG", prefixes=("egwg-",)),
-    Rule("vLEI / EGF", prefixes=("vlei-", "egf-")),
-    Rule("Spec-Up", prefixes=("spec-up",)),
-    Rule("Governance", prefixes=("governance",), contains=("governance-stack",)),
-    Rule("Legacy deliverables", prefixes=("tss", "wp00", "tip00", "trtf-")),
-)
+RULES: tuple[Rule, ...] = ()
 
 
 class GitHubClient:
@@ -65,6 +58,8 @@ class GitHubClient:
             raise RuntimeError(f"GitHub API {exc.code} for {path}: {body[:300]}") from exc
 
     def org_repositories(self) -> list[dict[str, Any]]:
+        if not ORG:
+            raise RuntimeError("organization profile is not configured")
         repos: list[dict[str, Any]] = []
         page = 1
         while True:
@@ -238,6 +233,8 @@ def _previous_snapshot(snapshot_dir: Path) -> dict[str, Any] | None:
 
 
 def collect(lookback_days: int = 7, output_root: str | Path = ".") -> Path:
+    if not ORG or not RULES:
+        raise RuntimeError("organization profile is not configured; use the profile-aware collection entry point")
     now = datetime.now(timezone.utc)
     since = now - timedelta(days=lookback_days)
     root = Path(output_root)
