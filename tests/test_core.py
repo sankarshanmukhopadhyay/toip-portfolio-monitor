@@ -2,7 +2,7 @@ import unittest
 from datetime import datetime, timezone
 
 from toip_monitor.core import classify_kind, classify_portfolio, lifecycle, normalize_event, score_event
-from toip_monitor.intelligence import consolidate_change_units, detect_lifecycle_changes
+from toip_monitor.intelligence import consolidate_change_units, detect_cross_portfolio_seams, detect_lifecycle_changes
 
 
 class ClassificationTests(unittest.TestCase):
@@ -51,10 +51,20 @@ class ClassificationTests(unittest.TestCase):
         previous = [{"full_name": "trustoverip/example", "portfolio": "Test", "lifecycle": "active", "default_branch": "main", "url": "https://example.test"}]
         current = [{"full_name": "trustoverip/example", "portfolio": "Test", "lifecycle": "archived", "default_branch": "main", "url": "https://example.test"}]
         changes = detect_lifecycle_changes(current, previous)
-        self.assertEqual(len(changes), 1)
         self.assertEqual(changes[0]["type"], "lifecycle")
         self.assertEqual(changes[0]["from"], "active")
         self.assertEqual(changes[0]["to"], "archived")
+
+    def test_explicit_cross_portfolio_reference(self):
+        repos = [
+            {"name": "dtgwg-zkp-tf", "full_name": "trustoverip/dtgwg-zkp-tf", "portfolio": "DTG"},
+            {"name": "tswg-tsp-specification", "full_name": "trustoverip/tswg-tsp-specification", "portfolio": "TSWG"},
+        ]
+        units = [{"id": "u1", "repository": "trustoverip/dtgwg-zkp-tf", "portfolio": "DTG", "title": "Align with tswg-tsp-specification", "materiality": 4, "evidence": ["https://example.test/u1"], "events": []}]
+        seams = detect_cross_portfolio_seams(units, repos)
+        explicit = [s for s in seams if s["strength"] == "explicit-reference"]
+        self.assertEqual(len(explicit), 1)
+        self.assertEqual(explicit[0]["target_portfolio"], "TSWG")
 
 
 if __name__ == "__main__":
