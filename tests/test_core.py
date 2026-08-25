@@ -1,7 +1,10 @@
+import json
+import tempfile
 import unittest
 from datetime import datetime, timezone
+from pathlib import Path
 
-from toip_monitor.core import classify_kind, classify_portfolio, lifecycle, normalize_event, score_event
+from toip_monitor.core import classify_kind, classify_portfolio, lifecycle, normalize_event, score_event, validate
 from toip_monitor.findings import apply_dispositions, build_findings, validate_dispositions
 from toip_monitor.intelligence import consolidate_change_units, detect_cross_portfolio_seams, detect_lifecycle_changes
 
@@ -78,6 +81,32 @@ class ClassificationTests(unittest.TestCase):
         disposition = [{"finding_id": findings[0]["id"], "status": "accepted", "authority": "maintainer", "rationale": "known exception", "timestamp": "2026-08-25T00:00:00Z", "evidence": ["https://example.test/decision"]}]
         apply_dispositions(findings, disposition)
         self.assertEqual(findings[0]["status"], "accepted")
+
+    def test_source_validation_tolerates_legacy_generated_schema(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            for rel in ("README.md", "LICENSE", "LICENSE-CONTENT.md", "LICENSES.md", "pyproject.toml"):
+                (root / rel).write_text("x", encoding="utf-8")
+            (root / "docs" / "data").mkdir(parents=True)
+            legacy = {"schema_version": "0.1", "organization": "trustoverip", "repositories": [], "events": [], "provenance": {}}
+            (root / "docs" / "data" / "latest.json").write_text(json.dumps(legacy), encoding="utf-8")
+            self.assertEqual(validate(root), [])
+            strict = validate(root, require_generated=True)
+            self.assertTrue(any("expected '0.2'" in error for error in strict))
+            self.assertTrue(any("change_units" in error for error in strict))
+
+    def test_strict_generated_validation_accepts_current_snapshot(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            for rel in ("README.md", "LICENSE", "LICENSE-CONTENT.md", "LICENSES.md", "pyproject.toml"):
+                (root / rel).write_text("x", encoding="utf-8")
+            (root / "docs" / "data").mkdir(parents=True)
+            current = {
+                "schema_version": "0.2", "organization": "trustoverip", "repositories": [], "events": [], "provenance": {},
+                "change_units": [], "lifecycle_changes": [], "cross_portfolio_seams": [], "findings": [], "assertions": [], "collection_errors": [],
+            }
+            (root / "docs" / "data" / "latest.json").write_text(json.dumps(current), encoding="utf-8")
+            self.assertEqual(validate(root, require_generated=True), [])
 
 
 if __name__ == "__main__":
