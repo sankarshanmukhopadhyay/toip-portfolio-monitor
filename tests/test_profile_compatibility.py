@@ -2,9 +2,9 @@ import json
 import unittest
 from pathlib import Path
 
-from toip_monitor import core
-from toip_monitor.engine import configure_core
-from toip_monitor.profile import DEFAULT_PROFILE_PATH, classify_portfolio, load_profile
+from trust_ecosystem_monitor import core
+from trust_ecosystem_monitor.engine import configure_core
+from trust_ecosystem_monitor.profile import DEFAULT_PROFILE_PATH, classify_portfolio, load_profile
 
 
 class TrustOverIPProfileCompatibilityTests(unittest.TestCase):
@@ -12,7 +12,7 @@ class TrustOverIPProfileCompatibilityTests(unittest.TestCase):
     def setUpClass(cls):
         cls.profile = load_profile(DEFAULT_PROFILE_PATH)
 
-    def test_default_profile_identity_is_current_toip_monitor(self):
+    def test_default_profile_identity_is_trustoverip(self):
         self.assertEqual(self.profile.id, "trustoverip")
         self.assertEqual(self.profile.organization, "trustoverip")
         self.assertEqual(self.profile.monitor_title, "ToIP Portfolio Monitor")
@@ -48,11 +48,12 @@ class TrustOverIPProfileCompatibilityTests(unittest.TestCase):
                 mismatches.append((repository["name"], repository["portfolio"], actual))
         self.assertEqual(mismatches, [], f"profile changed retained ToIP classifications: {mismatches}")
 
-    def test_runtime_adapter_preserves_existing_core_api(self):
+    def test_runtime_adapter_preserves_core_api(self):
         configure_core(self.profile)
-        self.assertEqual(core.ORG, "trustoverip")
-        self.assertEqual(core.classify_portfolio("dtgwg-zkp-tf"), "DTG")
-        self.assertEqual(core.classify_portfolio("unexpected-new-project"), "Unclassified")
+        from trust_ecosystem_monitor import core_backend
+        self.assertEqual(core_backend.ORG, "trustoverip")
+        self.assertEqual(core_backend.classify_portfolio("dtgwg-zkp-tf"), "DTG")
+        self.assertEqual(core_backend.classify_portfolio("unexpected-new-project"), "Unclassified")
 
 
 if __name__ == "__main__":

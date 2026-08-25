@@ -3,15 +3,16 @@ requires = ["setuptools>=68"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "toip-portfolio-monitor"
+name = "trust-ecosystem-monitor"
 version = "0.1.0.dev0"
-description = "Independent weekly portfolio observatory for the TrustOverIP GitHub organization"
+description = "Independent evidence-backed observatory for GitHub-based trust ecosystems"
 requires-python = ">=3.11"
 license = {text = "Apache-2.0"}
 authors = [{name = "Sankarshan Mukhopadhyay"}]
 
 [project.scripts]
-toip-monitor = "toip_monitor.cli:main"
+trust-ecosystem-monitor = "trust_ecosystem_monitor.cli:main"
+toip-monitor = "trust_ecosystem_monitor.cli:main"
 
 [tool.setuptools.packages.find]
-include = ["toip_monitor*"]
+include = ["trust_ecosystem_monitor*", "toip_monitor*"]
