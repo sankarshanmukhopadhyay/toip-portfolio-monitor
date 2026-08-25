@@ -1,17 +1,17 @@
 {
   "schema_version": "0.2",
   "organization": "trustoverip",
-  "generated_at": "2026-08-25T03:57:10.279109+00:00",
+  "generated_at": "2026-08-25T04:04:06.437227+00:00",
   "period": {
-    "since": "2026-08-18T03:57:10.279109+00:00",
-    "until": "2026-08-25T03:57:10.279109+00:00",
+    "since": "2026-08-18T04:04:06.437227+00:00",
+    "until": "2026-08-25T04:04:06.437227+00:00",
     "lookback_days": 7
   },
   "provenance": {
     "source": "GitHub REST API",
     "collector": "toip-portfolio-monitor",
     "deterministic_classification": true,
-    "previous_snapshot": "2026-08-25T03:43:05.542955+00:00"
+    "previous_snapshot": "2026-08-25T03:57:10.279109+00:00"
   },
   "repositories": [
     {
@@ -6477,7 +6477,7 @@
       "materiality": 2,
       "urgency": 2,
       "assurance_impact": 2,
-      "summary": "Active repository requires portfolio classification.",
+      "summary": "Monitor taxonomy does not yet classify this active repository. This is a monitor taxonomy gap, not an upstream ToIP repository defect or obligation.",
       "evidence": [
         "https://github.com/trustoverip/toip-template"
       ],
@@ -6491,7 +6491,7 @@
       "materiality": 2,
       "urgency": 2,
       "assurance_impact": 2,
-      "summary": "Active repository requires portfolio classification.",
+      "summary": "Monitor taxonomy does not yet classify this active repository. This is a monitor taxonomy gap, not an upstream ToIP repository defect or obligation.",
       "evidence": [
         "https://github.com/trustoverip/logo-assets"
       ],
@@ -6505,7 +6505,7 @@
       "materiality": 2,
       "urgency": 2,
       "assurance_impact": 2,
-      "summary": "Active repository requires portfolio classification.",
+      "summary": "Monitor taxonomy does not yet classify this active repository. This is a monitor taxonomy gap, not an upstream ToIP repository defect or obligation.",
       "evidence": [
         "https://github.com/trustoverip/high-assurance-verifiable-identifiers"
       ],
@@ -6519,7 +6519,7 @@
       "materiality": 2,
       "urgency": 2,
       "assurance_impact": 2,
-      "summary": "Active repository requires portfolio classification.",
+      "summary": "Monitor taxonomy does not yet classify this active repository. This is a monitor taxonomy gap, not an upstream ToIP repository defect or obligation.",
       "evidence": [
         "https://github.com/trustoverip/.github"
       ],
@@ -6533,7 +6533,7 @@
       "materiality": 2,
       "urgency": 2,
       "assurance_impact": 2,
-      "summary": "Active repository requires portfolio classification.",
+      "summary": "Monitor taxonomy does not yet classify this active repository. This is a monitor taxonomy gap, not an upstream ToIP repository defect or obligation.",
       "evidence": [
         "https://github.com/trustoverip/EasyCLA"
       ],
