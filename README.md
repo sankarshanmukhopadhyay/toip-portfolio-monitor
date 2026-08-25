@@ -37,6 +37,7 @@ Trust Ecosystem Monitor
         ├── organization profile
         │     ├── GitHub organization
         │     ├── display metadata
+        │     ├── explicit repository overrides
         │     └── ordered portfolio taxonomy
         │
         ├── organization-neutral collector
@@ -80,11 +81,21 @@ Historical `toip-*` stable identifiers are intentionally preserved where they al
 
 ## Classification boundary
 
-Portfolio taxonomy is profile-specific and deterministic. The first matching rule wins.
+Portfolio taxonomy is profile-specific and deterministic. Classification precedence is:
 
-A repository that does not match a profile rule remains **`Unclassified`**. This means the monitor taxonomy does not yet classify the repository. It does **not** imply a defect, governance failure or obligation in the upstream project.
+```text
+exact repository override
+        ↓
+ordered pattern rule
+        ↓
+Unclassified
+```
 
-The initial DIF profile is deliberately conservative. It is grounded in DIF's working-group/work-item structure and is expected to improve through review of the first real baseline rather than through speculative classification.
+Overrides are intended for repositories whose own work-item declaration provides stronger evidence than the repository name. Pattern rules remain appropriate for stable repository families. Every newly generated repository record carries classification provenance showing the method, matching rule or override, and profile.
+
+A repository that cannot be classified defensibly remains **`Unclassified`**. This means the monitor taxonomy does not yet classify the repository. It does **not** imply a defect, governance failure or obligation in the upstream project. Zero unclassified repositories is therefore not a design goal.
+
+The first live DIF baseline was deliberately conservative. Its taxonomy is being refined from observed evidence, while ambiguous repositories remain visible for review rather than being forced into convenient categories.
 
 See `docs/organization-profiles.md` and `docs/dif-onboarding.md`.
 
@@ -145,7 +156,9 @@ The workflow uses current Node.js 24-capable major versions of the first-party A
 
 ## Pages information architecture
 
-The root Pages site is a catalog of monitored ecosystems. Each ecosystem report then exposes its own decision and evidence surfaces:
+The root Pages site is a catalog of monitored ecosystems. Its headline counts deliberately separate **taxonomy review** from substantive findings, so classification maintenance is not presented as ecosystem operational risk. It also distinguishes first baselines from stateful observations.
+
+Each ecosystem report exposes its own decision and evidence surfaces:
 
 - `index.html` — weekly executive overview;
 - `findings.html` — stable finding register and disposition state;
@@ -153,6 +166,7 @@ The root Pages site is a catalog of monitored ecosystems. Each ecosystem report 
 - `lifecycle.html` — state changes against the prior retained observation;
 - `seams.html` — evidence-graded cross-portfolio review seams;
 - `evidence.html` — normalized source evidence;
+- `taxonomy.html` — classification method and rule/override provenance for every repository;
 - `methodology.html` — method and interpretation boundaries;
 - `data/latest.json` — complete machine-readable current state.
 
