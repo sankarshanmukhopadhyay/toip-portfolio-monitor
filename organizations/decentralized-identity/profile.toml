@@ -6,9 +6,22 @@ monitor_title = "Trust Ecosystem Monitor"
 weekly_brief_title = "DIF Weekly Ecosystem Brief"
 disclaimer = "Independent observatory; not an official Decentralized Identity Foundation publication."
 
-# Initial DIF taxonomy grounded in DIF working-group and work-item structure.
-# This is intentionally conservative: unmatched repositories remain Unclassified
-# so taxonomy gaps are visible rather than silently assigned.
+# DIF taxonomy grounded in DIF working-group and work-item structure.
+# Pattern rules cover stable repository families. Explicit overrides below are
+# used when an individual repository's own work-item declaration is stronger
+# evidence than its name. Unmatched repositories remain Unclassified.
+
+[repository_overrides]
+credential-schemas = "Claims & Credentials"
+delegated-authority-report = "Trusted AI Agents"
+delegated-authority-threat-model = "Trusted AI Agents"
+kya-os-mcp = "Trusted AI Agents"
+kya-os-schema = "Trusted AI Agents"
+did-traits = "Identifiers & Discovery"
+hatpro-schema-htwg = "Hospitality & Travel"
+jsonld-common-java = "Implementations & Tooling"
+thisdid = "Identifiers & Discovery"
+well-known-did-configuration = "Identifiers & Discovery"
 
 [[portfolio_rules]]
 portfolio = "DIDComm"
@@ -17,12 +30,12 @@ contains = ["didcomm"]
 
 [[portfolio_rules]]
 portfolio = "Identifiers & Discovery"
-prefixes = ["universal-resolver", "universal-registrar", "did-resolver", "peer-did-method", "identifiers-discovery"]
+prefixes = ["universal-resolver", "universal-registrar", "uni-resolver-driver-", "uni-registrar-driver-", "did-resolver", "peer-did-method", "identifiers-discovery"]
 contains = ["universal-resolver", "universal-registrar", "identifiers-discovery"]
 
 [[portfolio_rules]]
 portfolio = "DID Methods"
-prefixes = ["didwebvh", "did-webvh", "did-method", "did-methods"]
+prefixes = ["didwebvh", "did-webvh", "did-method", "did-methods", "did-peer-"]
 contains = ["did-method"]
 
 [[portfolio_rules]]
@@ -42,7 +55,7 @@ contains = ["trusted-ai-agent"]
 
 [[portfolio_rules]]
 portfolio = "Creator Assertions"
-prefixes = ["creator-assertions"]
+prefixes = ["cawg-", "creator-assertions"]
 contains = ["creator-assertion"]
 
 [[portfolio_rules]]
@@ -57,7 +70,7 @@ contains = ["-labs"]
 
 [[portfolio_rules]]
 portfolio = "Secure Data Storage / DWN"
-prefixes = ["decentralized-web-node", "dwn", "web5"]
+prefixes = ["decentralized-web-node", "dwn", "web5", "edv-"]
 contains = ["decentralized-web-node"]
 
 [[portfolio_rules]]
