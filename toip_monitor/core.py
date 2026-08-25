@@ -18,6 +18,7 @@ from .intelligence import analyze_snapshot
 
 ORG = "trustoverip"
 API = "https://api.github.com"
+CURRENT_SCHEMA_VERSION = "0.2"
 
 
 @dataclass(frozen=True)
@@ -259,7 +260,7 @@ def collect(lookback_days: int = 7, output_root: str | Path = ".") -> Path:
     events.sort(key=lambda e: e.get("timestamp") or "", reverse=True)
     assertions = build_assertions(repositories, events, errors, since)
     snapshot = {
-        "schema_version": "0.2",
+        "schema_version": CURRENT_SCHEMA_VERSION,
         "organization": ORG,
         "generated_at": now.isoformat(),
         "period": {"since": since.isoformat(), "until": now.isoformat(), "lookback_days": lookback_days},
@@ -337,19 +338,51 @@ def render(snapshot: dict[str, Any], root: Path) -> None:
     (data / "latest.json").write_text(json.dumps(snapshot, indent=2) + "\n", encoding="utf-8")
 
 
-def validate(root: str | Path = ".") -> list[str]:
+def validate(root: str | Path = ".", require_generated: bool = False) -> list[str]:
+    """Validate source structure, optionally requiring current generated state.
+
+    Pull-request and push validation checks the repository itself and verifies that
+    any committed generated snapshot is valid JSON. The collection workflow uses
+    ``require_generated=True`` after regeneration, which additionally requires the
+    current schema and complete intelligence collections. This keeps source CI
+    independent from intentionally retained legacy output while making publication
+    fail closed on stale or incomplete generated evidence.
+    """
     root = Path(root)
     errors: list[str] = []
     for rel in ["README.md", "LICENSE", "LICENSE-CONTENT.md", "LICENSES.md", "pyproject.toml"]:
         if not (root / rel).exists():
             errors.append(f"missing required file: {rel}")
+
     latest = root / "docs" / "data" / "latest.json"
-    if latest.exists():
-        try:
-            payload = json.loads(latest.read_text(encoding="utf-8"))
-            for key in ("schema_version", "organization", "repositories", "events", "change_units", "assertions", "provenance"):
-                if key not in payload:
-                    errors.append(f"latest snapshot missing key: {key}")
-        except json.JSONDecodeError as exc:
-            errors.append(f"invalid latest snapshot JSON: {exc}")
+    if not latest.exists():
+        if require_generated:
+            errors.append("missing generated snapshot: docs/data/latest.json")
+        return errors
+
+    try:
+        payload = json.loads(latest.read_text(encoding="utf-8"))
+    except json.JSONDecodeError as exc:
+        errors.append(f"invalid latest snapshot JSON: {exc}")
+        return errors
+
+    for key in ("schema_version", "organization", "repositories", "events", "provenance"):
+        if key not in payload:
+            errors.append(f"latest snapshot missing base key: {key}")
+
+    if require_generated:
+        if payload.get("schema_version") != CURRENT_SCHEMA_VERSION:
+            errors.append(
+                f"generated snapshot schema is {payload.get('schema_version')!r}; expected {CURRENT_SCHEMA_VERSION!r}"
+            )
+        for key in (
+            "change_units",
+            "lifecycle_changes",
+            "cross_portfolio_seams",
+            "findings",
+            "assertions",
+            "collection_errors",
+        ):
+            if key not in payload:
+                errors.append(f"current generated snapshot missing key: {key}")
     return errors

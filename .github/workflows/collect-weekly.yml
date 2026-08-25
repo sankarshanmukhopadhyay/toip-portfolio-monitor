@@ -35,8 +35,8 @@ jobs:
         run: python -m toip_monitor collect --lookback-days 7
       - name: Render decision-grade Pages site
         run: python -m toip_monitor site
-      - name: Validate generated state
-        run: python -m toip_monitor validate
+      - name: Validate current generated state
+        run: python -m toip_monitor validate --require-generated
       - name: Persist generated evidence and publication
         run: |
           git config user.name "github-actions[bot]"
