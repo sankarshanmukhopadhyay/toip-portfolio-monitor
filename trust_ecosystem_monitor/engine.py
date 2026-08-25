@@ -50,8 +50,15 @@ def configure_core(profile: OrganizationProfile) -> None:
 def _normalize_project_identity(snapshot: dict[str, Any], profile: OrganizationProfile) -> None:
     snapshot["ecosystem_profile"] = profile_metadata(profile)
     snapshot.setdefault("provenance", {})["collector"] = "trust-ecosystem-monitor"
+    classification_summary = (
+        "Monitor taxonomy does not yet classify this active repository. "
+        "This is a monitor taxonomy gap, not an upstream repository defect or obligation."
+    )
     for collection in ("assertions", "findings"):
         for item in snapshot.get(collection, []):
+            if item.get("category") == "classification":
+                item["summary"] = classification_summary
+                continue
             summary = str(item.get("summary", ""))
             item["summary"] = summary.replace(
                 "This is a monitor taxonomy gap, not an upstream ToIP repository defect or obligation.",
@@ -133,6 +140,10 @@ def collect(
         serialized = json.dumps(snapshot, indent=2) + "\n"
         path.write_text(serialized, encoding="utf-8")
 
+        # Re-render the backend's archived weekly brief from normalized evidence
+        # so classification explanations and canonical provenance are consistent
+        # across both archive and decision-grade report surfaces.
+        core.render(snapshot, work_root)
         latest = work_root / "docs" / "data" / "latest.json"
         latest.parent.mkdir(parents=True, exist_ok=True)
         latest.write_text(serialized, encoding="utf-8")
