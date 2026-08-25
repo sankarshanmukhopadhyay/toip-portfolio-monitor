@@ -25,6 +25,11 @@ class OrganizationProfile:
     weekly_brief_title: str
     disclaimer: str
     portfolio_rules: tuple[PortfolioRule, ...]
+    repository_overrides: tuple[tuple[str, str], ...] = ()
+
+    @property
+    def overrides(self) -> dict[str, str]:
+        return dict(self.repository_overrides)
 
 
 def load_profile(path: str | Path = DEFAULT_PROFILE_PATH) -> OrganizationProfile:
@@ -51,6 +56,17 @@ def load_profile(path: str | Path = DEFAULT_PROFILE_PATH) -> OrganizationProfile
     if not rules:
         raise ValueError(f"organization profile {path} must define at least one portfolio rule")
 
+    overrides_payload = payload.get("repository_overrides", {})
+    if not isinstance(overrides_payload, dict):
+        raise ValueError(f"organization profile {path} repository_overrides must be a TOML table")
+    overrides: list[tuple[str, str]] = []
+    for repository, portfolio in overrides_payload.items():
+        repository_name = str(repository).strip().lower()
+        portfolio_name = str(portfolio).strip()
+        if not repository_name or not portfolio_name:
+            raise ValueError(f"organization profile {path} contains an invalid repository override")
+        overrides.append((repository_name, portfolio_name))
+
     return OrganizationProfile(
         schema_version=str(payload["schema_version"]),
         id=str(payload["id"]),
@@ -60,17 +76,37 @@ def load_profile(path: str | Path = DEFAULT_PROFILE_PATH) -> OrganizationProfile
         weekly_brief_title=str(payload["weekly_brief_title"]),
         disclaimer=str(payload["disclaimer"]),
         portfolio_rules=tuple(rules),
+        repository_overrides=tuple(sorted(overrides)),
     )
 
 
-def classify_portfolio(name: str, profile: OrganizationProfile) -> str:
+def classify_portfolio_details(name: str, profile: OrganizationProfile) -> dict[str, str | None]:
     lowered = name.lower()
-    for rule in profile.portfolio_rules:
-        if any(lowered.startswith(prefix) for prefix in rule.prefixes):
-            return rule.portfolio
-        if any(fragment in lowered for fragment in rule.contains):
-            return rule.portfolio
-    return "Unclassified"
+    override = profile.overrides.get(lowered)
+    if override:
+        return {"portfolio": override, "method": "override", "rule": lowered}
+
+    for index, rule in enumerate(profile.portfolio_rules):
+        for prefix in rule.prefixes:
+            if lowered.startswith(prefix):
+                return {
+                    "portfolio": rule.portfolio,
+                    "method": "rule",
+                    "rule": f"portfolio_rules[{index}].prefix:{prefix}",
+                }
+        for fragment in rule.contains:
+            if fragment in lowered:
+                return {
+                    "portfolio": rule.portfolio,
+                    "method": "rule",
+                    "rule": f"portfolio_rules[{index}].contains:{fragment}",
+                }
+
+    return {"portfolio": "Unclassified", "method": "unclassified", "rule": None}
+
+
+def classify_portfolio(name: str, profile: OrganizationProfile) -> str:
+    return str(classify_portfolio_details(name, profile)["portfolio"])
 
 
 def profile_metadata(profile: OrganizationProfile) -> dict[str, Any]:
@@ -82,4 +118,5 @@ def profile_metadata(profile: OrganizationProfile) -> dict[str, Any]:
         "monitor_title": profile.monitor_title,
         "weekly_brief_title": profile.weekly_brief_title,
         "disclaimer": profile.disclaimer,
+        "repository_override_count": len(profile.repository_overrides),
     }

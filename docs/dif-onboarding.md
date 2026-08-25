@@ -20,7 +20,7 @@ github.com/decentralized-identity
 
 ## Taxonomy basis
 
-The initial taxonomy is grounded in DIF's published working-group/work-item structure, including active areas such as:
+The taxonomy is grounded in DIF's published working-group/work-item structure, including active areas such as:
 
 - Claims & Credentials;
 - DID Methods;
@@ -34,32 +34,61 @@ The initial taxonomy is grounded in DIF's published working-group/work-item stru
 
 The profile also preserves recognizable archived domains such as Secure Data Storage / DWN, Wallet Security and Sidetree / ION, because repository lifecycle history remains useful even after a working group is archived.
 
-Representative mappings include:
+Representative pattern mappings include:
 
-- `universal-resolver` → Identifiers & Discovery;
-- `didcomm-messaging` → DIDComm;
-- `presentation-exchange` → Claims & Credentials;
-- `trusted-ai-agents` → Trusted AI Agents;
-- `decentralized-web-node` → Secure Data Storage / DWN; and
-- `sidetree` → Sidetree / ION.
+- `universal-resolver*` and `uni-resolver-driver-*` → Identifiers & Discovery;
+- `didcomm*` → DIDComm;
+- `presentation-exchange*` → Claims & Credentials;
+- `cawg-*` → Creator Assertions;
+- `did-peer-*` → DID Methods;
+- `edv-*` → Secure Data Storage / DWN; and
+- `sidetree*` → Sidetree / ION.
 
-## Conservative first baseline
+## What the first live baseline taught us
 
-DIF has a large and historically diverse repository estate. The first profile therefore does **not** attempt to classify every repository by broad heuristics.
+The first live DIF observation on 2026-08-25 discovered 268 repositories, including 63 active repositories. Twenty-seven active repositories were initially `Unclassified`. That was useful evidence: it showed where the conservative first-pass taxonomy was incomplete without requiring the monitor to guess.
 
-Repositories that do not match a defensible rule remain `Unclassified`. Those findings mean:
+The first refinement therefore adds two distinct mechanisms:
+
+1. **stable family rules** for repository families such as `cawg-*`, `did-peer-*`, `edv-*`, Universal Resolver drivers and Universal Registrar drivers; and
+2. **exact repository overrides** when an individual repository's own work-item declaration provides stronger evidence than its name.
+
+Current explicit overrides include examples such as:
+
+- `credential-schemas` → Claims & Credentials;
+- `delegated-authority-report` and `delegated-authority-threat-model` → Trusted AI Agents;
+- `kya-os-mcp` and `kya-os-schema` → Trusted AI Agents;
+- `did-traits` → Identifiers & Discovery;
+- `hatpro-schema-htwg` → Hospitality & Travel;
+- `jsonld-common-java` → Implementations & Tooling;
+- `thisdid` → Identifiers & Discovery; and
+- `well-known-did-configuration` → Identifiers & Discovery.
+
+Repositories such as `aries-rfcs`, `did-attested-resources`, `spec-up` and `specs` are deliberately not forced into a portfolio merely to reduce the unclassified count. They should remain reviewable until the portfolio boundary is justified.
+
+## Classification provenance
+
+Newly generated DIF repository records include the monitor-owned classification method and source:
+
+```json
+"classification": {
+  "method": "override",
+  "rule": "credential-schemas",
+  "profile": "decentralized-identity"
+}
+```
+
+The generated `taxonomy.html` report makes this visible for every repository. This provenance explains the monitor's decision; it does not claim that DIF itself has assigned the same label.
+
+## Conservative boundary
+
+Repositories that do not match a defensible override or rule remain `Unclassified`. Those findings mean:
 
 > the monitor taxonomy does not yet classify the repository.
 
-They do not mean that the DIF repository is misconfigured, deficient or required to adopt a particular governance label.
+They do not mean that the DIF repository is misconfigured, deficient or required to adopt a particular governance label. Zero unclassified repositories is not a success criterion.
 
-The first generated DIF report should be treated as a taxonomy-review baseline. The most useful follow-up is to examine active `Unclassified` repositories and decide whether each should:
-
-1. extend an existing DIF portfolio rule;
-2. establish a new portfolio/category;
-3. be explicitly treated as organization-wide tooling or governance;
-4. remain intentionally unclassified; or
-5. eventually be excluded from portfolio intelligence if it is operational noise.
+The top-level ecosystem catalog also reports taxonomy-review items separately from substantive and priority findings, so taxonomy maintenance is not presented as ecosystem operational risk.
 
 ## Separate retained state
 
@@ -73,6 +102,8 @@ docs/decentralized-identity/
 ```
 
 A DIF run cannot overwrite TrustOverIP evidence or dispositions.
+
+The next collection after this taxonomy refinement is the first opportunity to evaluate DIF as a stateful observation against the retained first baseline.
 
 ## Cross-ecosystem boundary
 

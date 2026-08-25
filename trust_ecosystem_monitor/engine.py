@@ -11,7 +11,13 @@ from pathlib import Path
 from typing import Any
 
 from . import core_backend as core
-from .profile import DEFAULT_PROFILE_PATH, OrganizationProfile, load_profile, profile_metadata
+from .profile import (
+    DEFAULT_PROFILE_PATH,
+    OrganizationProfile,
+    classify_portfolio_details,
+    load_profile,
+    profile_metadata,
+)
 from .site import render_catalog, render_site
 
 
@@ -38,18 +44,54 @@ class GitHubClient(core.GitHubClient):
 
 
 def configure_core(profile: OrganizationProfile) -> None:
-    """Configure the organization-neutral collection backend from a profile."""
+    """Configure the organization-neutral collection backend from a profile.
+
+    The backend retains its historical collector API, while classification is
+    delegated to the selected profile so exact overrides stay exact and pattern
+    rules retain their documented order.
+    """
     core.ORG = profile.organization
     core.RULES = tuple(
         core.Rule(rule.portfolio, prefixes=rule.prefixes, contains=rule.contains)
         for rule in profile.portfolio_rules
     )
+
+    def profile_classifier(name: str) -> str:
+        return str(classify_portfolio_details(name, profile)["portfolio"])
+
+    core.classify_portfolio = profile_classifier
     core.GitHubClient = GitHubClient
 
 
 def _normalize_project_identity(snapshot: dict[str, Any], profile: OrganizationProfile) -> None:
     snapshot["ecosystem_profile"] = profile_metadata(profile)
     snapshot.setdefault("provenance", {})["collector"] = "trust-ecosystem-monitor"
+
+    portfolio_by_repository: dict[str, str] = {}
+    for repository in snapshot.get("repositories", []):
+        detail = classify_portfolio_details(str(repository.get("name", "")), profile)
+        repository["portfolio"] = detail["portfolio"]
+        repository["classification"] = {
+            "method": detail["method"],
+            "rule": detail["rule"],
+            "profile": profile.id,
+        }
+        portfolio_by_repository[str(repository.get("full_name", ""))] = str(detail["portfolio"])
+
+    # Keep downstream records aligned with the authoritative profile result.
+    for event in snapshot.get("events", []):
+        portfolio = portfolio_by_repository.get(str(event.get("repository", "")))
+        if portfolio:
+            event["portfolio"] = portfolio
+    for unit in snapshot.get("change_units", []):
+        portfolio = portfolio_by_repository.get(str(unit.get("repository", "")))
+        if portfolio:
+            unit["portfolio"] = portfolio
+    for change in snapshot.get("lifecycle_changes", []):
+        portfolio = portfolio_by_repository.get(str(change.get("repository", "")))
+        if portfolio:
+            change["portfolio"] = portfolio
+
     classification_summary = (
         "Monitor taxonomy does not yet classify this active repository. "
         "This is a monitor taxonomy gap, not an upstream repository defect or obligation."

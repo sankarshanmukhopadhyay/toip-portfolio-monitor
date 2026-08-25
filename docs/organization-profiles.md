@@ -13,10 +13,36 @@ A profile defines:
 
 - a stable profile identifier;
 - the public GitHub organization to discover;
-- ecosystem display metadata and disclaimer text; and
+- ecosystem display metadata and disclaimer text;
+- optional exact repository-to-portfolio overrides; and
 - ordered portfolio rules using repository-name prefixes and contained fragments.
 
-Rules are deterministic and evaluated in order. The first matching rule wins. Repositories that match no rule remain explicitly `Unclassified`.
+Classification precedence is:
+
+```text
+exact repository override
+        ↓
+ordered pattern rule
+        ↓
+Unclassified
+```
+
+An override should be used when the repository's own README, work-item declaration or governance material provides stronger evidence than its name. Pattern rules should cover stable repository families. Broad rules should not be introduced merely to drive the unclassified count toward zero.
+
+Every newly generated repository record includes monitor-owned classification provenance:
+
+```json
+{
+  "portfolio": "Claims & Credentials",
+  "classification": {
+    "method": "override",
+    "rule": "credential-schemas",
+    "profile": "decentralized-identity"
+  }
+}
+```
+
+For pattern matches, `method` is `rule` and `rule` identifies the matching prefix or contained fragment. For unmatched repositories, `method` is `unclassified` and `rule` is null.
 
 `Unclassified` is a monitor-maintainer review state. It means the current taxonomy does not yet place the repository; it does not imply that the upstream repository is deficient or obligated to change.
 
@@ -34,11 +60,14 @@ docs/<profile-id>/portfolios.html
 docs/<profile-id>/lifecycle.html
 docs/<profile-id>/seams.html
 docs/<profile-id>/evidence.html
+docs/<profile-id>/taxonomy.html
 docs/<profile-id>/methodology.html
 docs/<profile-id>/data/latest.json
 ```
 
-The root `docs/index.html` is an ecosystem catalog. It does not merge the underlying evidence models and does not assert relationships between monitored ecosystems.
+The `taxonomy.html` surface makes the profile decision auditable repository-by-repository. It describes how the monitor classified the repository; it is not an upstream governance assertion.
+
+The root `docs/index.html` is an ecosystem catalog. Taxonomy-review items are counted separately from substantive findings so classification maintenance does not read as ecosystem operational risk. The catalog also distinguishes a first baseline from a stateful observation based on whether a previous retained snapshot was available.
 
 ## TrustOverIP migration compatibility
 
@@ -54,9 +83,10 @@ A new ecosystem should normally be added as another profile rather than by cloni
 
 1. identify the ecosystem's own governance/work-item/lifecycle vocabulary;
 2. create conservative classification rules grounded in that vocabulary;
-3. allow unmatched repositories to remain `Unclassified` rather than guessing;
-4. run a first baseline and inspect classification gaps;
-5. refine the taxonomy through explicit review; and
-6. keep that ecosystem's evidence and dispositions profile-scoped.
+3. use exact overrides only where repository-specific evidence justifies them;
+4. allow unmatched repositories to remain `Unclassified` rather than guessing;
+5. run a first baseline and inspect classification gaps;
+6. refine the taxonomy through explicit review; and
+7. keep that ecosystem's evidence and dispositions profile-scoped.
 
 Cross-ecosystem reporting is a separate capability. The existence of two profiles is not evidence of a technical dependency, governance relationship or standards alignment.
