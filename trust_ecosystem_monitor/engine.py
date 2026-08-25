@@ -46,20 +46,20 @@ class GitHubClient(core.GitHubClient):
 def configure_core(profile: OrganizationProfile) -> None:
     """Configure the organization-neutral collection backend from a profile.
 
-    Exact repository overrides are projected into the legacy collector as
-    highest-precedence rules. The profile-aware layer later records their exact
-    provenance and defensively normalizes generated repository/event records.
+    The backend retains its historical collector API, while classification is
+    delegated to the selected profile so exact overrides stay exact and pattern
+    rules retain their documented order.
     """
     core.ORG = profile.organization
-    override_rules = tuple(
-        core.Rule(portfolio, prefixes=(repository,))
-        for repository, portfolio in profile.repository_overrides
-    )
-    pattern_rules = tuple(
+    core.RULES = tuple(
         core.Rule(rule.portfolio, prefixes=rule.prefixes, contains=rule.contains)
         for rule in profile.portfolio_rules
     )
-    core.RULES = override_rules + pattern_rules
+
+    def profile_classifier(name: str) -> str:
+        return str(classify_portfolio_details(name, profile)["portfolio"])
+
+    core.classify_portfolio = profile_classifier
     core.GitHubClient = GitHubClient
 
 
