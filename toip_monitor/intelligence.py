@@ -5,6 +5,8 @@ import re
 from collections import defaultdict
 from typing import Any
 
+from .findings import apply_dispositions, build_findings, load_dispositions
+
 PORTFOLIO_RELATIONSHIPS = {
     "DTG": {"TSWG", "CTWG", "AIMWG", "KERI Suite"},
     "AIMWG": {"DTG", "TSWG", "Governance"},
@@ -86,25 +88,10 @@ def detect_lifecycle_changes(current: list[dict[str, Any]], previous: list[dict[
 def _repo_mentions(unit: dict[str, Any], repositories: list[dict[str, Any]]) -> list[dict[str, Any]]:
     text = " ".join([unit.get("title", "")] + [e.get("title", "") for e in unit.get("events", [])]).lower()
     source = unit["repository"].lower()
-    matches: list[dict[str, Any]] = []
-    for repo in repositories:
-        name = repo["name"].lower()
-        full = repo["full_name"].lower()
-        if full == source:
-            continue
-        if name in text or full in text:
-            matches.append(repo)
-    return matches
+    return [repo for repo in repositories if repo["full_name"].lower() != source and (repo["name"].lower() in text or repo["full_name"].lower() in text)]
 
 
 def detect_cross_portfolio_seams(units: list[dict[str, Any]], repositories: list[dict[str, Any]]) -> list[dict[str, Any]]:
-    """Identify review seams, not asserted technical dependencies.
-
-    Evidence strength is `explicit-reference` when a change unit names another
-    monitored repository. A weaker `related-co-movement` seam is emitted only
-    when two declared related portfolios both have material change units in the
-    same observation window. The distinction is preserved in machine output.
-    """
     seams: list[dict[str, Any]] = []
     seen: set[str] = set()
     for unit in units:
@@ -112,14 +99,9 @@ def detect_cross_portfolio_seams(units: list[dict[str, Any]], repositories: list
             if target["portfolio"] == unit["portfolio"]:
                 continue
             sid = _seam_id(unit["portfolio"], target["portfolio"], unit["id"] + target["full_name"])
-            if sid in seen:
-                continue
-            seen.add(sid)
-            seams.append({
-                "id": sid, "strength": "explicit-reference", "source_portfolio": unit["portfolio"], "target_portfolio": target["portfolio"],
-                "source_repository": unit["repository"], "target_repository": target["full_name"], "summary": f"{unit['repository']} references {target['full_name']} in a current change unit.",
-                "materiality": unit["materiality"], "evidence": unit.get("evidence", []),
-            })
+            if sid not in seen:
+                seen.add(sid)
+                seams.append({"id": sid, "strength": "explicit-reference", "source_portfolio": unit["portfolio"], "target_portfolio": target["portfolio"], "source_repository": unit["repository"], "target_repository": target["full_name"], "summary": f"{unit['repository']} references {target['full_name']} in a current change unit.", "materiality": unit["materiality"], "evidence": unit.get("evidence", [])})
     material_by_portfolio: dict[str, list[dict[str, Any]]] = defaultdict(list)
     for unit in units:
         if unit.get("materiality", 0) >= 4:
@@ -130,19 +112,11 @@ def detect_cross_portfolio_seams(units: list[dict[str, Any]], repositories: list
         for right in related:
             if right not in material_by_portfolio or left >= right:
                 continue
-            left_unit = material_by_portfolio[left][0]
-            right_unit = material_by_portfolio[right][0]
+            left_unit, right_unit = material_by_portfolio[left][0], material_by_portfolio[right][0]
             sid = _seam_id(left, right, "co-movement")
-            if sid in seen:
-                continue
-            seen.add(sid)
-            seams.append({
-                "id": sid, "strength": "related-co-movement", "source_portfolio": left, "target_portfolio": right,
-                "source_repository": left_unit["repository"], "target_repository": right_unit["repository"],
-                "summary": f"Related portfolios {left} and {right} both contain material change units in this observation window; cross-review may be warranted.",
-                "materiality": min(left_unit["materiality"], right_unit["materiality"]),
-                "evidence": list(dict.fromkeys(left_unit.get("evidence", [])[:1] + right_unit.get("evidence", [])[:1])),
-            })
+            if sid not in seen:
+                seen.add(sid)
+                seams.append({"id": sid, "strength": "related-co-movement", "source_portfolio": left, "target_portfolio": right, "source_repository": left_unit["repository"], "target_repository": right_unit["repository"], "summary": f"Related portfolios {left} and {right} both contain material change units in this observation window; cross-review may be warranted.", "materiality": min(left_unit["materiality"], right_unit["materiality"]), "evidence": list(dict.fromkeys(left_unit.get("evidence", [])[:1] + right_unit.get("evidence", [])[:1]))})
     return sorted(seams, key=lambda s: (-s["materiality"], s["strength"], s["source_portfolio"], s["target_portfolio"]))
 
 
@@ -150,5 +124,6 @@ def analyze_snapshot(snapshot: dict[str, Any], previous: dict[str, Any] | None =
     snapshot["change_units"] = consolidate_change_units(snapshot.get("events", []))
     snapshot["lifecycle_changes"] = detect_lifecycle_changes(snapshot.get("repositories", []), (previous or {}).get("repositories", [])) if previous else []
     snapshot["cross_portfolio_seams"] = detect_cross_portfolio_seams(snapshot["change_units"], snapshot.get("repositories", []))
-    snapshot.setdefault("findings", [])
+    findings = build_findings(snapshot)
+    snapshot["findings"] = apply_dispositions(findings, load_dispositions())
     return snapshot
