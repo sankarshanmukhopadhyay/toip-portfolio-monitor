@@ -3,7 +3,9 @@ from __future__ import annotations
 import argparse
 import sys
 
-from .core import collect, validate
+from .core import validate
+from .engine import collect
+from .profile import DEFAULT_PROFILE_PATH
 from .site import render_site
 
 
@@ -11,9 +13,14 @@ def main() -> int:
     parser = argparse.ArgumentParser(prog="toip-monitor")
     sub = parser.add_subparsers(dest="command", required=True)
 
-    collect_cmd = sub.add_parser("collect", help="Discover ToIP repositories, collect evidence, and render the weekly brief")
+    collect_cmd = sub.add_parser("collect", help="Discover repositories from an organization profile, collect evidence, and render the weekly brief")
     collect_cmd.add_argument("--lookback-days", type=int, default=7)
     collect_cmd.add_argument("--output-root", default=".")
+    collect_cmd.add_argument(
+        "--profile",
+        default=str(DEFAULT_PROFILE_PATH),
+        help="Organization profile TOML file (defaults to the current TrustOverIP profile)",
+    )
 
     site_cmd = sub.add_parser("site", help="Render the decision-grade GitHub Pages information architecture from latest evidence")
     site_cmd.add_argument("--root", default=".")
@@ -28,7 +35,7 @@ def main() -> int:
 
     args = parser.parse_args()
     if args.command == "collect":
-        path = collect(args.lookback_days, args.output_root)
+        path = collect(args.lookback_days, args.output_root, args.profile)
         print(path)
         return 0
     if args.command == "site":

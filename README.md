@@ -25,12 +25,40 @@ The architecture is informed by `sankarshanmukhopadhyay/dtg-portfolio-monitor` v
 
 The ToIP monitor is **not** a larger DTG configuration. Its organization-level model adds dynamic repository discovery, portfolio classification, lifecycle comparison across observations, explicit handling of newly discovered or unclassified repositories, and evidence-graded cross-portfolio review seams.
 
+## Profile-driven architecture: pre-rename compatibility point
+
+Organization discovery and portfolio taxonomy are now externalized behind an organization profile. The current default profile is:
+
+```text
+organizations/trustoverip/profile.toml
+```
+
+The profile carries the GitHub organization identifier and the ordered TrustOverIP portfolio rules that previously had to be maintained as Python taxonomy. The collection entry point loads the profile before invoking the existing evidence, lifecycle, intelligence, finding, disposition, and rendering pipeline.
+
+This is intentionally a **pre-rename compatibility stage**. The repository/product name, `toip_monitor` package, `toip-monitor` CLI, workflow names, generated Pages branding, assertion/finding namespace, snapshot schema, and current report locations remain unchanged until the maintainer performs the planned manual rename.
+
+The default command therefore remains backward compatible:
+
+```bash
+GITHUB_TOKEN=... python -m toip_monitor collect --lookback-days 7
+```
+
+and is equivalent to:
+
+```bash
+GITHUB_TOKEN=... python -m toip_monitor collect \
+  --profile organizations/trustoverip/profile.toml \
+  --lookback-days 7
+```
+
+See `docs/organization-profiles.md` for the profile contract, compatibility boundary, and the intended path for adding another ecosystem after the rename.
+
 ## Current development baseline
 
 The implementation now provides:
 
-- dynamic discovery of public repositories under `trustoverip`;
-- deterministic portfolio classification for DTG, AIMWG, KERI Suite, CTWG, TSWG, EGWG, vLEI/EGF, Spec-Up, governance, and legacy deliverables;
+- profile-selected discovery of public repositories, currently defaulting to `trustoverip`;
+- externally configured deterministic portfolio classification for DTG, AIMWG, KERI Suite, CTWG, TSWG, EGWG, vLEI/EGF, Spec-Up, governance, and legacy deliverables;
 - repository-kind and active/dormant/archived lifecycle classification;
 - bounded collection of recent commits, issues, pull requests, and releases;
 - correct commit timestamp normalization from GitHub commit metadata;
@@ -42,6 +70,7 @@ The implementation now provides:
 - a governed finding disposition ledger requiring authority, rationale, timestamp, and evidence for non-open states;
 - provenance in every generated snapshot and bounded snapshot retention;
 - a decision-first multi-page GitHub Pages site plus machine-readable latest JSON;
+- compatibility tests that require the externalized TrustOverIP profile to reproduce the retained ToIP repository classifications;
 - unit tests and repository validation; and
 - scheduled/manual GitHub Actions collection and Pages deployment.
 
@@ -59,11 +88,11 @@ The generated publication separates the decision surface from the evidence surfa
 - `docs/data/latest.json` — latest complete machine-readable state; and
 - `docs/data/site-manifest.json` — publication manifest and counts.
 
-The original weekly report remains archived under `docs/reports/` while the decision-grade renderer owns the Pages landing experience.
+The original weekly report remains archived under `docs/reports/` while the decision-grade renderer owns the Pages landing experience. At this compatibility point, the rendered publication intentionally remains the ToIP report; profile externalization is not being used to rebrand or re-baseline it.
 
 ## Local use
 
-Python 3.11 or later is sufficient; the monitor uses only the standard library.
+Python 3.11 or later is sufficient; the monitor uses only the standard library, including `tomllib` for organization profiles.
 
 ```bash
 python -m unittest discover -s tests
@@ -72,26 +101,41 @@ GITHUB_TOKEN=... python -m toip_monitor collect --lookback-days 7
 python -m toip_monitor site
 ```
 
+To exercise an explicit organization profile:
+
+```bash
+GITHUB_TOKEN=... python -m toip_monitor collect \
+  --profile organizations/trustoverip/profile.toml \
+  --lookback-days 7
+```
+
 ## Weekly operation
 
 The `Collect and publish weekly ToIP brief` workflow can be run manually and is scheduled for Sunday 21:30 UTC. It:
 
-1. runs the test suite;
-2. discovers the organization and collects seven days of evidence;
-3. builds change units, lifecycle deltas, seams, and findings;
-4. applies any authorized durable dispositions;
-5. renders the decision-grade Pages site;
-6. validates generated state;
-7. commits changed `data/` and `docs/` evidence back to the repository; and
-8. deploys `docs/` through GitHub Pages Actions.
+1. runs the test suite, including the TrustOverIP profile compatibility contract;
+2. loads the default TrustOverIP organization profile;
+3. discovers the organization and collects seven days of evidence;
+4. builds change units, lifecycle deltas, seams, and findings;
+5. applies any authorized durable dispositions;
+6. renders the decision-grade Pages site;
+7. validates generated state;
+8. commits changed `data/` and `docs/` evidence back to the repository; and
+9. deploys `docs/` through GitHub Pages Actions.
 
 Configure **Settings → Pages → Source: GitHub Actions**, then run the workflow once manually to establish the first baseline report. The first observation intentionally has no lifecycle deltas because no prior state exists; the second and later runs establish stateful comparison.
+
+## Compatibility contract
+
+The profile refactor is not allowed to silently reclassify the current ToIP estate. `tests/test_profile_compatibility.py` verifies representative historical mappings and compares the profile-derived portfolio for every repository in the retained `docs/data/latest.json` snapshot with the portfolio already recorded in that snapshot.
+
+A mismatch fails CI. Changes to the TrustOverIP taxonomy therefore remain explicit review decisions rather than accidental side effects of the generalization work.
 
 ## Evidence and interpretation boundary
 
 Raw GitHub events and repository metadata remain the evidence layer. Change units, lifecycle deltas, portfolio classification, review seams, scoring, and findings are deterministic transformations preserved in the snapshot.
 
-An active repository that does not match a known portfolio rule is surfaced as `Unclassified`; it is not silently omitted. A cross-portfolio seam is a reason for review, not an assertion that a formal dependency exists. `explicit-reference` is stronger evidence than `related-co-movement` and the distinction remains machine-readable.
+An active repository that does not match a known portfolio rule is surfaced as `Unclassified`; it is not silently omitted. This means the **monitor taxonomy** has not yet classified the repository; it does not imply an upstream ToIP defect or obligation. A cross-portfolio seam is a reason for review, not an assertion that a formal dependency exists. `explicit-reference` is stronger evidence than `related-co-movement` and the distinction remains machine-readable.
 
 ## Finding governance
 

@@ -1,0 +1,55 @@
+schema_version = "1"
+id = "trustoverip"
+organization = "trustoverip"
+display_name = "Trust Over IP Foundation"
+monitor_title = "ToIP Portfolio Monitor"
+weekly_brief_title = "ToIP Weekly Portfolio Brief"
+disclaimer = "This repository is independently maintained and is not an official Trust Over IP Foundation publication."
+
+# Portfolio rules are evaluated in order. A repository name is normalized to
+# lowercase; the first matching prefix or contained fragment wins. Repositories
+# with no match remain explicitly Unclassified.
+
+[[portfolio_rules]]
+portfolio = "DTG"
+prefixes = ["dtgwg-"]
+
+[[portfolio_rules]]
+portfolio = "AIMWG"
+prefixes = ["aimwg-"]
+
+[[portfolio_rules]]
+portfolio = "KERI Suite"
+prefixes = ["kswg-"]
+contains = ["keri", "acdc", "kerisuite"]
+
+[[portfolio_rules]]
+portfolio = "CTWG"
+prefixes = ["ctwg-"]
+contains = ["concepts-and-terminology"]
+
+[[portfolio_rules]]
+portfolio = "TSWG"
+prefixes = ["tswg-"]
+contains = ["technology-stack"]
+
+[[portfolio_rules]]
+portfolio = "EGWG"
+prefixes = ["egwg-"]
+
+[[portfolio_rules]]
+portfolio = "vLEI / EGF"
+prefixes = ["vlei-", "egf-"]
+
+[[portfolio_rules]]
+portfolio = "Spec-Up"
+prefixes = ["spec-up"]
+
+[[portfolio_rules]]
+portfolio = "Governance"
+prefixes = ["governance"]
+contains = ["governance-stack"]
+
+[[portfolio_rules]]
+portfolio = "Legacy deliverables"
+prefixes = ["tss", "wp00", "tip00", "trtf-"]
