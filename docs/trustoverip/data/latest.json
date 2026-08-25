@@ -1,17 +1,17 @@
 {
   "schema_version": "0.2",
   "organization": "trustoverip",
-  "generated_at": "2026-08-25T12:51:58.538576+00:00",
+  "generated_at": "2026-08-25T16:33:54.216503+00:00",
   "period": {
-    "since": "2026-08-18T12:51:58.538576+00:00",
-    "until": "2026-08-25T12:51:58.538576+00:00",
+    "since": "2026-08-18T16:33:54.216503+00:00",
+    "until": "2026-08-25T16:33:54.216503+00:00",
     "lookback_days": 7
   },
   "provenance": {
     "source": "GitHub REST API",
     "collector": "trust-ecosystem-monitor",
     "deterministic_classification": true,
-    "previous_snapshot": "2026-08-25T12:30:04.257997+00:00"
+    "previous_snapshot": "2026-08-25T12:51:58.538576+00:00"
   },
   "repositories": [
     {
@@ -399,8 +399,8 @@
       "url": "https://github.com/trustoverip/dtgwg-trust-tasks-tf",
       "description": "Trust Tasks - Transport Agnostic protocol for managing Tasks",
       "created_at": "2026-03-10T11:03:53Z",
-      "updated_at": "2026-08-25T08:53:03Z",
-      "pushed_at": "2026-08-25T08:50:33Z",
+      "updated_at": "2026-08-25T14:08:00Z",
+      "pushed_at": "2026-08-25T13:56:47Z",
       "archived": false,
       "fork": false,
       "default_branch": "main",
@@ -2348,6 +2348,110 @@
   ],
   "events": [
     {
+      "kind": "pull_request",
+      "repository": "trustoverip/dtgwg-trust-tasks-spec",
+      "portfolio": "DTG",
+      "repo_kind": "specification",
+      "timestamp": "2026-08-25T15:27:42Z",
+      "title": "Migrate the Trust Tasks framework specification into Spec-Up-T",
+      "url": "https://github.com/trustoverip/dtgwg-trust-tasks-spec/pull/1",
+      "number": 1,
+      "sha": null,
+      "state": "open",
+      "materiality": 4
+    },
+    {
+      "kind": "pull_request",
+      "repository": "trustoverip/kswg-acdc-specification",
+      "portfolio": "KERI Suite",
+      "repo_kind": "specification",
+      "timestamp": "2026-08-25T14:21:01Z",
+      "title": "(on v1.1) Specify independent Registry bulk issuance in \u00a715.4, and pin the derivation-path index radix",
+      "url": "https://github.com/trustoverip/kswg-acdc-specification/pull/204",
+      "number": 204,
+      "sha": null,
+      "state": "open",
+      "materiality": 4
+    },
+    {
+      "kind": "pull_request",
+      "repository": "trustoverip/kswg-acdc-specification",
+      "portfolio": "KERI Suite",
+      "repo_kind": "specification",
+      "timestamp": "2026-08-25T14:20:12Z",
+      "title": "Move bulk issuance out of the Annex so its language is normative",
+      "url": "https://github.com/trustoverip/kswg-acdc-specification/pull/207",
+      "number": 207,
+      "sha": null,
+      "state": "open",
+      "materiality": 4
+    },
+    {
+      "kind": "pull_request",
+      "repository": "trustoverip/dtgwg-trust-tasks-tf",
+      "portfolio": "DTG",
+      "repo_kind": "task-force",
+      "timestamp": "2026-08-25T13:56:43Z",
+      "title": "feat(rs): index response schemas, not just requests",
+      "url": "https://github.com/trustoverip/dtgwg-trust-tasks-tf/pull/265",
+      "number": 265,
+      "sha": null,
+      "state": "merged",
+      "materiality": 4
+    },
+    {
+      "kind": "commit",
+      "repository": "trustoverip/dtgwg-trust-tasks-tf",
+      "portfolio": "DTG",
+      "repo_kind": "task-force",
+      "timestamp": "2026-08-25T13:56:42Z",
+      "title": "feat(rs): index response schemas, not just requests (#265)",
+      "url": "https://github.com/trustoverip/dtgwg-trust-tasks-tf/commit/6d588e1557d71fc3cb82d64571f4d0f35231b92b",
+      "number": null,
+      "sha": "6d588e1557d71fc3cb82d64571f4d0f35231b92b",
+      "state": null,
+      "materiality": 1
+    },
+    {
+      "kind": "issue",
+      "repository": "trustoverip/dtgwg-cred-spec",
+      "portfolio": "DTG",
+      "repo_kind": "specification",
+      "timestamp": "2026-08-25T13:05:30Z",
+      "title": "Name the asymmetric edge: two halves may declare different correlation scopes",
+      "url": "https://github.com/trustoverip/dtgwg-cred-spec/issues/23",
+      "number": 23,
+      "sha": null,
+      "state": "open",
+      "materiality": 3
+    },
+    {
+      "kind": "issue",
+      "repository": "trustoverip/dtgwg-cred-spec",
+      "portfolio": "DTG",
+      "repo_kind": "specification",
+      "timestamp": "2026-08-25T12:59:27Z",
+      "title": "Relationship policy discovery: both communities must admit an edge, neither can find out",
+      "url": "https://github.com/trustoverip/dtgwg-cred-spec/issues/25",
+      "number": 25,
+      "sha": null,
+      "state": "open",
+      "materiality": 3
+    },
+    {
+      "kind": "issue",
+      "repository": "trustoverip/dtgwg-cred-spec",
+      "portfolio": "DTG",
+      "repo_kind": "specification",
+      "timestamp": "2026-08-25T12:55:46Z",
+      "title": "Edge verifiability across VTN contexts: different VTNs, or none at all",
+      "url": "https://github.com/trustoverip/dtgwg-cred-spec/issues/24",
+      "number": 24,
+      "sha": null,
+      "state": "open",
+      "materiality": 3
+    },
+    {
       "kind": "issue",
       "repository": "trustoverip/kswg-cesr-specification",
       "portfolio": "KERI Suite",
@@ -2959,45 +3063,6 @@
       "materiality": 3
     },
     {
-      "kind": "issue",
-      "repository": "trustoverip/dtgwg-cred-spec",
-      "portfolio": "DTG",
-      "repo_kind": "specification",
-      "timestamp": "2026-08-24T00:44:59Z",
-      "title": "Relationship policy discovery: both communities must admit an edge, neither can find out",
-      "url": "https://github.com/trustoverip/dtgwg-cred-spec/issues/25",
-      "number": 25,
-      "sha": null,
-      "state": "open",
-      "materiality": 3
-    },
-    {
-      "kind": "issue",
-      "repository": "trustoverip/dtgwg-cred-spec",
-      "portfolio": "DTG",
-      "repo_kind": "specification",
-      "timestamp": "2026-08-24T00:44:58Z",
-      "title": "Edge verifiability across VTN contexts: different VTNs, or none at all",
-      "url": "https://github.com/trustoverip/dtgwg-cred-spec/issues/24",
-      "number": 24,
-      "sha": null,
-      "state": "open",
-      "materiality": 3
-    },
-    {
-      "kind": "issue",
-      "repository": "trustoverip/dtgwg-cred-spec",
-      "portfolio": "DTG",
-      "repo_kind": "specification",
-      "timestamp": "2026-08-24T00:44:52Z",
-      "title": "Name the asymmetric edge: two halves may declare different correlation scopes",
-      "url": "https://github.com/trustoverip/dtgwg-cred-spec/issues/23",
-      "number": 23,
-      "sha": null,
-      "state": "open",
-      "materiality": 3
-    },
-    {
       "kind": "pull_request",
       "repository": "trustoverip/kswg-keri-specification",
       "portfolio": "KERI Suite",
@@ -3453,32 +3518,6 @@
       "materiality": 1
     },
     {
-      "kind": "pull_request",
-      "repository": "trustoverip/kswg-acdc-specification",
-      "portfolio": "KERI Suite",
-      "repo_kind": "specification",
-      "timestamp": "2026-08-20T00:06:28Z",
-      "title": "Move bulk issuance out of the Annex so its language is normative",
-      "url": "https://github.com/trustoverip/kswg-acdc-specification/pull/207",
-      "number": 207,
-      "sha": null,
-      "state": "open",
-      "materiality": 4
-    },
-    {
-      "kind": "pull_request",
-      "repository": "trustoverip/kswg-acdc-specification",
-      "portfolio": "KERI Suite",
-      "repo_kind": "specification",
-      "timestamp": "2026-08-19T22:58:44Z",
-      "title": "(on v1.1) Specify independent Registry bulk issuance in \u00a715.4, and pin the derivation-path index radix",
-      "url": "https://github.com/trustoverip/kswg-acdc-specification/pull/204",
-      "number": 204,
-      "sha": null,
-      "state": "open",
-      "materiality": 4
-    },
-    {
       "kind": "commit",
       "repository": "trustoverip/dtgwg-trust-tasks-tf",
       "portfolio": "DTG",
@@ -3880,32 +3919,6 @@
       "sha": null,
       "state": "merged",
       "materiality": 4
-    },
-    {
-      "kind": "issue",
-      "repository": "trustoverip/kswg-did-method-webs-specification",
-      "portfolio": "KERI Suite",
-      "repo_kind": "specification",
-      "timestamp": "2026-08-18T16:01:14Z",
-      "title": "Worked example for CESR + KERI + ACDC 2.0",
-      "url": "https://github.com/trustoverip/kswg-did-method-webs-specification/issues/213",
-      "number": 213,
-      "sha": null,
-      "state": "open",
-      "materiality": 3
-    },
-    {
-      "kind": "issue",
-      "repository": "trustoverip/kswg-did-method-webs-specification",
-      "portfolio": "KERI Suite",
-      "repo_kind": "specification",
-      "timestamp": "2026-08-18T15:00:47Z",
-      "title": "The worked example's ACDC proof uses an attachment that no impl verifies",
-      "url": "https://github.com/trustoverip/kswg-did-method-webs-specification/issues/212",
-      "number": 212,
-      "sha": null,
-      "state": "open",
-      "materiality": 3
     }
   ],
   "assertions": [
@@ -4029,6 +4042,238 @@
     "trustoverip/tswg-did-method-webs-specification:commit: GitHub API 409 for /repos/trustoverip/tswg-did-method-webs-specification/commits: {\"message\":\"Git Repository is empty.\",\"documentation_url\":\"https://docs.github.com/rest/commits/commits#list-commits\",\"status\":\"409\"}"
   ],
   "change_units": [
+    {
+      "id": "toip-change-5a3cefb75175",
+      "repository": "trustoverip/dtgwg-trust-tasks-spec",
+      "portfolio": "DTG",
+      "repo_kind": "specification",
+      "title": "Migrate the Trust Tasks framework specification into Spec-Up-T",
+      "timestamp": "2026-08-25T15:27:42Z",
+      "materiality": 4,
+      "event_kinds": [
+        "pull_request"
+      ],
+      "event_count": 1,
+      "evidence": [
+        "https://github.com/trustoverip/dtgwg-trust-tasks-spec/pull/1"
+      ],
+      "events": [
+        {
+          "kind": "pull_request",
+          "repository": "trustoverip/dtgwg-trust-tasks-spec",
+          "portfolio": "DTG",
+          "repo_kind": "specification",
+          "timestamp": "2026-08-25T15:27:42Z",
+          "title": "Migrate the Trust Tasks framework specification into Spec-Up-T",
+          "url": "https://github.com/trustoverip/dtgwg-trust-tasks-spec/pull/1",
+          "number": 1,
+          "sha": null,
+          "state": "open",
+          "materiality": 4
+        }
+      ]
+    },
+    {
+      "id": "toip-change-a202eac256f9",
+      "repository": "trustoverip/kswg-acdc-specification",
+      "portfolio": "KERI Suite",
+      "repo_kind": "specification",
+      "title": "(on v1.1) Specify independent Registry bulk issuance in \u00a715.4, and pin the derivation-path index radix",
+      "timestamp": "2026-08-25T14:21:01Z",
+      "materiality": 4,
+      "event_kinds": [
+        "pull_request"
+      ],
+      "event_count": 1,
+      "evidence": [
+        "https://github.com/trustoverip/kswg-acdc-specification/pull/204"
+      ],
+      "events": [
+        {
+          "kind": "pull_request",
+          "repository": "trustoverip/kswg-acdc-specification",
+          "portfolio": "KERI Suite",
+          "repo_kind": "specification",
+          "timestamp": "2026-08-25T14:21:01Z",
+          "title": "(on v1.1) Specify independent Registry bulk issuance in \u00a715.4, and pin the derivation-path index radix",
+          "url": "https://github.com/trustoverip/kswg-acdc-specification/pull/204",
+          "number": 204,
+          "sha": null,
+          "state": "open",
+          "materiality": 4
+        }
+      ]
+    },
+    {
+      "id": "toip-change-92e32940a65b",
+      "repository": "trustoverip/kswg-acdc-specification",
+      "portfolio": "KERI Suite",
+      "repo_kind": "specification",
+      "title": "Move bulk issuance out of the Annex so its language is normative",
+      "timestamp": "2026-08-25T14:20:12Z",
+      "materiality": 4,
+      "event_kinds": [
+        "pull_request"
+      ],
+      "event_count": 1,
+      "evidence": [
+        "https://github.com/trustoverip/kswg-acdc-specification/pull/207"
+      ],
+      "events": [
+        {
+          "kind": "pull_request",
+          "repository": "trustoverip/kswg-acdc-specification",
+          "portfolio": "KERI Suite",
+          "repo_kind": "specification",
+          "timestamp": "2026-08-25T14:20:12Z",
+          "title": "Move bulk issuance out of the Annex so its language is normative",
+          "url": "https://github.com/trustoverip/kswg-acdc-specification/pull/207",
+          "number": 207,
+          "sha": null,
+          "state": "open",
+          "materiality": 4
+        }
+      ]
+    },
+    {
+      "id": "toip-change-3dc6603e4733",
+      "repository": "trustoverip/dtgwg-trust-tasks-tf",
+      "portfolio": "DTG",
+      "repo_kind": "task-force",
+      "title": "feat(rs): index response schemas, not just requests",
+      "timestamp": "2026-08-25T13:56:43Z",
+      "materiality": 4,
+      "event_kinds": [
+        "commit",
+        "pull_request"
+      ],
+      "event_count": 2,
+      "evidence": [
+        "https://github.com/trustoverip/dtgwg-trust-tasks-tf/pull/265",
+        "https://github.com/trustoverip/dtgwg-trust-tasks-tf/commit/6d588e1557d71fc3cb82d64571f4d0f35231b92b"
+      ],
+      "events": [
+        {
+          "kind": "pull_request",
+          "repository": "trustoverip/dtgwg-trust-tasks-tf",
+          "portfolio": "DTG",
+          "repo_kind": "task-force",
+          "timestamp": "2026-08-25T13:56:43Z",
+          "title": "feat(rs): index response schemas, not just requests",
+          "url": "https://github.com/trustoverip/dtgwg-trust-tasks-tf/pull/265",
+          "number": 265,
+          "sha": null,
+          "state": "merged",
+          "materiality": 4
+        },
+        {
+          "kind": "commit",
+          "repository": "trustoverip/dtgwg-trust-tasks-tf",
+          "portfolio": "DTG",
+          "repo_kind": "task-force",
+          "timestamp": "2026-08-25T13:56:42Z",
+          "title": "feat(rs): index response schemas, not just requests (#265)",
+          "url": "https://github.com/trustoverip/dtgwg-trust-tasks-tf/commit/6d588e1557d71fc3cb82d64571f4d0f35231b92b",
+          "number": null,
+          "sha": "6d588e1557d71fc3cb82d64571f4d0f35231b92b",
+          "state": null,
+          "materiality": 1
+        }
+      ]
+    },
+    {
+      "id": "toip-change-f8531b815854",
+      "repository": "trustoverip/dtgwg-cred-spec",
+      "portfolio": "DTG",
+      "repo_kind": "specification",
+      "title": "Name the asymmetric edge: two halves may declare different correlation scopes",
+      "timestamp": "2026-08-25T13:05:30Z",
+      "materiality": 3,
+      "event_kinds": [
+        "issue"
+      ],
+      "event_count": 1,
+      "evidence": [
+        "https://github.com/trustoverip/dtgwg-cred-spec/issues/23"
+      ],
+      "events": [
+        {
+          "kind": "issue",
+          "repository": "trustoverip/dtgwg-cred-spec",
+          "portfolio": "DTG",
+          "repo_kind": "specification",
+          "timestamp": "2026-08-25T13:05:30Z",
+          "title": "Name the asymmetric edge: two halves may declare different correlation scopes",
+          "url": "https://github.com/trustoverip/dtgwg-cred-spec/issues/23",
+          "number": 23,
+          "sha": null,
+          "state": "open",
+          "materiality": 3
+        }
+      ]
+    },
+    {
+      "id": "toip-change-6ad3e01ab08b",
+      "repository": "trustoverip/dtgwg-cred-spec",
+      "portfolio": "DTG",
+      "repo_kind": "specification",
+      "title": "Relationship policy discovery: both communities must admit an edge, neither can find out",
+      "timestamp": "2026-08-25T12:59:27Z",
+      "materiality": 3,
+      "event_kinds": [
+        "issue"
+      ],
+      "event_count": 1,
+      "evidence": [
+        "https://github.com/trustoverip/dtgwg-cred-spec/issues/25"
+      ],
+      "events": [
+        {
+          "kind": "issue",
+          "repository": "trustoverip/dtgwg-cred-spec",
+          "portfolio": "DTG",
+          "repo_kind": "specification",
+          "timestamp": "2026-08-25T12:59:27Z",
+          "title": "Relationship policy discovery: both communities must admit an edge, neither can find out",
+          "url": "https://github.com/trustoverip/dtgwg-cred-spec/issues/25",
+          "number": 25,
+          "sha": null,
+          "state": "open",
+          "materiality": 3
+        }
+      ]
+    },
+    {
+      "id": "toip-change-4c1d69e64e58",
+      "repository": "trustoverip/dtgwg-cred-spec",
+      "portfolio": "DTG",
+      "repo_kind": "specification",
+      "title": "Edge verifiability across VTN contexts: different VTNs, or none at all",
+      "timestamp": "2026-08-25T12:55:46Z",
+      "materiality": 3,
+      "event_kinds": [
+        "issue"
+      ],
+      "event_count": 1,
+      "evidence": [
+        "https://github.com/trustoverip/dtgwg-cred-spec/issues/24"
+      ],
+      "events": [
+        {
+          "kind": "issue",
+          "repository": "trustoverip/dtgwg-cred-spec",
+          "portfolio": "DTG",
+          "repo_kind": "specification",
+          "timestamp": "2026-08-25T12:55:46Z",
+          "title": "Edge verifiability across VTN contexts: different VTNs, or none at all",
+          "url": "https://github.com/trustoverip/dtgwg-cred-spec/issues/24",
+          "number": 24,
+          "sha": null,
+          "state": "open",
+          "materiality": 3
+        }
+      ]
+    },
     {
       "id": "toip-change-0149af482e3c",
       "repository": "trustoverip/kswg-cesr-specification",
@@ -5247,99 +5492,6 @@
       ]
     },
     {
-      "id": "toip-change-6ad3e01ab08b",
-      "repository": "trustoverip/dtgwg-cred-spec",
-      "portfolio": "DTG",
-      "repo_kind": "specification",
-      "title": "Relationship policy discovery: both communities must admit an edge, neither can find out",
-      "timestamp": "2026-08-24T00:44:59Z",
-      "materiality": 3,
-      "event_kinds": [
-        "issue"
-      ],
-      "event_count": 1,
-      "evidence": [
-        "https://github.com/trustoverip/dtgwg-cred-spec/issues/25"
-      ],
-      "events": [
-        {
-          "kind": "issue",
-          "repository": "trustoverip/dtgwg-cred-spec",
-          "portfolio": "DTG",
-          "repo_kind": "specification",
-          "timestamp": "2026-08-24T00:44:59Z",
-          "title": "Relationship policy discovery: both communities must admit an edge, neither can find out",
-          "url": "https://github.com/trustoverip/dtgwg-cred-spec/issues/25",
-          "number": 25,
-          "sha": null,
-          "state": "open",
-          "materiality": 3
-        }
-      ]
-    },
-    {
-      "id": "toip-change-4c1d69e64e58",
-      "repository": "trustoverip/dtgwg-cred-spec",
-      "portfolio": "DTG",
-      "repo_kind": "specification",
-      "title": "Edge verifiability across VTN contexts: different VTNs, or none at all",
-      "timestamp": "2026-08-24T00:44:58Z",
-      "materiality": 3,
-      "event_kinds": [
-        "issue"
-      ],
-      "event_count": 1,
-      "evidence": [
-        "https://github.com/trustoverip/dtgwg-cred-spec/issues/24"
-      ],
-      "events": [
-        {
-          "kind": "issue",
-          "repository": "trustoverip/dtgwg-cred-spec",
-          "portfolio": "DTG",
-          "repo_kind": "specification",
-          "timestamp": "2026-08-24T00:44:58Z",
-          "title": "Edge verifiability across VTN contexts: different VTNs, or none at all",
-          "url": "https://github.com/trustoverip/dtgwg-cred-spec/issues/24",
-          "number": 24,
-          "sha": null,
-          "state": "open",
-          "materiality": 3
-        }
-      ]
-    },
-    {
-      "id": "toip-change-f8531b815854",
-      "repository": "trustoverip/dtgwg-cred-spec",
-      "portfolio": "DTG",
-      "repo_kind": "specification",
-      "title": "Name the asymmetric edge: two halves may declare different correlation scopes",
-      "timestamp": "2026-08-24T00:44:52Z",
-      "materiality": 3,
-      "event_kinds": [
-        "issue"
-      ],
-      "event_count": 1,
-      "evidence": [
-        "https://github.com/trustoverip/dtgwg-cred-spec/issues/23"
-      ],
-      "events": [
-        {
-          "kind": "issue",
-          "repository": "trustoverip/dtgwg-cred-spec",
-          "portfolio": "DTG",
-          "repo_kind": "specification",
-          "timestamp": "2026-08-24T00:44:52Z",
-          "title": "Name the asymmetric edge: two halves may declare different correlation scopes",
-          "url": "https://github.com/trustoverip/dtgwg-cred-spec/issues/23",
-          "number": 23,
-          "sha": null,
-          "state": "open",
-          "materiality": 3
-        }
-      ]
-    },
-    {
       "id": "toip-change-ab5c21c345ff",
       "repository": "trustoverip/kswg-keri-specification",
       "portfolio": "KERI Suite",
@@ -6281,68 +6433,6 @@
       ]
     },
     {
-      "id": "toip-change-92e32940a65b",
-      "repository": "trustoverip/kswg-acdc-specification",
-      "portfolio": "KERI Suite",
-      "repo_kind": "specification",
-      "title": "Move bulk issuance out of the Annex so its language is normative",
-      "timestamp": "2026-08-20T00:06:28Z",
-      "materiality": 4,
-      "event_kinds": [
-        "pull_request"
-      ],
-      "event_count": 1,
-      "evidence": [
-        "https://github.com/trustoverip/kswg-acdc-specification/pull/207"
-      ],
-      "events": [
-        {
-          "kind": "pull_request",
-          "repository": "trustoverip/kswg-acdc-specification",
-          "portfolio": "KERI Suite",
-          "repo_kind": "specification",
-          "timestamp": "2026-08-20T00:06:28Z",
-          "title": "Move bulk issuance out of the Annex so its language is normative",
-          "url": "https://github.com/trustoverip/kswg-acdc-specification/pull/207",
-          "number": 207,
-          "sha": null,
-          "state": "open",
-          "materiality": 4
-        }
-      ]
-    },
-    {
-      "id": "toip-change-a202eac256f9",
-      "repository": "trustoverip/kswg-acdc-specification",
-      "portfolio": "KERI Suite",
-      "repo_kind": "specification",
-      "title": "(on v1.1) Specify independent Registry bulk issuance in \u00a715.4, and pin the derivation-path index radix",
-      "timestamp": "2026-08-19T22:58:44Z",
-      "materiality": 4,
-      "event_kinds": [
-        "pull_request"
-      ],
-      "event_count": 1,
-      "evidence": [
-        "https://github.com/trustoverip/kswg-acdc-specification/pull/204"
-      ],
-      "events": [
-        {
-          "kind": "pull_request",
-          "repository": "trustoverip/kswg-acdc-specification",
-          "portfolio": "KERI Suite",
-          "repo_kind": "specification",
-          "timestamp": "2026-08-19T22:58:44Z",
-          "title": "(on v1.1) Specify independent Registry bulk issuance in \u00a715.4, and pin the derivation-path index radix",
-          "url": "https://github.com/trustoverip/kswg-acdc-specification/pull/204",
-          "number": 204,
-          "sha": null,
-          "state": "open",
-          "materiality": 4
-        }
-      ]
-    },
-    {
       "id": "toip-change-dbb1273cc079",
       "repository": "trustoverip/dtgwg-trust-tasks-tf",
       "portfolio": "DTG",
@@ -7110,68 +7200,6 @@
           "materiality": 4
         }
       ]
-    },
-    {
-      "id": "toip-change-fdd94c0a3de4",
-      "repository": "trustoverip/kswg-did-method-webs-specification",
-      "portfolio": "KERI Suite",
-      "repo_kind": "specification",
-      "title": "Worked example for CESR + KERI + ACDC 2.0",
-      "timestamp": "2026-08-18T16:01:14Z",
-      "materiality": 3,
-      "event_kinds": [
-        "issue"
-      ],
-      "event_count": 1,
-      "evidence": [
-        "https://github.com/trustoverip/kswg-did-method-webs-specification/issues/213"
-      ],
-      "events": [
-        {
-          "kind": "issue",
-          "repository": "trustoverip/kswg-did-method-webs-specification",
-          "portfolio": "KERI Suite",
-          "repo_kind": "specification",
-          "timestamp": "2026-08-18T16:01:14Z",
-          "title": "Worked example for CESR + KERI + ACDC 2.0",
-          "url": "https://github.com/trustoverip/kswg-did-method-webs-specification/issues/213",
-          "number": 213,
-          "sha": null,
-          "state": "open",
-          "materiality": 3
-        }
-      ]
-    },
-    {
-      "id": "toip-change-3f7a7b87335f",
-      "repository": "trustoverip/kswg-did-method-webs-specification",
-      "portfolio": "KERI Suite",
-      "repo_kind": "specification",
-      "title": "The worked example's ACDC proof uses an attachment that no impl verifies",
-      "timestamp": "2026-08-18T15:00:47Z",
-      "materiality": 3,
-      "event_kinds": [
-        "issue"
-      ],
-      "event_count": 1,
-      "evidence": [
-        "https://github.com/trustoverip/kswg-did-method-webs-specification/issues/212"
-      ],
-      "events": [
-        {
-          "kind": "issue",
-          "repository": "trustoverip/kswg-did-method-webs-specification",
-          "portfolio": "KERI Suite",
-          "repo_kind": "specification",
-          "timestamp": "2026-08-18T15:00:47Z",
-          "title": "The worked example's ACDC proof uses an attachment that no impl verifies",
-          "url": "https://github.com/trustoverip/kswg-did-method-webs-specification/issues/212",
-          "number": 212,
-          "sha": null,
-          "state": "open",
-          "materiality": 3
-        }
-      ]
     }
   ],
   "lifecycle_changes": [],
@@ -7358,6 +7386,46 @@
       ]
     },
     {
+      "id": "toip-seam-be7b5a2aff76",
+      "strength": "explicit-reference",
+      "source_portfolio": "DTG",
+      "target_portfolio": "Spec-Up",
+      "source_repository": "trustoverip/dtgwg-trust-tasks-spec",
+      "target_repository": "trustoverip/spec-up",
+      "summary": "trustoverip/dtgwg-trust-tasks-spec references trustoverip/spec-up in a current change unit.",
+      "materiality": 4,
+      "evidence": [
+        "https://github.com/trustoverip/dtgwg-trust-tasks-spec/pull/1"
+      ]
+    },
+    {
+      "id": "toip-seam-e694ff316bfa",
+      "strength": "explicit-reference",
+      "source_portfolio": "DTG",
+      "target_portfolio": "Spec-Up",
+      "source_repository": "trustoverip/dtgwg-trust-tasks-spec",
+      "target_repository": "trustoverip/spec-up-t",
+      "summary": "trustoverip/dtgwg-trust-tasks-spec references trustoverip/spec-up-t in a current change unit.",
+      "materiality": 4,
+      "evidence": [
+        "https://github.com/trustoverip/dtgwg-trust-tasks-spec/pull/1"
+      ]
+    },
+    {
+      "id": "toip-seam-487265f5b860",
+      "strength": "explicit-reference",
+      "source_portfolio": "DTG",
+      "target_portfolio": "Unclassified",
+      "source_repository": "trustoverip/dtgwg-trust-tasks-tf",
+      "target_repository": "trustoverip/SC",
+      "summary": "trustoverip/dtgwg-trust-tasks-tf references trustoverip/SC in a current change unit.",
+      "materiality": 4,
+      "evidence": [
+        "https://github.com/trustoverip/dtgwg-trust-tasks-tf/pull/265",
+        "https://github.com/trustoverip/dtgwg-trust-tasks-tf/commit/6d588e1557d71fc3cb82d64571f4d0f35231b92b"
+      ]
+    },
+    {
       "id": "toip-seam-df9b380eed11",
       "strength": "explicit-reference",
       "source_portfolio": "DTG",
@@ -7390,12 +7458,12 @@
       "source_portfolio": "AIMWG",
       "target_portfolio": "DTG",
       "source_repository": "trustoverip/aimwg-agent-fiduciary-duties",
-      "target_repository": "trustoverip/dtgwg-trust-tasks-tf",
+      "target_repository": "trustoverip/dtgwg-trust-tasks-spec",
       "summary": "Related portfolios AIMWG and DTG both contain material change units in this observation window; cross-review may be warranted.",
       "materiality": 4,
       "evidence": [
         "https://github.com/trustoverip/aimwg-agent-fiduciary-duties/pull/6",
-        "https://github.com/trustoverip/dtgwg-trust-tasks-tf/pull/264"
+        "https://github.com/trustoverip/dtgwg-trust-tasks-spec/pull/1"
       ]
     },
     {
@@ -7417,17 +7485,17 @@
       "strength": "related-co-movement",
       "source_portfolio": "DTG",
       "target_portfolio": "KERI Suite",
-      "source_repository": "trustoverip/dtgwg-trust-tasks-tf",
-      "target_repository": "trustoverip/kswg-cesr-specification",
+      "source_repository": "trustoverip/dtgwg-trust-tasks-spec",
+      "target_repository": "trustoverip/kswg-acdc-specification",
       "summary": "Related portfolios DTG and KERI Suite both contain material change units in this observation window; cross-review may be warranted.",
       "materiality": 4,
       "evidence": [
-        "https://github.com/trustoverip/dtgwg-trust-tasks-tf/pull/264",
-        "https://github.com/trustoverip/kswg-cesr-specification/pull/168"
+        "https://github.com/trustoverip/dtgwg-trust-tasks-spec/pull/1",
+        "https://github.com/trustoverip/kswg-acdc-specification/pull/204"
       ]
     },
     {
-      "id": "toip-seam-550b475b1064",
+      "id": "toip-seam-852a064dc20b",
       "strength": "explicit-reference",
       "source_portfolio": "DTG",
       "target_portfolio": "Unclassified",
@@ -7436,7 +7504,7 @@
       "summary": "trustoverip/dtgwg-cred-spec references trustoverip/SC in a current change unit.",
       "materiality": 3,
       "evidence": [
-        "https://github.com/trustoverip/dtgwg-cred-spec/issues/22"
+        "https://github.com/trustoverip/dtgwg-cred-spec/issues/23"
       ]
     },
     {
@@ -7453,7 +7521,7 @@
       ]
     },
     {
-      "id": "toip-seam-852a064dc20b",
+      "id": "toip-seam-550b475b1064",
       "strength": "explicit-reference",
       "source_portfolio": "DTG",
       "target_portfolio": "Unclassified",
@@ -7462,7 +7530,7 @@
       "summary": "trustoverip/dtgwg-cred-spec references trustoverip/SC in a current change unit.",
       "materiality": 3,
       "evidence": [
-        "https://github.com/trustoverip/dtgwg-cred-spec/issues/23"
+        "https://github.com/trustoverip/dtgwg-cred-spec/issues/22"
       ]
     },
     {
@@ -7567,19 +7635,6 @@
       "materiality": 3,
       "evidence": [
         "https://github.com/trustoverip/kswg-dossier-specification/issues/5"
-      ]
-    },
-    {
-      "id": "toip-seam-9099cc6c4307",
-      "strength": "explicit-reference",
-      "source_portfolio": "KERI Suite",
-      "target_portfolio": "Unclassified",
-      "source_repository": "trustoverip/kswg-did-method-webs-specification",
-      "target_repository": "trustoverip/tt",
-      "summary": "trustoverip/kswg-did-method-webs-specification references trustoverip/tt in a current change unit.",
-      "materiality": 3,
-      "evidence": [
-        "https://github.com/trustoverip/kswg-did-method-webs-specification/issues/212"
       ]
     },
     {
@@ -8073,6 +8128,49 @@
       "disposition": null
     },
     {
+      "id": "toip-finding-70c06cb27250",
+      "category": "cross-portfolio-seam",
+      "subject": "trustoverip/dtgwg-trust-tasks-tf",
+      "status": "open",
+      "materiality": 4,
+      "urgency": 2,
+      "assurance_impact": 3,
+      "summary": "trustoverip/dtgwg-trust-tasks-tf references trustoverip/SC in a current change unit.",
+      "evidence": [
+        "https://github.com/trustoverip/dtgwg-trust-tasks-tf/pull/265",
+        "https://github.com/trustoverip/dtgwg-trust-tasks-tf/commit/6d588e1557d71fc3cb82d64571f4d0f35231b92b"
+      ],
+      "disposition": null
+    },
+    {
+      "id": "toip-finding-81a5429dd7bd",
+      "category": "cross-portfolio-seam",
+      "subject": "trustoverip/dtgwg-trust-tasks-spec",
+      "status": "open",
+      "materiality": 4,
+      "urgency": 2,
+      "assurance_impact": 3,
+      "summary": "trustoverip/dtgwg-trust-tasks-spec references trustoverip/spec-up in a current change unit.",
+      "evidence": [
+        "https://github.com/trustoverip/dtgwg-trust-tasks-spec/pull/1"
+      ],
+      "disposition": null
+    },
+    {
+      "id": "toip-finding-dd3db9e1f608",
+      "category": "cross-portfolio-seam",
+      "subject": "trustoverip/dtgwg-trust-tasks-spec",
+      "status": "open",
+      "materiality": 4,
+      "urgency": 2,
+      "assurance_impact": 3,
+      "summary": "trustoverip/dtgwg-trust-tasks-spec references trustoverip/spec-up-t in a current change unit.",
+      "evidence": [
+        "https://github.com/trustoverip/dtgwg-trust-tasks-spec/pull/1"
+      ],
+      "disposition": null
+    },
+    {
       "id": "toip-finding-316dd9816f76",
       "category": "collection",
       "subject": "trustoverip/kswg-main-glossary",
@@ -8381,20 +8479,6 @@
       "summary": "trustoverip/kswg-acdc-specification references trustoverip/spec-up-t in a current change unit.",
       "evidence": [
         "https://github.com/trustoverip/kswg-acdc-specification/issues/195"
-      ],
-      "disposition": null
-    },
-    {
-      "id": "toip-finding-e69ff1a41920",
-      "category": "cross-portfolio-seam",
-      "subject": "trustoverip/kswg-did-method-webs-specification",
-      "status": "open",
-      "materiality": 3,
-      "urgency": 2,
-      "assurance_impact": 3,
-      "summary": "trustoverip/kswg-did-method-webs-specification references trustoverip/tt in a current change unit.",
-      "evidence": [
-        "https://github.com/trustoverip/kswg-did-method-webs-specification/issues/212"
       ],
       "disposition": null
     },

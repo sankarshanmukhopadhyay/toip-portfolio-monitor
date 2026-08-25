@@ -1,17 +1,17 @@
 {
   "schema_version": "0.2",
   "organization": "decentralized-identity",
-  "generated_at": "2026-08-25T12:52:12.164909+00:00",
+  "generated_at": "2026-08-25T16:34:09.284878+00:00",
   "period": {
-    "since": "2026-08-18T12:52:12.164909+00:00",
-    "until": "2026-08-25T12:52:12.164909+00:00",
+    "since": "2026-08-18T16:34:09.284878+00:00",
+    "until": "2026-08-25T16:34:09.284878+00:00",
     "lookback_days": 7
   },
   "provenance": {
     "source": "GitHub REST API",
     "collector": "trust-ecosystem-monitor",
     "deterministic_classification": true,
-    "previous_snapshot": "2026-08-25T12:30:14.161714+00:00"
+    "previous_snapshot": "2026-08-25T12:52:12.164909+00:00"
   },
   "repositories": [
     {
@@ -441,7 +441,7 @@
       "url": "https://github.com/decentralized-identity/cawg-ux-guidance",
       "description": "CAWG UX guidance",
       "created_at": "2025-10-28T04:44:34Z",
-      "updated_at": "2026-03-02T16:31:04Z",
+      "updated_at": "2026-08-25T14:51:46Z",
       "pushed_at": "2026-02-05T17:54:50Z",
       "archived": false,
       "fork": false,
@@ -1176,8 +1176,8 @@
       "url": "https://github.com/decentralized-identity/thisdid",
       "description": "ThisDID is DIF Universal DID Resolver and Router , Built by @GoPlausible under DIF Working Groups",
       "created_at": "2026-08-07T11:05:22Z",
-      "updated_at": "2026-08-24T22:32:58Z",
-      "pushed_at": "2026-08-24T22:32:23Z",
+      "updated_at": "2026-08-25T13:21:23Z",
+      "pushed_at": "2026-08-25T13:10:51Z",
       "archived": false,
       "fork": false,
       "default_branch": "main",
@@ -1828,7 +1828,7 @@
       "description": "Create and verify DID verifiable JWT's in Javascript",
       "created_at": "2018-02-24T02:00:53Z",
       "updated_at": "2026-08-20T20:54:04Z",
-      "pushed_at": "2026-08-21T15:59:27Z",
+      "pushed_at": "2026-08-25T14:48:45Z",
       "archived": false,
       "fork": false,
       "default_branch": "master",
@@ -1849,7 +1849,7 @@
       "description": "DID resolver for Ethereum Addresses with support for key management",
       "created_at": "2018-03-31T18:40:19Z",
       "updated_at": "2026-08-22T15:23:27Z",
-      "pushed_at": "2026-08-23T18:47:45Z",
+      "pushed_at": "2026-08-25T13:08:09Z",
       "archived": false,
       "fork": false,
       "default_branch": "master",
@@ -2059,7 +2059,7 @@
       "description": "DID resolver for HTTPS domains",
       "created_at": "2018-09-20T21:44:09Z",
       "updated_at": "2026-08-17T06:55:25Z",
-      "pushed_at": "2026-08-21T17:40:52Z",
+      "pushed_at": "2026-08-25T13:39:51Z",
       "archived": false,
       "fork": false,
       "default_branch": "master",
@@ -3085,9 +3085,9 @@
       "name": "kya-os-schema",
       "full_name": "decentralized-identity/kya-os-schema",
       "url": "https://github.com/decentralized-identity/kya-os-schema",
-      "description": null,
+      "description": "Versioned/commit-addressable Schemata for the KYA-OS.org protocol. This repo automatically publishes to:",
       "created_at": "2026-06-01T08:24:37Z",
-      "updated_at": "2026-08-19T16:21:38Z",
+      "updated_at": "2026-08-25T14:30:38Z",
       "pushed_at": "2026-08-18T08:27:05Z",
       "archived": false,
       "fork": false,
@@ -5646,6 +5646,110 @@
   "events": [
     {
       "kind": "issue",
+      "repository": "decentralized-identity/did-jwt",
+      "portfolio": "Implementations & Tooling",
+      "repo_kind": "repository",
+      "timestamp": "2026-08-25T14:48:43Z",
+      "title": "Dependency Dashboard",
+      "url": "https://github.com/decentralized-identity/did-jwt/issues/194",
+      "number": 194,
+      "sha": null,
+      "state": "open",
+      "materiality": 2
+    },
+    {
+      "kind": "pull_request",
+      "repository": "decentralized-identity/did-jwt",
+      "portfolio": "Implementations & Tooling",
+      "repo_kind": "repository",
+      "timestamp": "2026-08-25T14:48:40Z",
+      "title": "chore(deps): update devdeps (major)",
+      "url": "https://github.com/decentralized-identity/did-jwt/pull/303",
+      "number": 303,
+      "sha": null,
+      "state": "open",
+      "materiality": 3
+    },
+    {
+      "kind": "issue",
+      "repository": "decentralized-identity/web-did-resolver",
+      "portfolio": "Implementations & Tooling",
+      "repo_kind": "repository",
+      "timestamp": "2026-08-25T13:39:49Z",
+      "title": "Dependency Dashboard",
+      "url": "https://github.com/decentralized-identity/web-did-resolver/issues/103",
+      "number": 103,
+      "sha": null,
+      "state": "open",
+      "materiality": 2
+    },
+    {
+      "kind": "pull_request",
+      "repository": "decentralized-identity/web-did-resolver",
+      "portfolio": "Implementations & Tooling",
+      "repo_kind": "repository",
+      "timestamp": "2026-08-25T13:39:47Z",
+      "title": "chore(deps): update devdeps (major)",
+      "url": "https://github.com/decentralized-identity/web-did-resolver/pull/138",
+      "number": 138,
+      "sha": null,
+      "state": "open",
+      "materiality": 3
+    },
+    {
+      "kind": "commit",
+      "repository": "decentralized-identity/thisdid",
+      "portfolio": "Identifiers & Discovery",
+      "repo_kind": "repository",
+      "timestamp": "2026-08-25T13:10:34Z",
+      "title": "Post Wave 4 and 5 system sanity review fixes",
+      "url": "https://github.com/decentralized-identity/thisdid/commit/e650380f4d1c5f26cda970ea7f0956520ffe2931",
+      "number": null,
+      "sha": "e650380f4d1c5f26cda970ea7f0956520ffe2931",
+      "state": null,
+      "materiality": 1
+    },
+    {
+      "kind": "issue",
+      "repository": "decentralized-identity/ethr-did-resolver",
+      "portfolio": "Implementations & Tooling",
+      "repo_kind": "repository",
+      "timestamp": "2026-08-25T13:08:07Z",
+      "title": "Dependency Dashboard",
+      "url": "https://github.com/decentralized-identity/ethr-did-resolver/issues/141",
+      "number": 141,
+      "sha": null,
+      "state": "open",
+      "materiality": 2
+    },
+    {
+      "kind": "pull_request",
+      "repository": "decentralized-identity/ethr-did-resolver",
+      "portfolio": "Implementations & Tooling",
+      "repo_kind": "repository",
+      "timestamp": "2026-08-25T13:08:05Z",
+      "title": "chore(deps): update pnpm to v11.23.0",
+      "url": "https://github.com/decentralized-identity/ethr-did-resolver/pull/296",
+      "number": 296,
+      "sha": null,
+      "state": "open",
+      "materiality": 3
+    },
+    {
+      "kind": "pull_request",
+      "repository": "decentralized-identity/ethr-did-resolver",
+      "portfolio": "Implementations & Tooling",
+      "repo_kind": "repository",
+      "timestamp": "2026-08-25T13:08:00Z",
+      "title": "chore(deps): update devdeps",
+      "url": "https://github.com/decentralized-identity/ethr-did-resolver/pull/294",
+      "number": 294,
+      "sha": null,
+      "state": "open",
+      "materiality": 3
+    },
+    {
+      "kind": "issue",
       "repository": "decentralized-identity/did-resolver",
       "portfolio": "Identifiers & Discovery",
       "repo_kind": "repository",
@@ -5929,19 +6033,6 @@
       "sha": "58633b1ae4ec3a1b88a9586a6f1e7aebb94cc4fb",
       "state": null,
       "materiality": 1
-    },
-    {
-      "kind": "issue",
-      "repository": "decentralized-identity/ethr-did-resolver",
-      "portfolio": "Implementations & Tooling",
-      "repo_kind": "repository",
-      "timestamp": "2026-08-23T18:47:44Z",
-      "title": "Dependency Dashboard",
-      "url": "https://github.com/decentralized-identity/ethr-did-resolver/issues/141",
-      "number": 141,
-      "sha": null,
-      "state": "open",
-      "materiality": 2
     },
     {
       "kind": "commit",
@@ -6230,45 +6321,6 @@
       "materiality": 3
     },
     {
-      "kind": "pull_request",
-      "repository": "decentralized-identity/web-did-resolver",
-      "portfolio": "Implementations & Tooling",
-      "repo_kind": "repository",
-      "timestamp": "2026-08-21T22:07:46Z",
-      "title": "chore(deps): update devdeps (major)",
-      "url": "https://github.com/decentralized-identity/web-did-resolver/pull/138",
-      "number": 138,
-      "sha": null,
-      "state": "open",
-      "materiality": 3
-    },
-    {
-      "kind": "pull_request",
-      "repository": "decentralized-identity/did-jwt",
-      "portfolio": "Implementations & Tooling",
-      "repo_kind": "repository",
-      "timestamp": "2026-08-21T19:58:13Z",
-      "title": "chore(deps): update devdeps (major)",
-      "url": "https://github.com/decentralized-identity/did-jwt/pull/303",
-      "number": 303,
-      "sha": null,
-      "state": "open",
-      "materiality": 3
-    },
-    {
-      "kind": "pull_request",
-      "repository": "decentralized-identity/ethr-did-resolver",
-      "portfolio": "Implementations & Tooling",
-      "repo_kind": "repository",
-      "timestamp": "2026-08-21T19:00:17Z",
-      "title": "chore(deps): update devdeps",
-      "url": "https://github.com/decentralized-identity/ethr-did-resolver/pull/294",
-      "number": 294,
-      "sha": null,
-      "state": "open",
-      "materiality": 3
-    },
-    {
       "kind": "issue",
       "repository": "decentralized-identity/did-jwt-vc",
       "portfolio": "Claims & Credentials",
@@ -6277,19 +6329,6 @@
       "title": "Dependency Dashboard",
       "url": "https://github.com/decentralized-identity/did-jwt-vc/issues/88",
       "number": 88,
-      "sha": null,
-      "state": "open",
-      "materiality": 2
-    },
-    {
-      "kind": "issue",
-      "repository": "decentralized-identity/web-did-resolver",
-      "portfolio": "Implementations & Tooling",
-      "repo_kind": "repository",
-      "timestamp": "2026-08-21T17:40:51Z",
-      "title": "Dependency Dashboard",
-      "url": "https://github.com/decentralized-identity/web-did-resolver/issues/103",
-      "number": 103,
       "sha": null,
       "state": "open",
       "materiality": 2
@@ -6319,19 +6358,6 @@
       "sha": null,
       "state": "open",
       "materiality": 3
-    },
-    {
-      "kind": "issue",
-      "repository": "decentralized-identity/did-jwt",
-      "portfolio": "Implementations & Tooling",
-      "repo_kind": "repository",
-      "timestamp": "2026-08-21T15:59:26Z",
-      "title": "Dependency Dashboard",
-      "url": "https://github.com/decentralized-identity/did-jwt/issues/194",
-      "number": 194,
-      "sha": null,
-      "state": "open",
-      "materiality": 2
     },
     {
       "kind": "commit",
@@ -7229,19 +7255,6 @@
       "sha": null,
       "state": "open",
       "materiality": 3
-    },
-    {
-      "kind": "pull_request",
-      "repository": "decentralized-identity/cawg-identity-assertion",
-      "portfolio": "Creator Assertions",
-      "repo_kind": "repository",
-      "timestamp": "2026-08-18T14:25:31Z",
-      "title": "Add governance hooks for identity assertion",
-      "url": "https://github.com/decentralized-identity/cawg-identity-assertion/pull/267",
-      "number": 267,
-      "sha": null,
-      "state": "open",
-      "materiality": 3
     }
   ],
   "assertions": [
@@ -7344,6 +7357,254 @@
     "decentralized-identity/web5-rs:release: list index out of range"
   ],
   "change_units": [
+    {
+      "id": "toip-change-474302a55541",
+      "repository": "decentralized-identity/did-jwt",
+      "portfolio": "Implementations & Tooling",
+      "repo_kind": "repository",
+      "title": "Dependency Dashboard",
+      "timestamp": "2026-08-25T14:48:43Z",
+      "materiality": 2,
+      "event_kinds": [
+        "issue"
+      ],
+      "event_count": 1,
+      "evidence": [
+        "https://github.com/decentralized-identity/did-jwt/issues/194"
+      ],
+      "events": [
+        {
+          "kind": "issue",
+          "repository": "decentralized-identity/did-jwt",
+          "portfolio": "Implementations & Tooling",
+          "repo_kind": "repository",
+          "timestamp": "2026-08-25T14:48:43Z",
+          "title": "Dependency Dashboard",
+          "url": "https://github.com/decentralized-identity/did-jwt/issues/194",
+          "number": 194,
+          "sha": null,
+          "state": "open",
+          "materiality": 2
+        }
+      ]
+    },
+    {
+      "id": "toip-change-0ded99609dd7",
+      "repository": "decentralized-identity/did-jwt",
+      "portfolio": "Implementations & Tooling",
+      "repo_kind": "repository",
+      "title": "chore(deps): update devdeps (major)",
+      "timestamp": "2026-08-25T14:48:40Z",
+      "materiality": 3,
+      "event_kinds": [
+        "pull_request"
+      ],
+      "event_count": 1,
+      "evidence": [
+        "https://github.com/decentralized-identity/did-jwt/pull/303"
+      ],
+      "events": [
+        {
+          "kind": "pull_request",
+          "repository": "decentralized-identity/did-jwt",
+          "portfolio": "Implementations & Tooling",
+          "repo_kind": "repository",
+          "timestamp": "2026-08-25T14:48:40Z",
+          "title": "chore(deps): update devdeps (major)",
+          "url": "https://github.com/decentralized-identity/did-jwt/pull/303",
+          "number": 303,
+          "sha": null,
+          "state": "open",
+          "materiality": 3
+        }
+      ]
+    },
+    {
+      "id": "toip-change-4860ec44b1f0",
+      "repository": "decentralized-identity/web-did-resolver",
+      "portfolio": "Implementations & Tooling",
+      "repo_kind": "repository",
+      "title": "Dependency Dashboard",
+      "timestamp": "2026-08-25T13:39:49Z",
+      "materiality": 2,
+      "event_kinds": [
+        "issue"
+      ],
+      "event_count": 1,
+      "evidence": [
+        "https://github.com/decentralized-identity/web-did-resolver/issues/103"
+      ],
+      "events": [
+        {
+          "kind": "issue",
+          "repository": "decentralized-identity/web-did-resolver",
+          "portfolio": "Implementations & Tooling",
+          "repo_kind": "repository",
+          "timestamp": "2026-08-25T13:39:49Z",
+          "title": "Dependency Dashboard",
+          "url": "https://github.com/decentralized-identity/web-did-resolver/issues/103",
+          "number": 103,
+          "sha": null,
+          "state": "open",
+          "materiality": 2
+        }
+      ]
+    },
+    {
+      "id": "toip-change-25390971a7a6",
+      "repository": "decentralized-identity/web-did-resolver",
+      "portfolio": "Implementations & Tooling",
+      "repo_kind": "repository",
+      "title": "chore(deps): update devdeps (major)",
+      "timestamp": "2026-08-25T13:39:47Z",
+      "materiality": 3,
+      "event_kinds": [
+        "pull_request"
+      ],
+      "event_count": 1,
+      "evidence": [
+        "https://github.com/decentralized-identity/web-did-resolver/pull/138"
+      ],
+      "events": [
+        {
+          "kind": "pull_request",
+          "repository": "decentralized-identity/web-did-resolver",
+          "portfolio": "Implementations & Tooling",
+          "repo_kind": "repository",
+          "timestamp": "2026-08-25T13:39:47Z",
+          "title": "chore(deps): update devdeps (major)",
+          "url": "https://github.com/decentralized-identity/web-did-resolver/pull/138",
+          "number": 138,
+          "sha": null,
+          "state": "open",
+          "materiality": 3
+        }
+      ]
+    },
+    {
+      "id": "toip-change-20ae9906b5f1",
+      "repository": "decentralized-identity/thisdid",
+      "portfolio": "Identifiers & Discovery",
+      "repo_kind": "repository",
+      "title": "Post Wave 4 and 5 system sanity review fixes",
+      "timestamp": "2026-08-25T13:10:34Z",
+      "materiality": 1,
+      "event_kinds": [
+        "commit"
+      ],
+      "event_count": 1,
+      "evidence": [
+        "https://github.com/decentralized-identity/thisdid/commit/e650380f4d1c5f26cda970ea7f0956520ffe2931"
+      ],
+      "events": [
+        {
+          "kind": "commit",
+          "repository": "decentralized-identity/thisdid",
+          "portfolio": "Identifiers & Discovery",
+          "repo_kind": "repository",
+          "timestamp": "2026-08-25T13:10:34Z",
+          "title": "Post Wave 4 and 5 system sanity review fixes",
+          "url": "https://github.com/decentralized-identity/thisdid/commit/e650380f4d1c5f26cda970ea7f0956520ffe2931",
+          "number": null,
+          "sha": "e650380f4d1c5f26cda970ea7f0956520ffe2931",
+          "state": null,
+          "materiality": 1
+        }
+      ]
+    },
+    {
+      "id": "toip-change-192a4a12c776",
+      "repository": "decentralized-identity/ethr-did-resolver",
+      "portfolio": "Implementations & Tooling",
+      "repo_kind": "repository",
+      "title": "Dependency Dashboard",
+      "timestamp": "2026-08-25T13:08:07Z",
+      "materiality": 2,
+      "event_kinds": [
+        "issue"
+      ],
+      "event_count": 1,
+      "evidence": [
+        "https://github.com/decentralized-identity/ethr-did-resolver/issues/141"
+      ],
+      "events": [
+        {
+          "kind": "issue",
+          "repository": "decentralized-identity/ethr-did-resolver",
+          "portfolio": "Implementations & Tooling",
+          "repo_kind": "repository",
+          "timestamp": "2026-08-25T13:08:07Z",
+          "title": "Dependency Dashboard",
+          "url": "https://github.com/decentralized-identity/ethr-did-resolver/issues/141",
+          "number": 141,
+          "sha": null,
+          "state": "open",
+          "materiality": 2
+        }
+      ]
+    },
+    {
+      "id": "toip-change-b5875332fceb",
+      "repository": "decentralized-identity/ethr-did-resolver",
+      "portfolio": "Implementations & Tooling",
+      "repo_kind": "repository",
+      "title": "chore(deps): update pnpm to v11.23.0",
+      "timestamp": "2026-08-25T13:08:05Z",
+      "materiality": 3,
+      "event_kinds": [
+        "pull_request"
+      ],
+      "event_count": 1,
+      "evidence": [
+        "https://github.com/decentralized-identity/ethr-did-resolver/pull/296"
+      ],
+      "events": [
+        {
+          "kind": "pull_request",
+          "repository": "decentralized-identity/ethr-did-resolver",
+          "portfolio": "Implementations & Tooling",
+          "repo_kind": "repository",
+          "timestamp": "2026-08-25T13:08:05Z",
+          "title": "chore(deps): update pnpm to v11.23.0",
+          "url": "https://github.com/decentralized-identity/ethr-did-resolver/pull/296",
+          "number": 296,
+          "sha": null,
+          "state": "open",
+          "materiality": 3
+        }
+      ]
+    },
+    {
+      "id": "toip-change-f31d92691a89",
+      "repository": "decentralized-identity/ethr-did-resolver",
+      "portfolio": "Implementations & Tooling",
+      "repo_kind": "repository",
+      "title": "chore(deps): update devdeps",
+      "timestamp": "2026-08-25T13:08:00Z",
+      "materiality": 3,
+      "event_kinds": [
+        "pull_request"
+      ],
+      "event_count": 1,
+      "evidence": [
+        "https://github.com/decentralized-identity/ethr-did-resolver/pull/294"
+      ],
+      "events": [
+        {
+          "kind": "pull_request",
+          "repository": "decentralized-identity/ethr-did-resolver",
+          "portfolio": "Implementations & Tooling",
+          "repo_kind": "repository",
+          "timestamp": "2026-08-25T13:08:00Z",
+          "title": "chore(deps): update devdeps",
+          "url": "https://github.com/decentralized-identity/ethr-did-resolver/pull/294",
+          "number": 294,
+          "sha": null,
+          "state": "open",
+          "materiality": 3
+        }
+      ]
+    },
     {
       "id": "toip-change-035c9defc8a1",
       "repository": "decentralized-identity/did-resolver",
@@ -7974,37 +8235,6 @@
           "sha": "58633b1ae4ec3a1b88a9586a6f1e7aebb94cc4fb",
           "state": null,
           "materiality": 1
-        }
-      ]
-    },
-    {
-      "id": "toip-change-192a4a12c776",
-      "repository": "decentralized-identity/ethr-did-resolver",
-      "portfolio": "Implementations & Tooling",
-      "repo_kind": "repository",
-      "title": "Dependency Dashboard",
-      "timestamp": "2026-08-23T18:47:44Z",
-      "materiality": 2,
-      "event_kinds": [
-        "issue"
-      ],
-      "event_count": 1,
-      "evidence": [
-        "https://github.com/decentralized-identity/ethr-did-resolver/issues/141"
-      ],
-      "events": [
-        {
-          "kind": "issue",
-          "repository": "decentralized-identity/ethr-did-resolver",
-          "portfolio": "Implementations & Tooling",
-          "repo_kind": "repository",
-          "timestamp": "2026-08-23T18:47:44Z",
-          "title": "Dependency Dashboard",
-          "url": "https://github.com/decentralized-identity/ethr-did-resolver/issues/141",
-          "number": 141,
-          "sha": null,
-          "state": "open",
-          "materiality": 2
         }
       ]
     },
@@ -8681,99 +8911,6 @@
       ]
     },
     {
-      "id": "toip-change-25390971a7a6",
-      "repository": "decentralized-identity/web-did-resolver",
-      "portfolio": "Implementations & Tooling",
-      "repo_kind": "repository",
-      "title": "chore(deps): update devdeps (major)",
-      "timestamp": "2026-08-21T22:07:46Z",
-      "materiality": 3,
-      "event_kinds": [
-        "pull_request"
-      ],
-      "event_count": 1,
-      "evidence": [
-        "https://github.com/decentralized-identity/web-did-resolver/pull/138"
-      ],
-      "events": [
-        {
-          "kind": "pull_request",
-          "repository": "decentralized-identity/web-did-resolver",
-          "portfolio": "Implementations & Tooling",
-          "repo_kind": "repository",
-          "timestamp": "2026-08-21T22:07:46Z",
-          "title": "chore(deps): update devdeps (major)",
-          "url": "https://github.com/decentralized-identity/web-did-resolver/pull/138",
-          "number": 138,
-          "sha": null,
-          "state": "open",
-          "materiality": 3
-        }
-      ]
-    },
-    {
-      "id": "toip-change-0ded99609dd7",
-      "repository": "decentralized-identity/did-jwt",
-      "portfolio": "Implementations & Tooling",
-      "repo_kind": "repository",
-      "title": "chore(deps): update devdeps (major)",
-      "timestamp": "2026-08-21T19:58:13Z",
-      "materiality": 3,
-      "event_kinds": [
-        "pull_request"
-      ],
-      "event_count": 1,
-      "evidence": [
-        "https://github.com/decentralized-identity/did-jwt/pull/303"
-      ],
-      "events": [
-        {
-          "kind": "pull_request",
-          "repository": "decentralized-identity/did-jwt",
-          "portfolio": "Implementations & Tooling",
-          "repo_kind": "repository",
-          "timestamp": "2026-08-21T19:58:13Z",
-          "title": "chore(deps): update devdeps (major)",
-          "url": "https://github.com/decentralized-identity/did-jwt/pull/303",
-          "number": 303,
-          "sha": null,
-          "state": "open",
-          "materiality": 3
-        }
-      ]
-    },
-    {
-      "id": "toip-change-f31d92691a89",
-      "repository": "decentralized-identity/ethr-did-resolver",
-      "portfolio": "Implementations & Tooling",
-      "repo_kind": "repository",
-      "title": "chore(deps): update devdeps",
-      "timestamp": "2026-08-21T19:00:17Z",
-      "materiality": 3,
-      "event_kinds": [
-        "pull_request"
-      ],
-      "event_count": 1,
-      "evidence": [
-        "https://github.com/decentralized-identity/ethr-did-resolver/pull/294"
-      ],
-      "events": [
-        {
-          "kind": "pull_request",
-          "repository": "decentralized-identity/ethr-did-resolver",
-          "portfolio": "Implementations & Tooling",
-          "repo_kind": "repository",
-          "timestamp": "2026-08-21T19:00:17Z",
-          "title": "chore(deps): update devdeps",
-          "url": "https://github.com/decentralized-identity/ethr-did-resolver/pull/294",
-          "number": 294,
-          "sha": null,
-          "state": "open",
-          "materiality": 3
-        }
-      ]
-    },
-    {
       "id": "toip-change-feee6f67615f",
       "repository": "decentralized-identity/did-jwt-vc",
       "portfolio": "Claims & Credentials",
@@ -8798,37 +8935,6 @@
           "title": "Dependency Dashboard",
           "url": "https://github.com/decentralized-identity/did-jwt-vc/issues/88",
           "number": 88,
-          "sha": null,
-          "state": "open",
-          "materiality": 2
-        }
-      ]
-    },
-    {
-      "id": "toip-change-4860ec44b1f0",
-      "repository": "decentralized-identity/web-did-resolver",
-      "portfolio": "Implementations & Tooling",
-      "repo_kind": "repository",
-      "title": "Dependency Dashboard",
-      "timestamp": "2026-08-21T17:40:51Z",
-      "materiality": 2,
-      "event_kinds": [
-        "issue"
-      ],
-      "event_count": 1,
-      "evidence": [
-        "https://github.com/decentralized-identity/web-did-resolver/issues/103"
-      ],
-      "events": [
-        {
-          "kind": "issue",
-          "repository": "decentralized-identity/web-did-resolver",
-          "portfolio": "Implementations & Tooling",
-          "repo_kind": "repository",
-          "timestamp": "2026-08-21T17:40:51Z",
-          "title": "Dependency Dashboard",
-          "url": "https://github.com/decentralized-identity/web-did-resolver/issues/103",
-          "number": 103,
           "sha": null,
           "state": "open",
           "materiality": 2
@@ -8894,37 +9000,6 @@
           "sha": null,
           "state": "open",
           "materiality": 3
-        }
-      ]
-    },
-    {
-      "id": "toip-change-474302a55541",
-      "repository": "decentralized-identity/did-jwt",
-      "portfolio": "Implementations & Tooling",
-      "repo_kind": "repository",
-      "title": "Dependency Dashboard",
-      "timestamp": "2026-08-21T15:59:26Z",
-      "materiality": 2,
-      "event_kinds": [
-        "issue"
-      ],
-      "event_count": 1,
-      "evidence": [
-        "https://github.com/decentralized-identity/did-jwt/issues/194"
-      ],
-      "events": [
-        {
-          "kind": "issue",
-          "repository": "decentralized-identity/did-jwt",
-          "portfolio": "Implementations & Tooling",
-          "repo_kind": "repository",
-          "timestamp": "2026-08-21T15:59:26Z",
-          "title": "Dependency Dashboard",
-          "url": "https://github.com/decentralized-identity/did-jwt/issues/194",
-          "number": 194,
-          "sha": null,
-          "state": "open",
-          "materiality": 2
         }
       ]
     },
@@ -10910,385 +10985,9 @@
           "materiality": 3
         }
       ]
-    },
-    {
-      "id": "toip-change-7ca6c46c820a",
-      "repository": "decentralized-identity/cawg-identity-assertion",
-      "portfolio": "Creator Assertions",
-      "repo_kind": "repository",
-      "title": "Add governance hooks for identity assertion",
-      "timestamp": "2026-08-18T14:25:31Z",
-      "materiality": 3,
-      "event_kinds": [
-        "pull_request"
-      ],
-      "event_count": 1,
-      "evidence": [
-        "https://github.com/decentralized-identity/cawg-identity-assertion/pull/267"
-      ],
-      "events": [
-        {
-          "kind": "pull_request",
-          "repository": "decentralized-identity/cawg-identity-assertion",
-          "portfolio": "Creator Assertions",
-          "repo_kind": "repository",
-          "timestamp": "2026-08-18T14:25:31Z",
-          "title": "Add governance hooks for identity assertion",
-          "url": "https://github.com/decentralized-identity/cawg-identity-assertion/pull/267",
-          "number": 267,
-          "sha": null,
-          "state": "open",
-          "materiality": 3
-        }
-      ]
     }
   ],
-  "lifecycle_changes": [
-    {
-      "type": "portfolio",
-      "repository": "decentralized-identity/cawg-consent-assertion",
-      "portfolio": "Creator Assertions",
-      "from": "Unclassified",
-      "to": "Creator Assertions",
-      "url": "https://github.com/decentralized-identity/cawg-consent-assertion"
-    },
-    {
-      "type": "portfolio",
-      "repository": "decentralized-identity/cawg-definitions",
-      "portfolio": "Creator Assertions",
-      "from": "Unclassified",
-      "to": "Creator Assertions",
-      "url": "https://github.com/decentralized-identity/cawg-definitions"
-    },
-    {
-      "type": "portfolio",
-      "repository": "decentralized-identity/cawg-endorsement-assertion",
-      "portfolio": "Creator Assertions",
-      "from": "Unclassified",
-      "to": "Creator Assertions",
-      "url": "https://github.com/decentralized-identity/cawg-endorsement-assertion"
-    },
-    {
-      "type": "portfolio",
-      "repository": "decentralized-identity/cawg-identity-assertion",
-      "portfolio": "Creator Assertions",
-      "from": "Unclassified",
-      "to": "Creator Assertions",
-      "url": "https://github.com/decentralized-identity/cawg-identity-assertion"
-    },
-    {
-      "type": "portfolio",
-      "repository": "decentralized-identity/cawg-metadata-assertion",
-      "portfolio": "Creator Assertions",
-      "from": "Unclassified",
-      "to": "Creator Assertions",
-      "url": "https://github.com/decentralized-identity/cawg-metadata-assertion"
-    },
-    {
-      "type": "portfolio",
-      "repository": "decentralized-identity/cawg-organizational-identity-profile",
-      "portfolio": "Creator Assertions",
-      "from": "Unclassified",
-      "to": "Creator Assertions",
-      "url": "https://github.com/decentralized-identity/cawg-organizational-identity-profile"
-    },
-    {
-      "type": "portfolio",
-      "repository": "decentralized-identity/cawg-training-and-data-mining-assertion",
-      "portfolio": "Creator Assertions",
-      "from": "Unclassified",
-      "to": "Creator Assertions",
-      "url": "https://github.com/decentralized-identity/cawg-training-and-data-mining-assertion"
-    },
-    {
-      "type": "portfolio",
-      "repository": "decentralized-identity/cawg-ux-guidance",
-      "portfolio": "Creator Assertions",
-      "from": "Unclassified",
-      "to": "Creator Assertions",
-      "url": "https://github.com/decentralized-identity/cawg-ux-guidance"
-    },
-    {
-      "type": "portfolio",
-      "repository": "decentralized-identity/credential-schemas",
-      "portfolio": "Claims & Credentials",
-      "from": "Unclassified",
-      "to": "Claims & Credentials",
-      "url": "https://github.com/decentralized-identity/credential-schemas"
-    },
-    {
-      "type": "portfolio",
-      "repository": "decentralized-identity/delegated-authority-report",
-      "portfolio": "Trusted AI Agents",
-      "from": "Unclassified",
-      "to": "Trusted AI Agents",
-      "url": "https://github.com/decentralized-identity/delegated-authority-report"
-    },
-    {
-      "type": "portfolio",
-      "repository": "decentralized-identity/delegated-authority-threat-model",
-      "portfolio": "Trusted AI Agents",
-      "from": "Unclassified",
-      "to": "Trusted AI Agents",
-      "url": "https://github.com/decentralized-identity/delegated-authority-threat-model"
-    },
-    {
-      "type": "portfolio",
-      "repository": "decentralized-identity/did-peer-2",
-      "portfolio": "DID Methods",
-      "from": "Unclassified",
-      "to": "DID Methods",
-      "url": "https://github.com/decentralized-identity/did-peer-2"
-    },
-    {
-      "type": "portfolio",
-      "repository": "decentralized-identity/did-peer-4",
-      "portfolio": "DID Methods",
-      "from": "Unclassified",
-      "to": "DID Methods",
-      "url": "https://github.com/decentralized-identity/did-peer-4"
-    },
-    {
-      "type": "portfolio",
-      "repository": "decentralized-identity/did-traits",
-      "portfolio": "Identifiers & Discovery",
-      "from": "Unclassified",
-      "to": "Identifiers & Discovery",
-      "url": "https://github.com/decentralized-identity/did-traits"
-    },
-    {
-      "type": "portfolio",
-      "repository": "decentralized-identity/edv-sample-implementation",
-      "portfolio": "Secure Data Storage / DWN",
-      "from": "Unclassified",
-      "to": "Secure Data Storage / DWN",
-      "url": "https://github.com/decentralized-identity/edv-sample-implementation"
-    },
-    {
-      "type": "portfolio",
-      "repository": "decentralized-identity/edv-spec",
-      "portfolio": "Secure Data Storage / DWN",
-      "from": "Unclassified",
-      "to": "Secure Data Storage / DWN",
-      "url": "https://github.com/decentralized-identity/edv-spec"
-    },
-    {
-      "type": "portfolio",
-      "repository": "decentralized-identity/edv-test-suite",
-      "portfolio": "Secure Data Storage / DWN",
-      "from": "Unclassified",
-      "to": "Secure Data Storage / DWN",
-      "url": "https://github.com/decentralized-identity/edv-test-suite"
-    },
-    {
-      "type": "portfolio",
-      "repository": "decentralized-identity/edv-use-cases",
-      "portfolio": "Secure Data Storage / DWN",
-      "from": "Unclassified",
-      "to": "Secure Data Storage / DWN",
-      "url": "https://github.com/decentralized-identity/edv-use-cases"
-    },
-    {
-      "type": "portfolio",
-      "repository": "decentralized-identity/hatpro-schema-htwg",
-      "portfolio": "Hospitality & Travel",
-      "from": "Unclassified",
-      "to": "Hospitality & Travel",
-      "url": "https://github.com/decentralized-identity/hatpro-schema-htwg"
-    },
-    {
-      "type": "portfolio",
-      "repository": "decentralized-identity/jsonld-common-java",
-      "portfolio": "Implementations & Tooling",
-      "from": "Unclassified",
-      "to": "Implementations & Tooling",
-      "url": "https://github.com/decentralized-identity/jsonld-common-java"
-    },
-    {
-      "type": "portfolio",
-      "repository": "decentralized-identity/kya-os-mcp",
-      "portfolio": "Trusted AI Agents",
-      "from": "Unclassified",
-      "to": "Trusted AI Agents",
-      "url": "https://github.com/decentralized-identity/kya-os-mcp"
-    },
-    {
-      "type": "portfolio",
-      "repository": "decentralized-identity/kya-os-schema",
-      "portfolio": "Trusted AI Agents",
-      "from": "Unclassified",
-      "to": "Trusted AI Agents",
-      "url": "https://github.com/decentralized-identity/kya-os-schema"
-    },
-    {
-      "type": "portfolio",
-      "repository": "decentralized-identity/thisdid",
-      "portfolio": "Identifiers & Discovery",
-      "from": "Unclassified",
-      "to": "Identifiers & Discovery",
-      "url": "https://github.com/decentralized-identity/thisdid"
-    },
-    {
-      "type": "portfolio",
-      "repository": "decentralized-identity/uni-registrar-driver-did-btcr",
-      "portfolio": "Identifiers & Discovery",
-      "from": "Unclassified",
-      "to": "Identifiers & Discovery",
-      "url": "https://github.com/decentralized-identity/uni-registrar-driver-did-btcr"
-    },
-    {
-      "type": "portfolio",
-      "repository": "decentralized-identity/uni-registrar-driver-did-ebsi",
-      "portfolio": "Identifiers & Discovery",
-      "from": "Unclassified",
-      "to": "Identifiers & Discovery",
-      "url": "https://github.com/decentralized-identity/uni-registrar-driver-did-ebsi"
-    },
-    {
-      "type": "portfolio",
-      "repository": "decentralized-identity/uni-registrar-driver-did-ion",
-      "portfolio": "Identifiers & Discovery",
-      "from": "Unclassified",
-      "to": "Identifiers & Discovery",
-      "url": "https://github.com/decentralized-identity/uni-registrar-driver-did-ion"
-    },
-    {
-      "type": "portfolio",
-      "repository": "decentralized-identity/uni-registrar-driver-did-key",
-      "portfolio": "Identifiers & Discovery",
-      "from": "Unclassified",
-      "to": "Identifiers & Discovery",
-      "url": "https://github.com/decentralized-identity/uni-registrar-driver-did-key"
-    },
-    {
-      "type": "portfolio",
-      "repository": "decentralized-identity/uni-registrar-driver-did-sov",
-      "portfolio": "Identifiers & Discovery",
-      "from": "Unclassified",
-      "to": "Identifiers & Discovery",
-      "url": "https://github.com/decentralized-identity/uni-registrar-driver-did-sov"
-    },
-    {
-      "type": "portfolio",
-      "repository": "decentralized-identity/uni-registrar-driver-did-v1",
-      "portfolio": "Identifiers & Discovery",
-      "from": "Unclassified",
-      "to": "Identifiers & Discovery",
-      "url": "https://github.com/decentralized-identity/uni-registrar-driver-did-v1"
-    },
-    {
-      "type": "portfolio",
-      "repository": "decentralized-identity/uni-registrar-driver-did-web",
-      "portfolio": "Identifiers & Discovery",
-      "from": "Unclassified",
-      "to": "Identifiers & Discovery",
-      "url": "https://github.com/decentralized-identity/uni-registrar-driver-did-web"
-    },
-    {
-      "type": "portfolio",
-      "repository": "decentralized-identity/uni-resolver-driver-did-btcr",
-      "portfolio": "Identifiers & Discovery",
-      "from": "Unclassified",
-      "to": "Identifiers & Discovery",
-      "url": "https://github.com/decentralized-identity/uni-resolver-driver-did-btcr"
-    },
-    {
-      "type": "portfolio",
-      "repository": "decentralized-identity/uni-resolver-driver-did-ccp",
-      "portfolio": "Identifiers & Discovery",
-      "from": "Unclassified",
-      "to": "Identifiers & Discovery",
-      "url": "https://github.com/decentralized-identity/uni-resolver-driver-did-ccp"
-    },
-    {
-      "type": "portfolio",
-      "repository": "decentralized-identity/uni-resolver-driver-did-dom",
-      "portfolio": "Identifiers & Discovery",
-      "from": "Unclassified",
-      "to": "Identifiers & Discovery",
-      "url": "https://github.com/decentralized-identity/uni-resolver-driver-did-dom"
-    },
-    {
-      "type": "portfolio",
-      "repository": "decentralized-identity/uni-resolver-driver-did-erc725",
-      "portfolio": "Identifiers & Discovery",
-      "from": "Unclassified",
-      "to": "Identifiers & Discovery",
-      "url": "https://github.com/decentralized-identity/uni-resolver-driver-did-erc725"
-    },
-    {
-      "type": "portfolio",
-      "repository": "decentralized-identity/uni-resolver-driver-did-indy",
-      "portfolio": "Identifiers & Discovery",
-      "from": "Unclassified",
-      "to": "Identifiers & Discovery",
-      "url": "https://github.com/decentralized-identity/uni-resolver-driver-did-indy"
-    },
-    {
-      "type": "portfolio",
-      "repository": "decentralized-identity/uni-resolver-driver-did-ion",
-      "portfolio": "Identifiers & Discovery",
-      "from": "Unclassified",
-      "to": "Identifiers & Discovery",
-      "url": "https://github.com/decentralized-identity/uni-resolver-driver-did-ion"
-    },
-    {
-      "type": "portfolio",
-      "repository": "decentralized-identity/uni-resolver-driver-did-key",
-      "portfolio": "Identifiers & Discovery",
-      "from": "Unclassified",
-      "to": "Identifiers & Discovery",
-      "url": "https://github.com/decentralized-identity/uni-resolver-driver-did-key"
-    },
-    {
-      "type": "portfolio",
-      "repository": "decentralized-identity/uni-resolver-driver-did-sov",
-      "portfolio": "Identifiers & Discovery",
-      "from": "Unclassified",
-      "to": "Identifiers & Discovery",
-      "url": "https://github.com/decentralized-identity/uni-resolver-driver-did-sov"
-    },
-    {
-      "type": "portfolio",
-      "repository": "decentralized-identity/uni-resolver-driver-did-stack",
-      "portfolio": "Identifiers & Discovery",
-      "from": "Unclassified",
-      "to": "Identifiers & Discovery",
-      "url": "https://github.com/decentralized-identity/uni-resolver-driver-did-stack"
-    },
-    {
-      "type": "portfolio",
-      "repository": "decentralized-identity/uni-resolver-driver-did-webvh",
-      "portfolio": "Identifiers & Discovery",
-      "from": "Unclassified",
-      "to": "Identifiers & Discovery",
-      "url": "https://github.com/decentralized-identity/uni-resolver-driver-did-webvh"
-    },
-    {
-      "type": "portfolio",
-      "repository": "decentralized-identity/uni-resolver-driver-did-work",
-      "portfolio": "Identifiers & Discovery",
-      "from": "Unclassified",
-      "to": "Identifiers & Discovery",
-      "url": "https://github.com/decentralized-identity/uni-resolver-driver-did-work"
-    },
-    {
-      "type": "portfolio",
-      "repository": "decentralized-identity/uni-resolver-driver-dns",
-      "portfolio": "Identifiers & Discovery",
-      "from": "Unclassified",
-      "to": "Identifiers & Discovery",
-      "url": "https://github.com/decentralized-identity/uni-resolver-driver-dns"
-    },
-    {
-      "type": "portfolio",
-      "repository": "decentralized-identity/well-known-did-configuration",
-      "portfolio": "Identifiers & Discovery",
-      "from": "Unclassified",
-      "to": "Identifiers & Discovery",
-      "url": "https://github.com/decentralized-identity/well-known-did-configuration"
-    }
-  ],
+  "lifecycle_changes": [],
   "cross_portfolio_seams": [
     {
       "id": "toip-seam-c62fbb9fb6b4",
@@ -11445,19 +11144,6 @@
       "materiality": 3,
       "evidence": [
         "https://github.com/decentralized-identity/cawg-consent-assertion/pull/2"
-      ]
-    },
-    {
-      "id": "toip-seam-2b7a7e7b1bc9",
-      "strength": "explicit-reference",
-      "source_portfolio": "Creator Assertions",
-      "target_portfolio": "Sidetree / ION",
-      "source_repository": "decentralized-identity/cawg-identity-assertion",
-      "target_repository": "decentralized-identity/ion",
-      "summary": "decentralized-identity/cawg-identity-assertion references decentralized-identity/ion in a current change unit.",
-      "materiality": 3,
-      "evidence": [
-        "https://github.com/decentralized-identity/cawg-identity-assertion/pull/267"
       ]
     },
     {
@@ -12050,188 +11736,6 @@
       "disposition": null
     },
     {
-      "id": "toip-finding-08d51aa80ff8",
-      "category": "lifecycle",
-      "subject": "decentralized-identity/uni-registrar-driver-did-btcr",
-      "status": "open",
-      "materiality": 3,
-      "urgency": 3,
-      "assurance_impact": 3,
-      "summary": "portfolio changed from Unclassified to Identifiers & Discovery",
-      "evidence": [
-        "https://github.com/decentralized-identity/uni-registrar-driver-did-btcr"
-      ],
-      "disposition": null
-    },
-    {
-      "id": "toip-finding-0bf0c1980dcf",
-      "category": "lifecycle",
-      "subject": "decentralized-identity/uni-registrar-driver-did-key",
-      "status": "open",
-      "materiality": 3,
-      "urgency": 3,
-      "assurance_impact": 3,
-      "summary": "portfolio changed from Unclassified to Identifiers & Discovery",
-      "evidence": [
-        "https://github.com/decentralized-identity/uni-registrar-driver-did-key"
-      ],
-      "disposition": null
-    },
-    {
-      "id": "toip-finding-14a12a1de62d",
-      "category": "lifecycle",
-      "subject": "decentralized-identity/edv-sample-implementation",
-      "status": "open",
-      "materiality": 3,
-      "urgency": 3,
-      "assurance_impact": 3,
-      "summary": "portfolio changed from Unclassified to Secure Data Storage / DWN",
-      "evidence": [
-        "https://github.com/decentralized-identity/edv-sample-implementation"
-      ],
-      "disposition": null
-    },
-    {
-      "id": "toip-finding-16d5ed6b200f",
-      "category": "lifecycle",
-      "subject": "decentralized-identity/delegated-authority-report",
-      "status": "open",
-      "materiality": 3,
-      "urgency": 3,
-      "assurance_impact": 3,
-      "summary": "portfolio changed from Unclassified to Trusted AI Agents",
-      "evidence": [
-        "https://github.com/decentralized-identity/delegated-authority-report"
-      ],
-      "disposition": null
-    },
-    {
-      "id": "toip-finding-1ca51c49623a",
-      "category": "lifecycle",
-      "subject": "decentralized-identity/jsonld-common-java",
-      "status": "open",
-      "materiality": 3,
-      "urgency": 3,
-      "assurance_impact": 3,
-      "summary": "portfolio changed from Unclassified to Implementations & Tooling",
-      "evidence": [
-        "https://github.com/decentralized-identity/jsonld-common-java"
-      ],
-      "disposition": null
-    },
-    {
-      "id": "toip-finding-2143813c0961",
-      "category": "lifecycle",
-      "subject": "decentralized-identity/uni-resolver-driver-did-webvh",
-      "status": "open",
-      "materiality": 3,
-      "urgency": 3,
-      "assurance_impact": 3,
-      "summary": "portfolio changed from Unclassified to Identifiers & Discovery",
-      "evidence": [
-        "https://github.com/decentralized-identity/uni-resolver-driver-did-webvh"
-      ],
-      "disposition": null
-    },
-    {
-      "id": "toip-finding-24cb6debe2b5",
-      "category": "lifecycle",
-      "subject": "decentralized-identity/cawg-ux-guidance",
-      "status": "open",
-      "materiality": 3,
-      "urgency": 3,
-      "assurance_impact": 3,
-      "summary": "portfolio changed from Unclassified to Creator Assertions",
-      "evidence": [
-        "https://github.com/decentralized-identity/cawg-ux-guidance"
-      ],
-      "disposition": null
-    },
-    {
-      "id": "toip-finding-2a41d3029c95",
-      "category": "lifecycle",
-      "subject": "decentralized-identity/cawg-definitions",
-      "status": "open",
-      "materiality": 3,
-      "urgency": 3,
-      "assurance_impact": 3,
-      "summary": "portfolio changed from Unclassified to Creator Assertions",
-      "evidence": [
-        "https://github.com/decentralized-identity/cawg-definitions"
-      ],
-      "disposition": null
-    },
-    {
-      "id": "toip-finding-30897d693258",
-      "category": "lifecycle",
-      "subject": "decentralized-identity/uni-registrar-driver-did-sov",
-      "status": "open",
-      "materiality": 3,
-      "urgency": 3,
-      "assurance_impact": 3,
-      "summary": "portfolio changed from Unclassified to Identifiers & Discovery",
-      "evidence": [
-        "https://github.com/decentralized-identity/uni-registrar-driver-did-sov"
-      ],
-      "disposition": null
-    },
-    {
-      "id": "toip-finding-423b19f86c44",
-      "category": "lifecycle",
-      "subject": "decentralized-identity/uni-registrar-driver-did-web",
-      "status": "open",
-      "materiality": 3,
-      "urgency": 3,
-      "assurance_impact": 3,
-      "summary": "portfolio changed from Unclassified to Identifiers & Discovery",
-      "evidence": [
-        "https://github.com/decentralized-identity/uni-registrar-driver-did-web"
-      ],
-      "disposition": null
-    },
-    {
-      "id": "toip-finding-46f13df947cf",
-      "category": "lifecycle",
-      "subject": "decentralized-identity/uni-resolver-driver-did-indy",
-      "status": "open",
-      "materiality": 3,
-      "urgency": 3,
-      "assurance_impact": 3,
-      "summary": "portfolio changed from Unclassified to Identifiers & Discovery",
-      "evidence": [
-        "https://github.com/decentralized-identity/uni-resolver-driver-did-indy"
-      ],
-      "disposition": null
-    },
-    {
-      "id": "toip-finding-4e614c272653",
-      "category": "lifecycle",
-      "subject": "decentralized-identity/uni-resolver-driver-did-stack",
-      "status": "open",
-      "materiality": 3,
-      "urgency": 3,
-      "assurance_impact": 3,
-      "summary": "portfolio changed from Unclassified to Identifiers & Discovery",
-      "evidence": [
-        "https://github.com/decentralized-identity/uni-resolver-driver-did-stack"
-      ],
-      "disposition": null
-    },
-    {
-      "id": "toip-finding-522a9e84cdb5",
-      "category": "lifecycle",
-      "subject": "decentralized-identity/thisdid",
-      "status": "open",
-      "materiality": 3,
-      "urgency": 3,
-      "assurance_impact": 3,
-      "summary": "portfolio changed from Unclassified to Identifiers & Discovery",
-      "evidence": [
-        "https://github.com/decentralized-identity/thisdid"
-      ],
-      "disposition": null
-    },
-    {
       "id": "toip-finding-5f544bad23ff",
       "category": "collection",
       "subject": "decentralized-identity/web5-rs",
@@ -12241,174 +11745,6 @@
       "assurance_impact": 2,
       "summary": "decentralized-identity/web5-rs:release: list index out of range",
       "evidence": [],
-      "disposition": null
-    },
-    {
-      "id": "toip-finding-615a51998f28",
-      "category": "lifecycle",
-      "subject": "decentralized-identity/uni-registrar-driver-did-ebsi",
-      "status": "open",
-      "materiality": 3,
-      "urgency": 3,
-      "assurance_impact": 3,
-      "summary": "portfolio changed from Unclassified to Identifiers & Discovery",
-      "evidence": [
-        "https://github.com/decentralized-identity/uni-registrar-driver-did-ebsi"
-      ],
-      "disposition": null
-    },
-    {
-      "id": "toip-finding-61da8eac04ab",
-      "category": "lifecycle",
-      "subject": "decentralized-identity/credential-schemas",
-      "status": "open",
-      "materiality": 3,
-      "urgency": 3,
-      "assurance_impact": 3,
-      "summary": "portfolio changed from Unclassified to Claims & Credentials",
-      "evidence": [
-        "https://github.com/decentralized-identity/credential-schemas"
-      ],
-      "disposition": null
-    },
-    {
-      "id": "toip-finding-64d9440b5443",
-      "category": "lifecycle",
-      "subject": "decentralized-identity/cawg-training-and-data-mining-assertion",
-      "status": "open",
-      "materiality": 3,
-      "urgency": 3,
-      "assurance_impact": 3,
-      "summary": "portfolio changed from Unclassified to Creator Assertions",
-      "evidence": [
-        "https://github.com/decentralized-identity/cawg-training-and-data-mining-assertion"
-      ],
-      "disposition": null
-    },
-    {
-      "id": "toip-finding-68770edae20c",
-      "category": "lifecycle",
-      "subject": "decentralized-identity/cawg-identity-assertion",
-      "status": "open",
-      "materiality": 3,
-      "urgency": 3,
-      "assurance_impact": 3,
-      "summary": "portfolio changed from Unclassified to Creator Assertions",
-      "evidence": [
-        "https://github.com/decentralized-identity/cawg-identity-assertion"
-      ],
-      "disposition": null
-    },
-    {
-      "id": "toip-finding-6f6ed07299cb",
-      "category": "lifecycle",
-      "subject": "decentralized-identity/uni-resolver-driver-did-work",
-      "status": "open",
-      "materiality": 3,
-      "urgency": 3,
-      "assurance_impact": 3,
-      "summary": "portfolio changed from Unclassified to Identifiers & Discovery",
-      "evidence": [
-        "https://github.com/decentralized-identity/uni-resolver-driver-did-work"
-      ],
-      "disposition": null
-    },
-    {
-      "id": "toip-finding-712a370d3cf6",
-      "category": "lifecycle",
-      "subject": "decentralized-identity/kya-os-mcp",
-      "status": "open",
-      "materiality": 3,
-      "urgency": 3,
-      "assurance_impact": 3,
-      "summary": "portfolio changed from Unclassified to Trusted AI Agents",
-      "evidence": [
-        "https://github.com/decentralized-identity/kya-os-mcp"
-      ],
-      "disposition": null
-    },
-    {
-      "id": "toip-finding-7785d0df7c1e",
-      "category": "lifecycle",
-      "subject": "decentralized-identity/delegated-authority-threat-model",
-      "status": "open",
-      "materiality": 3,
-      "urgency": 3,
-      "assurance_impact": 3,
-      "summary": "portfolio changed from Unclassified to Trusted AI Agents",
-      "evidence": [
-        "https://github.com/decentralized-identity/delegated-authority-threat-model"
-      ],
-      "disposition": null
-    },
-    {
-      "id": "toip-finding-7b4ce0bb4224",
-      "category": "lifecycle",
-      "subject": "decentralized-identity/uni-registrar-driver-did-v1",
-      "status": "open",
-      "materiality": 3,
-      "urgency": 3,
-      "assurance_impact": 3,
-      "summary": "portfolio changed from Unclassified to Identifiers & Discovery",
-      "evidence": [
-        "https://github.com/decentralized-identity/uni-registrar-driver-did-v1"
-      ],
-      "disposition": null
-    },
-    {
-      "id": "toip-finding-7d70864d1948",
-      "category": "lifecycle",
-      "subject": "decentralized-identity/edv-test-suite",
-      "status": "open",
-      "materiality": 3,
-      "urgency": 3,
-      "assurance_impact": 3,
-      "summary": "portfolio changed from Unclassified to Secure Data Storage / DWN",
-      "evidence": [
-        "https://github.com/decentralized-identity/edv-test-suite"
-      ],
-      "disposition": null
-    },
-    {
-      "id": "toip-finding-88eb3c8a8048",
-      "category": "lifecycle",
-      "subject": "decentralized-identity/well-known-did-configuration",
-      "status": "open",
-      "materiality": 3,
-      "urgency": 3,
-      "assurance_impact": 3,
-      "summary": "portfolio changed from Unclassified to Identifiers & Discovery",
-      "evidence": [
-        "https://github.com/decentralized-identity/well-known-did-configuration"
-      ],
-      "disposition": null
-    },
-    {
-      "id": "toip-finding-8a1926ad039b",
-      "category": "lifecycle",
-      "subject": "decentralized-identity/uni-resolver-driver-did-key",
-      "status": "open",
-      "materiality": 3,
-      "urgency": 3,
-      "assurance_impact": 3,
-      "summary": "portfolio changed from Unclassified to Identifiers & Discovery",
-      "evidence": [
-        "https://github.com/decentralized-identity/uni-resolver-driver-did-key"
-      ],
-      "disposition": null
-    },
-    {
-      "id": "toip-finding-906291a48daf",
-      "category": "lifecycle",
-      "subject": "decentralized-identity/uni-resolver-driver-did-dom",
-      "status": "open",
-      "materiality": 3,
-      "urgency": 3,
-      "assurance_impact": 3,
-      "summary": "portfolio changed from Unclassified to Identifiers & Discovery",
-      "evidence": [
-        "https://github.com/decentralized-identity/uni-resolver-driver-did-dom"
-      ],
       "disposition": null
     },
     {
@@ -12424,118 +11760,6 @@
       "disposition": null
     },
     {
-      "id": "toip-finding-9e50d14011e5",
-      "category": "lifecycle",
-      "subject": "decentralized-identity/cawg-metadata-assertion",
-      "status": "open",
-      "materiality": 3,
-      "urgency": 3,
-      "assurance_impact": 3,
-      "summary": "portfolio changed from Unclassified to Creator Assertions",
-      "evidence": [
-        "https://github.com/decentralized-identity/cawg-metadata-assertion"
-      ],
-      "disposition": null
-    },
-    {
-      "id": "toip-finding-a43c0d8e75bd",
-      "category": "lifecycle",
-      "subject": "decentralized-identity/uni-resolver-driver-did-sov",
-      "status": "open",
-      "materiality": 3,
-      "urgency": 3,
-      "assurance_impact": 3,
-      "summary": "portfolio changed from Unclassified to Identifiers & Discovery",
-      "evidence": [
-        "https://github.com/decentralized-identity/uni-resolver-driver-did-sov"
-      ],
-      "disposition": null
-    },
-    {
-      "id": "toip-finding-a6a3253aeacb",
-      "category": "lifecycle",
-      "subject": "decentralized-identity/edv-spec",
-      "status": "open",
-      "materiality": 3,
-      "urgency": 3,
-      "assurance_impact": 3,
-      "summary": "portfolio changed from Unclassified to Secure Data Storage / DWN",
-      "evidence": [
-        "https://github.com/decentralized-identity/edv-spec"
-      ],
-      "disposition": null
-    },
-    {
-      "id": "toip-finding-bb1e00a8fd4a",
-      "category": "lifecycle",
-      "subject": "decentralized-identity/edv-use-cases",
-      "status": "open",
-      "materiality": 3,
-      "urgency": 3,
-      "assurance_impact": 3,
-      "summary": "portfolio changed from Unclassified to Secure Data Storage / DWN",
-      "evidence": [
-        "https://github.com/decentralized-identity/edv-use-cases"
-      ],
-      "disposition": null
-    },
-    {
-      "id": "toip-finding-be665b3e81cc",
-      "category": "lifecycle",
-      "subject": "decentralized-identity/did-peer-2",
-      "status": "open",
-      "materiality": 3,
-      "urgency": 3,
-      "assurance_impact": 3,
-      "summary": "portfolio changed from Unclassified to DID Methods",
-      "evidence": [
-        "https://github.com/decentralized-identity/did-peer-2"
-      ],
-      "disposition": null
-    },
-    {
-      "id": "toip-finding-c8f4e7731997",
-      "category": "lifecycle",
-      "subject": "decentralized-identity/did-traits",
-      "status": "open",
-      "materiality": 3,
-      "urgency": 3,
-      "assurance_impact": 3,
-      "summary": "portfolio changed from Unclassified to Identifiers & Discovery",
-      "evidence": [
-        "https://github.com/decentralized-identity/did-traits"
-      ],
-      "disposition": null
-    },
-    {
-      "id": "toip-finding-ca226329ce4f",
-      "category": "lifecycle",
-      "subject": "decentralized-identity/uni-registrar-driver-did-ion",
-      "status": "open",
-      "materiality": 3,
-      "urgency": 3,
-      "assurance_impact": 3,
-      "summary": "portfolio changed from Unclassified to Identifiers & Discovery",
-      "evidence": [
-        "https://github.com/decentralized-identity/uni-registrar-driver-did-ion"
-      ],
-      "disposition": null
-    },
-    {
-      "id": "toip-finding-ce052fe79f91",
-      "category": "lifecycle",
-      "subject": "decentralized-identity/cawg-consent-assertion",
-      "status": "open",
-      "materiality": 3,
-      "urgency": 3,
-      "assurance_impact": 3,
-      "summary": "portfolio changed from Unclassified to Creator Assertions",
-      "evidence": [
-        "https://github.com/decentralized-identity/cawg-consent-assertion"
-      ],
-      "disposition": null
-    },
-    {
       "id": "toip-finding-ce42b850a3b2",
       "category": "collection",
       "subject": "decentralized-identity/dwn-sdk-js",
@@ -12545,146 +11769,6 @@
       "assurance_impact": 2,
       "summary": "decentralized-identity/dwn-sdk-js:release: list index out of range",
       "evidence": [],
-      "disposition": null
-    },
-    {
-      "id": "toip-finding-d76c70fceae8",
-      "category": "lifecycle",
-      "subject": "decentralized-identity/cawg-organizational-identity-profile",
-      "status": "open",
-      "materiality": 3,
-      "urgency": 3,
-      "assurance_impact": 3,
-      "summary": "portfolio changed from Unclassified to Creator Assertions",
-      "evidence": [
-        "https://github.com/decentralized-identity/cawg-organizational-identity-profile"
-      ],
-      "disposition": null
-    },
-    {
-      "id": "toip-finding-d838f481cf88",
-      "category": "lifecycle",
-      "subject": "decentralized-identity/did-peer-4",
-      "status": "open",
-      "materiality": 3,
-      "urgency": 3,
-      "assurance_impact": 3,
-      "summary": "portfolio changed from Unclassified to DID Methods",
-      "evidence": [
-        "https://github.com/decentralized-identity/did-peer-4"
-      ],
-      "disposition": null
-    },
-    {
-      "id": "toip-finding-db40ec31f67d",
-      "category": "lifecycle",
-      "subject": "decentralized-identity/cawg-endorsement-assertion",
-      "status": "open",
-      "materiality": 3,
-      "urgency": 3,
-      "assurance_impact": 3,
-      "summary": "portfolio changed from Unclassified to Creator Assertions",
-      "evidence": [
-        "https://github.com/decentralized-identity/cawg-endorsement-assertion"
-      ],
-      "disposition": null
-    },
-    {
-      "id": "toip-finding-e06295670a60",
-      "category": "lifecycle",
-      "subject": "decentralized-identity/kya-os-schema",
-      "status": "open",
-      "materiality": 3,
-      "urgency": 3,
-      "assurance_impact": 3,
-      "summary": "portfolio changed from Unclassified to Trusted AI Agents",
-      "evidence": [
-        "https://github.com/decentralized-identity/kya-os-schema"
-      ],
-      "disposition": null
-    },
-    {
-      "id": "toip-finding-e42f351b5a26",
-      "category": "lifecycle",
-      "subject": "decentralized-identity/uni-resolver-driver-dns",
-      "status": "open",
-      "materiality": 3,
-      "urgency": 3,
-      "assurance_impact": 3,
-      "summary": "portfolio changed from Unclassified to Identifiers & Discovery",
-      "evidence": [
-        "https://github.com/decentralized-identity/uni-resolver-driver-dns"
-      ],
-      "disposition": null
-    },
-    {
-      "id": "toip-finding-ea89957dfaeb",
-      "category": "lifecycle",
-      "subject": "decentralized-identity/uni-resolver-driver-did-erc725",
-      "status": "open",
-      "materiality": 3,
-      "urgency": 3,
-      "assurance_impact": 3,
-      "summary": "portfolio changed from Unclassified to Identifiers & Discovery",
-      "evidence": [
-        "https://github.com/decentralized-identity/uni-resolver-driver-did-erc725"
-      ],
-      "disposition": null
-    },
-    {
-      "id": "toip-finding-eef69eb34532",
-      "category": "lifecycle",
-      "subject": "decentralized-identity/uni-resolver-driver-did-ccp",
-      "status": "open",
-      "materiality": 3,
-      "urgency": 3,
-      "assurance_impact": 3,
-      "summary": "portfolio changed from Unclassified to Identifiers & Discovery",
-      "evidence": [
-        "https://github.com/decentralized-identity/uni-resolver-driver-did-ccp"
-      ],
-      "disposition": null
-    },
-    {
-      "id": "toip-finding-f3ad1a167041",
-      "category": "lifecycle",
-      "subject": "decentralized-identity/uni-resolver-driver-did-btcr",
-      "status": "open",
-      "materiality": 3,
-      "urgency": 3,
-      "assurance_impact": 3,
-      "summary": "portfolio changed from Unclassified to Identifiers & Discovery",
-      "evidence": [
-        "https://github.com/decentralized-identity/uni-resolver-driver-did-btcr"
-      ],
-      "disposition": null
-    },
-    {
-      "id": "toip-finding-f46b80c1d417",
-      "category": "lifecycle",
-      "subject": "decentralized-identity/uni-resolver-driver-did-ion",
-      "status": "open",
-      "materiality": 3,
-      "urgency": 3,
-      "assurance_impact": 3,
-      "summary": "portfolio changed from Unclassified to Identifiers & Discovery",
-      "evidence": [
-        "https://github.com/decentralized-identity/uni-resolver-driver-did-ion"
-      ],
-      "disposition": null
-    },
-    {
-      "id": "toip-finding-ff4bb869934b",
-      "category": "lifecycle",
-      "subject": "decentralized-identity/hatpro-schema-htwg",
-      "status": "open",
-      "materiality": 3,
-      "urgency": 3,
-      "assurance_impact": 3,
-      "summary": "portfolio changed from Unclassified to Hospitality & Travel",
-      "evidence": [
-        "https://github.com/decentralized-identity/hatpro-schema-htwg"
-      ],
       "disposition": null
     },
     {
@@ -12908,20 +11992,6 @@
       "summary": "decentralized-identity/did-dht references decentralized-identity/didcomm in a current change unit.",
       "evidence": [
         "https://github.com/decentralized-identity/did-dht/pull/337"
-      ],
-      "disposition": null
-    },
-    {
-      "id": "toip-finding-61a58b876b4b",
-      "category": "cross-portfolio-seam",
-      "subject": "decentralized-identity/cawg-identity-assertion",
-      "status": "open",
-      "materiality": 3,
-      "urgency": 2,
-      "assurance_impact": 3,
-      "summary": "decentralized-identity/cawg-identity-assertion references decentralized-identity/ion in a current change unit.",
-      "evidence": [
-        "https://github.com/decentralized-identity/cawg-identity-assertion/pull/267"
       ],
       "disposition": null
     },
