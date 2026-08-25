@@ -29,13 +29,15 @@ jobs:
           python-version: '3.11'
       - name: Run tests
         run: python -m unittest discover -s tests
-      - name: Collect organization evidence and render weekly brief
+      - name: Collect organization evidence
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: python -m toip_monitor collect --lookback-days 7
+      - name: Render decision-grade Pages site
+        run: python -m toip_monitor site
       - name: Validate generated state
         run: python -m toip_monitor validate
-      - name: Persist generated evidence
+      - name: Persist generated evidence and publication
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
