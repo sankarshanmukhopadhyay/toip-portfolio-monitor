@@ -5,21 +5,29 @@
       "id": "decentralized-identity",
       "display_name": "Decentralized Identity Foundation",
       "organization": "decentralized-identity",
-      "generated_at": "2026-08-25T12:30:14.161714+00:00",
+      "generated_at": "2026-08-25T12:52:12.164909+00:00",
       "repositories": 268,
       "active": 63,
-      "open_findings": 69,
-      "unclassified": 27
+      "material_changes": 18,
+      "priority_findings": 59,
+      "substantive_open": 93,
+      "taxonomy_review": 4,
+      "unclassified": 4,
+      "observation_state": "stateful observation"
     },
     {
       "id": "trustoverip",
       "display_name": "Trust Over IP Foundation",
       "organization": "trustoverip",
-      "generated_at": "2026-08-25T12:30:04.257997+00:00",
+      "generated_at": "2026-08-25T12:51:58.538576+00:00",
       "repositories": 111,
       "active": 42,
-      "open_findings": 43,
-      "unclassified": 5
+      "material_changes": 49,
+      "priority_findings": 32,
+      "substantive_open": 51,
+      "taxonomy_review": 5,
+      "unclassified": 5,
+      "observation_state": "stateful observation"
     }
   ]
 }

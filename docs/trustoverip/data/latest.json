@@ -1,17 +1,17 @@
 {
   "schema_version": "0.2",
   "organization": "trustoverip",
-  "generated_at": "2026-08-25T12:30:04.257997+00:00",
+  "generated_at": "2026-08-25T12:51:58.538576+00:00",
   "period": {
-    "since": "2026-08-18T12:30:04.257997+00:00",
-    "until": "2026-08-25T12:30:04.257997+00:00",
+    "since": "2026-08-18T12:51:58.538576+00:00",
+    "until": "2026-08-25T12:51:58.538576+00:00",
     "lookback_days": 7
   },
   "provenance": {
     "source": "GitHub REST API",
     "collector": "trust-ecosystem-monitor",
     "deterministic_classification": true,
-    "previous_snapshot": "2026-08-25T12:16:29.291393+00:00"
+    "previous_snapshot": "2026-08-25T12:30:04.257997+00:00"
   },
   "repositories": [
     {
@@ -28,7 +28,12 @@
       "default_branch": "master",
       "portfolio": "AIMWG",
       "kind": "repository",
-      "lifecycle": "active"
+      "lifecycle": "active",
+      "classification": {
+        "method": "rule",
+        "rule": "portfolio_rules[1].prefix:aimwg-",
+        "profile": "trustoverip"
+      }
     },
     {
       "id": 1004621687,
@@ -44,7 +49,12 @@
       "default_branch": "main",
       "portfolio": "AIMWG",
       "kind": "specification",
-      "lifecycle": "dormant"
+      "lifecycle": "dormant",
+      "classification": {
+        "method": "rule",
+        "rule": "portfolio_rules[1].prefix:aimwg-",
+        "profile": "trustoverip"
+      }
     },
     {
       "id": 1139378190,
@@ -60,7 +70,12 @@
       "default_branch": "main",
       "portfolio": "AIMWG",
       "kind": "repository",
-      "lifecycle": "active"
+      "lifecycle": "active",
+      "classification": {
+        "method": "rule",
+        "rule": "portfolio_rules[1].prefix:aimwg-",
+        "profile": "trustoverip"
+      }
     },
     {
       "id": 267613484,
@@ -76,7 +91,12 @@
       "default_branch": "master",
       "portfolio": "CTWG",
       "kind": "workgroup",
-      "lifecycle": "archived"
+      "lifecycle": "archived",
+      "classification": {
+        "method": "rule",
+        "rule": "portfolio_rules[3].contains:concepts-and-terminology",
+        "profile": "trustoverip"
+      }
     },
     {
       "id": 916739085,
@@ -92,7 +112,12 @@
       "default_branch": "main",
       "portfolio": "CTWG",
       "kind": "terminology",
-      "lifecycle": "active"
+      "lifecycle": "active",
+      "classification": {
+        "method": "rule",
+        "rule": "portfolio_rules[3].prefix:ctwg-",
+        "profile": "trustoverip"
+      }
     },
     {
       "id": 745193720,
@@ -108,7 +133,12 @@
       "default_branch": "main",
       "portfolio": "CTWG",
       "kind": "terminology",
-      "lifecycle": "active"
+      "lifecycle": "active",
+      "classification": {
+        "method": "rule",
+        "rule": "portfolio_rules[3].prefix:ctwg-",
+        "profile": "trustoverip"
+      }
     },
     {
       "id": 339214150,
@@ -124,7 +154,12 @@
       "default_branch": "main",
       "portfolio": "CTWG",
       "kind": "repository",
-      "lifecycle": "archived"
+      "lifecycle": "archived",
+      "classification": {
+        "method": "rule",
+        "rule": "portfolio_rules[3].prefix:ctwg-",
+        "profile": "trustoverip"
+      }
     },
     {
       "id": 760512745,
@@ -140,7 +175,12 @@
       "default_branch": "main",
       "portfolio": "CTWG",
       "kind": "terminology",
-      "lifecycle": "active"
+      "lifecycle": "active",
+      "classification": {
+        "method": "rule",
+        "rule": "portfolio_rules[3].prefix:ctwg-",
+        "profile": "trustoverip"
+      }
     },
     {
       "id": 507009523,
@@ -156,7 +196,12 @@
       "default_branch": "master",
       "portfolio": "CTWG",
       "kind": "repository",
-      "lifecycle": "archived"
+      "lifecycle": "archived",
+      "classification": {
+        "method": "rule",
+        "rule": "portfolio_rules[3].prefix:ctwg-",
+        "profile": "trustoverip"
+      }
     },
     {
       "id": 505910822,
@@ -172,7 +217,12 @@
       "default_branch": "master",
       "portfolio": "CTWG",
       "kind": "tooling",
-      "lifecycle": "archived"
+      "lifecycle": "archived",
+      "classification": {
+        "method": "rule",
+        "rule": "portfolio_rules[3].prefix:ctwg-",
+        "profile": "trustoverip"
+      }
     },
     {
       "id": 1177773193,
@@ -188,7 +238,12 @@
       "default_branch": "main",
       "portfolio": "DTG",
       "kind": "task-force",
-      "lifecycle": "active"
+      "lifecycle": "active",
+      "classification": {
+        "method": "rule",
+        "rule": "portfolio_rules[0].prefix:dtgwg-",
+        "profile": "trustoverip"
+      }
     },
     {
       "id": 1291970446,
@@ -204,7 +259,12 @@
       "default_branch": "main",
       "portfolio": "DTG",
       "kind": "specification",
-      "lifecycle": "active"
+      "lifecycle": "active",
+      "classification": {
+        "method": "rule",
+        "rule": "portfolio_rules[0].prefix:dtgwg-",
+        "profile": "trustoverip"
+      }
     },
     {
       "id": 1087304610,
@@ -220,7 +280,12 @@
       "default_branch": "main",
       "portfolio": "DTG",
       "kind": "task-force",
-      "lifecycle": "active"
+      "lifecycle": "active",
+      "classification": {
+        "method": "rule",
+        "rule": "portfolio_rules[0].prefix:dtgwg-",
+        "profile": "trustoverip"
+      }
     },
     {
       "id": 1194406622,
@@ -236,7 +301,12 @@
       "default_branch": "main",
       "portfolio": "DTG",
       "kind": "repository",
-      "lifecycle": "active"
+      "lifecycle": "active",
+      "classification": {
+        "method": "rule",
+        "rule": "portfolio_rules[0].prefix:dtgwg-",
+        "profile": "trustoverip"
+      }
     },
     {
       "id": 1245432155,
@@ -252,7 +322,12 @@
       "default_branch": "main",
       "portfolio": "DTG",
       "kind": "task-force",
-      "lifecycle": "active"
+      "lifecycle": "active",
+      "classification": {
+        "method": "rule",
+        "rule": "portfolio_rules[0].prefix:dtgwg-",
+        "profile": "trustoverip"
+      }
     },
     {
       "id": 1177773287,
@@ -268,7 +343,12 @@
       "default_branch": "main",
       "portfolio": "DTG",
       "kind": "task-force",
-      "lifecycle": "active"
+      "lifecycle": "active",
+      "classification": {
+        "method": "rule",
+        "rule": "portfolio_rules[0].prefix:dtgwg-",
+        "profile": "trustoverip"
+      }
     },
     {
       "id": 1316799707,
@@ -284,7 +364,12 @@
       "default_branch": "main",
       "portfolio": "DTG",
       "kind": "task-force",
-      "lifecycle": "active"
+      "lifecycle": "active",
+      "classification": {
+        "method": "rule",
+        "rule": "portfolio_rules[0].prefix:dtgwg-",
+        "profile": "trustoverip"
+      }
     },
     {
       "id": 1339412315,
@@ -300,7 +385,12 @@
       "default_branch": "main",
       "portfolio": "DTG",
       "kind": "specification",
-      "lifecycle": "active"
+      "lifecycle": "active",
+      "classification": {
+        "method": "rule",
+        "rule": "portfolio_rules[0].prefix:dtgwg-",
+        "profile": "trustoverip"
+      }
     },
     {
       "id": 1177773157,
@@ -316,7 +406,12 @@
       "default_branch": "main",
       "portfolio": "DTG",
       "kind": "task-force",
-      "lifecycle": "active"
+      "lifecycle": "active",
+      "classification": {
+        "method": "rule",
+        "rule": "portfolio_rules[0].prefix:dtgwg-",
+        "profile": "trustoverip"
+      }
     },
     {
       "id": 1309675556,
@@ -332,7 +427,12 @@
       "default_branch": "main",
       "portfolio": "DTG",
       "kind": "task-force",
-      "lifecycle": "active"
+      "lifecycle": "active",
+      "classification": {
+        "method": "rule",
+        "rule": "portfolio_rules[0].prefix:dtgwg-",
+        "profile": "trustoverip"
+      }
     },
     {
       "id": 1177773260,
@@ -348,7 +448,12 @@
       "default_branch": "main",
       "portfolio": "DTG",
       "kind": "task-force",
-      "lifecycle": "active"
+      "lifecycle": "active",
+      "classification": {
+        "method": "rule",
+        "rule": "portfolio_rules[0].prefix:dtgwg-",
+        "profile": "trustoverip"
+      }
     },
     {
       "id": 1245432105,
@@ -364,7 +469,12 @@
       "default_branch": "main",
       "portfolio": "DTG",
       "kind": "task-force",
-      "lifecycle": "active"
+      "lifecycle": "active",
+      "classification": {
+        "method": "rule",
+        "rule": "portfolio_rules[0].prefix:dtgwg-",
+        "profile": "trustoverip"
+      }
     },
     {
       "id": 1196194501,
@@ -380,7 +490,12 @@
       "default_branch": "main",
       "portfolio": "EGWG",
       "kind": "repository",
-      "lifecycle": "active"
+      "lifecycle": "active",
+      "classification": {
+        "method": "rule",
+        "rule": "portfolio_rules[5].prefix:egwg-",
+        "profile": "trustoverip"
+      }
     },
     {
       "id": 959984455,
@@ -396,7 +511,12 @@
       "default_branch": "main",
       "portfolio": "Governance",
       "kind": "governance",
-      "lifecycle": "active"
+      "lifecycle": "active",
+      "classification": {
+        "method": "rule",
+        "rule": "portfolio_rules[8].prefix:governance",
+        "profile": "trustoverip"
+      }
     },
     {
       "id": 268526727,
@@ -412,7 +532,12 @@
       "default_branch": "master",
       "portfolio": "Governance",
       "kind": "workgroup",
-      "lifecycle": "archived"
+      "lifecycle": "archived",
+      "classification": {
+        "method": "rule",
+        "rule": "portfolio_rules[8].prefix:governance",
+        "profile": "trustoverip"
+      }
     },
     {
       "id": 333480953,
@@ -428,7 +553,12 @@
       "default_branch": "main",
       "portfolio": "Governance",
       "kind": "specification",
-      "lifecycle": "archived"
+      "lifecycle": "archived",
+      "classification": {
+        "method": "rule",
+        "rule": "portfolio_rules[8].contains:governance-stack",
+        "profile": "trustoverip"
+      }
     },
     {
       "id": 391983804,
@@ -444,7 +574,12 @@
       "default_branch": "main",
       "portfolio": "KERI Suite",
       "kind": "repository",
-      "lifecycle": "archived"
+      "lifecycle": "archived",
+      "classification": {
+        "method": "rule",
+        "rule": "portfolio_rules[2].contains:acdc",
+        "profile": "trustoverip"
+      }
     },
     {
       "id": 372917951,
@@ -460,7 +595,12 @@
       "default_branch": "main",
       "portfolio": "KERI Suite",
       "kind": "repository",
-      "lifecycle": "archived"
+      "lifecycle": "archived",
+      "classification": {
+        "method": "rule",
+        "rule": "portfolio_rules[2].contains:keri",
+        "profile": "trustoverip"
+      }
     },
     {
       "id": 1051204336,
@@ -476,7 +616,12 @@
       "default_branch": "main",
       "portfolio": "KERI Suite",
       "kind": "terminology",
-      "lifecycle": "active"
+      "lifecycle": "active",
+      "classification": {
+        "method": "rule",
+        "rule": "portfolio_rules[2].contains:keri",
+        "profile": "trustoverip"
+      }
     },
     {
       "id": 672945943,
@@ -485,14 +630,19 @@
       "url": "https://github.com/trustoverip/kswg-acdc-specification",
       "description": "Authentic Chained Data Containers (ACDC)",
       "created_at": "2023-07-31T14:16:49Z",
-      "updated_at": "2026-07-27T21:05:41Z",
-      "pushed_at": "2026-08-25T12:29:46Z",
+      "updated_at": "2026-08-25T12:36:54Z",
+      "pushed_at": "2026-08-25T12:35:02Z",
       "archived": false,
       "fork": false,
       "default_branch": "main",
       "portfolio": "KERI Suite",
       "kind": "specification",
-      "lifecycle": "active"
+      "lifecycle": "active",
+      "classification": {
+        "method": "rule",
+        "rule": "portfolio_rules[2].prefix:kswg-",
+        "profile": "trustoverip"
+      }
     },
     {
       "id": 671648293,
@@ -501,14 +651,19 @@
       "url": "https://github.com/trustoverip/kswg-cesr-specification",
       "description": "Composable Event Streaming Representation (CESR) Specification ",
       "created_at": "2023-07-27T20:07:52Z",
-      "updated_at": "2026-06-25T04:21:21Z",
-      "pushed_at": "2026-08-06T05:45:07Z",
+      "updated_at": "2026-08-25T12:44:23Z",
+      "pushed_at": "2026-08-25T12:41:32Z",
       "archived": false,
       "fork": false,
       "default_branch": "main",
       "portfolio": "KERI Suite",
       "kind": "specification",
-      "lifecycle": "active"
+      "lifecycle": "active",
+      "classification": {
+        "method": "rule",
+        "rule": "portfolio_rules[2].prefix:kswg-",
+        "profile": "trustoverip"
+      }
     },
     {
       "id": 659422173,
@@ -524,7 +679,12 @@
       "default_branch": "main",
       "portfolio": "KERI Suite",
       "kind": "specification",
-      "lifecycle": "active"
+      "lifecycle": "active",
+      "classification": {
+        "method": "rule",
+        "rule": "portfolio_rules[2].prefix:kswg-",
+        "profile": "trustoverip"
+      }
     },
     {
       "id": 1058097096,
@@ -540,7 +700,12 @@
       "default_branch": "main",
       "portfolio": "KERI Suite",
       "kind": "specification",
-      "lifecycle": "active"
+      "lifecycle": "active",
+      "classification": {
+        "method": "rule",
+        "rule": "portfolio_rules[2].prefix:kswg-",
+        "profile": "trustoverip"
+      }
     },
     {
       "id": 671634566,
@@ -556,7 +721,12 @@
       "default_branch": "main",
       "portfolio": "KERI Suite",
       "kind": "specification",
-      "lifecycle": "active"
+      "lifecycle": "active",
+      "classification": {
+        "method": "rule",
+        "rule": "portfolio_rules[2].prefix:kswg-",
+        "profile": "trustoverip"
+      }
     },
     {
       "id": 916694688,
@@ -572,7 +742,12 @@
       "default_branch": "main",
       "portfolio": "KERI Suite",
       "kind": "terminology",
-      "lifecycle": "dormant"
+      "lifecycle": "dormant",
+      "classification": {
+        "method": "rule",
+        "rule": "portfolio_rules[2].prefix:kswg-",
+        "profile": "trustoverip"
+      }
     },
     {
       "id": 1016147230,
@@ -588,7 +763,12 @@
       "default_branch": "main",
       "portfolio": "KERI Suite",
       "kind": "repository",
-      "lifecycle": "active"
+      "lifecycle": "active",
+      "classification": {
+        "method": "rule",
+        "rule": "portfolio_rules[2].prefix:kswg-",
+        "profile": "trustoverip"
+      }
     },
     {
       "id": 339268645,
@@ -604,7 +784,12 @@
       "default_branch": "main",
       "portfolio": "KERI Suite",
       "kind": "specification",
-      "lifecycle": "archived"
+      "lifecycle": "archived",
+      "classification": {
+        "method": "rule",
+        "rule": "portfolio_rules[2].contains:acdc",
+        "profile": "trustoverip"
+      }
     },
     {
       "id": 454504261,
@@ -620,7 +805,12 @@
       "default_branch": "main",
       "portfolio": "KERI Suite",
       "kind": "specification",
-      "lifecycle": "archived"
+      "lifecycle": "archived",
+      "classification": {
+        "method": "rule",
+        "rule": "portfolio_rules[2].contains:acdc",
+        "profile": "trustoverip"
+      }
     },
     {
       "id": 330201622,
@@ -636,7 +826,12 @@
       "default_branch": "main",
       "portfolio": "Legacy deliverables",
       "kind": "repository",
-      "lifecycle": "archived"
+      "lifecycle": "archived",
+      "classification": {
+        "method": "rule",
+        "rule": "portfolio_rules[9].prefix:tip00",
+        "profile": "trustoverip"
+      }
     },
     {
       "id": 588591983,
@@ -652,7 +847,12 @@
       "default_branch": "main",
       "portfolio": "Legacy deliverables",
       "kind": "repository",
-      "lifecycle": "archived"
+      "lifecycle": "archived",
+      "classification": {
+        "method": "rule",
+        "rule": "portfolio_rules[9].prefix:trtf-",
+        "profile": "trustoverip"
+      }
     },
     {
       "id": 318019835,
@@ -668,7 +868,12 @@
       "default_branch": "main",
       "portfolio": "Legacy deliverables",
       "kind": "specification",
-      "lifecycle": "archived"
+      "lifecycle": "archived",
+      "classification": {
+        "method": "rule",
+        "rule": "portfolio_rules[9].prefix:tss",
+        "profile": "trustoverip"
+      }
     },
     {
       "id": 318020062,
@@ -684,7 +889,12 @@
       "default_branch": "main",
       "portfolio": "Legacy deliverables",
       "kind": "specification",
-      "lifecycle": "archived"
+      "lifecycle": "archived",
+      "classification": {
+        "method": "rule",
+        "rule": "portfolio_rules[9].prefix:tss",
+        "profile": "trustoverip"
+      }
     },
     {
       "id": 317367513,
@@ -700,7 +910,12 @@
       "default_branch": "main",
       "portfolio": "Legacy deliverables",
       "kind": "specification",
-      "lifecycle": "archived"
+      "lifecycle": "archived",
+      "classification": {
+        "method": "rule",
+        "rule": "portfolio_rules[9].prefix:tss",
+        "profile": "trustoverip"
+      }
     },
     {
       "id": 317367737,
@@ -716,7 +931,12 @@
       "default_branch": "main",
       "portfolio": "Legacy deliverables",
       "kind": "specification",
-      "lifecycle": "archived"
+      "lifecycle": "archived",
+      "classification": {
+        "method": "rule",
+        "rule": "portfolio_rules[9].prefix:tss",
+        "profile": "trustoverip"
+      }
     },
     {
       "id": 317368555,
@@ -732,7 +952,12 @@
       "default_branch": "main",
       "portfolio": "Legacy deliverables",
       "kind": "repository",
-      "lifecycle": "archived"
+      "lifecycle": "archived",
+      "classification": {
+        "method": "rule",
+        "rule": "portfolio_rules[9].prefix:wp00",
+        "profile": "trustoverip"
+      }
     },
     {
       "id": 320365339,
@@ -748,7 +973,12 @@
       "default_branch": "main",
       "portfolio": "Legacy deliverables",
       "kind": "repository",
-      "lifecycle": "archived"
+      "lifecycle": "archived",
+      "classification": {
+        "method": "rule",
+        "rule": "portfolio_rules[9].prefix:wp00",
+        "profile": "trustoverip"
+      }
     },
     {
       "id": 349297661,
@@ -764,7 +994,12 @@
       "default_branch": "main",
       "portfolio": "Legacy deliverables",
       "kind": "repository",
-      "lifecycle": "archived"
+      "lifecycle": "archived",
+      "classification": {
+        "method": "rule",
+        "rule": "portfolio_rules[9].prefix:wp00",
+        "profile": "trustoverip"
+      }
     },
     {
       "id": 767625714,
@@ -780,7 +1015,12 @@
       "default_branch": "master",
       "portfolio": "Spec-Up",
       "kind": "tooling",
-      "lifecycle": "dormant"
+      "lifecycle": "dormant",
+      "classification": {
+        "method": "rule",
+        "rule": "portfolio_rules[7].prefix:spec-up",
+        "profile": "trustoverip"
+      }
     },
     {
       "id": 957196482,
@@ -796,7 +1036,12 @@
       "default_branch": "master",
       "portfolio": "Spec-Up",
       "kind": "tooling",
-      "lifecycle": "active"
+      "lifecycle": "active",
+      "classification": {
+        "method": "rule",
+        "rule": "portfolio_rules[7].prefix:spec-up",
+        "profile": "trustoverip"
+      }
     },
     {
       "id": 1129674503,
@@ -812,7 +1057,12 @@
       "default_branch": "main",
       "portfolio": "Spec-Up",
       "kind": "tooling",
-      "lifecycle": "active"
+      "lifecycle": "active",
+      "classification": {
+        "method": "rule",
+        "rule": "portfolio_rules[7].prefix:spec-up",
+        "profile": "trustoverip"
+      }
     },
     {
       "id": 1129678640,
@@ -828,7 +1078,12 @@
       "default_branch": "main",
       "portfolio": "Spec-Up",
       "kind": "tooling",
-      "lifecycle": "active"
+      "lifecycle": "active",
+      "classification": {
+        "method": "rule",
+        "rule": "portfolio_rules[7].prefix:spec-up",
+        "profile": "trustoverip"
+      }
     },
     {
       "id": 849532688,
@@ -844,7 +1099,12 @@
       "default_branch": "main",
       "portfolio": "Spec-Up",
       "kind": "tooling",
-      "lifecycle": "archived"
+      "lifecycle": "archived",
+      "classification": {
+        "method": "rule",
+        "rule": "portfolio_rules[7].prefix:spec-up",
+        "profile": "trustoverip"
+      }
     },
     {
       "id": 1075268419,
@@ -860,7 +1120,12 @@
       "default_branch": "main",
       "portfolio": "Spec-Up",
       "kind": "tooling",
-      "lifecycle": "active"
+      "lifecycle": "active",
+      "classification": {
+        "method": "rule",
+        "rule": "portfolio_rules[7].prefix:spec-up",
+        "profile": "trustoverip"
+      }
     },
     {
       "id": 807093628,
@@ -876,7 +1141,12 @@
       "default_branch": "master",
       "portfolio": "Spec-Up",
       "kind": "tooling",
-      "lifecycle": "active"
+      "lifecycle": "active",
+      "classification": {
+        "method": "rule",
+        "rule": "portfolio_rules[7].prefix:spec-up",
+        "profile": "trustoverip"
+      }
     },
     {
       "id": 842129618,
@@ -892,7 +1162,12 @@
       "default_branch": "main",
       "portfolio": "Spec-Up",
       "kind": "tooling",
-      "lifecycle": "active"
+      "lifecycle": "active",
+      "classification": {
+        "method": "rule",
+        "rule": "portfolio_rules[7].prefix:spec-up",
+        "profile": "trustoverip"
+      }
     },
     {
       "id": 815249006,
@@ -908,7 +1183,12 @@
       "default_branch": "main",
       "portfolio": "Spec-Up",
       "kind": "tooling",
-      "lifecycle": "active"
+      "lifecycle": "active",
+      "classification": {
+        "method": "rule",
+        "rule": "portfolio_rules[7].prefix:spec-up",
+        "profile": "trustoverip"
+      }
     },
     {
       "id": 268526965,
@@ -924,7 +1204,12 @@
       "default_branch": "master",
       "portfolio": "TSWG",
       "kind": "workgroup",
-      "lifecycle": "archived"
+      "lifecycle": "archived",
+      "classification": {
+        "method": "rule",
+        "rule": "portfolio_rules[4].contains:technology-stack",
+        "profile": "trustoverip"
+      }
     },
     {
       "id": 318019471,
@@ -940,7 +1225,12 @@
       "default_branch": "main",
       "portfolio": "TSWG",
       "kind": "specification",
-      "lifecycle": "archived"
+      "lifecycle": "archived",
+      "classification": {
+        "method": "rule",
+        "rule": "portfolio_rules[4].contains:technology-stack",
+        "profile": "trustoverip"
+      }
     },
     {
       "id": 785298099,
@@ -956,7 +1246,12 @@
       "default_branch": "main",
       "portfolio": "TSWG",
       "kind": "repository",
-      "lifecycle": "dormant"
+      "lifecycle": "dormant",
+      "classification": {
+        "method": "rule",
+        "rule": "portfolio_rules[4].prefix:tswg-",
+        "profile": "trustoverip"
+      }
     },
     {
       "id": 671651567,
@@ -972,7 +1267,12 @@
       "default_branch": "main",
       "portfolio": "TSWG",
       "kind": "specification",
-      "lifecycle": "archived"
+      "lifecycle": "archived",
+      "classification": {
+        "method": "rule",
+        "rule": "portfolio_rules[4].prefix:tswg-",
+        "profile": "trustoverip"
+      }
     },
     {
       "id": 1179914877,
@@ -988,7 +1288,12 @@
       "default_branch": "main",
       "portfolio": "TSWG",
       "kind": "specification",
-      "lifecycle": "active"
+      "lifecycle": "active",
+      "classification": {
+        "method": "rule",
+        "rule": "portfolio_rules[4].prefix:tswg-",
+        "profile": "trustoverip"
+      }
     },
     {
       "id": 766974445,
@@ -1004,7 +1309,12 @@
       "default_branch": "main",
       "portfolio": "TSWG",
       "kind": "specification",
-      "lifecycle": "dormant"
+      "lifecycle": "dormant",
+      "classification": {
+        "method": "rule",
+        "rule": "portfolio_rules[4].prefix:tswg-",
+        "profile": "trustoverip"
+      }
     },
     {
       "id": 671658091,
@@ -1020,7 +1330,12 @@
       "default_branch": "main",
       "portfolio": "TSWG",
       "kind": "specification",
-      "lifecycle": "archived"
+      "lifecycle": "archived",
+      "classification": {
+        "method": "rule",
+        "rule": "portfolio_rules[4].prefix:tswg-",
+        "profile": "trustoverip"
+      }
     },
     {
       "id": 671557407,
@@ -1036,7 +1351,12 @@
       "default_branch": "main",
       "portfolio": "TSWG",
       "kind": "specification",
-      "lifecycle": "archived"
+      "lifecycle": "archived",
+      "classification": {
+        "method": "rule",
+        "rule": "portfolio_rules[4].prefix:tswg-",
+        "profile": "trustoverip"
+      }
     },
     {
       "id": 671654917,
@@ -1052,7 +1372,12 @@
       "default_branch": "main",
       "portfolio": "TSWG",
       "kind": "specification",
-      "lifecycle": "archived"
+      "lifecycle": "archived",
+      "classification": {
+        "method": "rule",
+        "rule": "portfolio_rules[4].prefix:tswg-",
+        "profile": "trustoverip"
+      }
     },
     {
       "id": 671644507,
@@ -1068,7 +1393,12 @@
       "default_branch": "main",
       "portfolio": "TSWG",
       "kind": "specification",
-      "lifecycle": "archived"
+      "lifecycle": "archived",
+      "classification": {
+        "method": "rule",
+        "rule": "portfolio_rules[4].prefix:tswg-",
+        "profile": "trustoverip"
+      }
     },
     {
       "id": 802551224,
@@ -1084,7 +1414,12 @@
       "default_branch": "main",
       "portfolio": "TSWG",
       "kind": "specification",
-      "lifecycle": "dormant"
+      "lifecycle": "dormant",
+      "classification": {
+        "method": "rule",
+        "rule": "portfolio_rules[4].prefix:tswg-",
+        "profile": "trustoverip"
+      }
     },
     {
       "id": 737364303,
@@ -1100,7 +1435,12 @@
       "default_branch": "main",
       "portfolio": "TSWG",
       "kind": "repository",
-      "lifecycle": "active"
+      "lifecycle": "active",
+      "classification": {
+        "method": "rule",
+        "rule": "portfolio_rules[4].prefix:tswg-",
+        "profile": "trustoverip"
+      }
     },
     {
       "id": 984200917,
@@ -1116,7 +1456,12 @@
       "default_branch": "master",
       "portfolio": "TSWG",
       "kind": "repository",
-      "lifecycle": "dormant"
+      "lifecycle": "dormant",
+      "classification": {
+        "method": "rule",
+        "rule": "portfolio_rules[4].prefix:tswg-",
+        "profile": "trustoverip"
+      }
     },
     {
       "id": 683009135,
@@ -1132,7 +1477,12 @@
       "default_branch": "main",
       "portfolio": "TSWG",
       "kind": "repository",
-      "lifecycle": "dormant"
+      "lifecycle": "dormant",
+      "classification": {
+        "method": "rule",
+        "rule": "portfolio_rules[4].prefix:tswg-",
+        "profile": "trustoverip"
+      }
     },
     {
       "id": 373881965,
@@ -1148,7 +1498,12 @@
       "default_branch": "main",
       "portfolio": "TSWG",
       "kind": "task-force",
-      "lifecycle": "archived"
+      "lifecycle": "archived",
+      "classification": {
+        "method": "rule",
+        "rule": "portfolio_rules[4].prefix:tswg-",
+        "profile": "trustoverip"
+      }
     },
     {
       "id": 693117106,
@@ -1164,7 +1519,12 @@
       "default_branch": "main",
       "portfolio": "TSWG",
       "kind": "specification",
-      "lifecycle": "archived"
+      "lifecycle": "archived",
+      "classification": {
+        "method": "rule",
+        "rule": "portfolio_rules[4].prefix:tswg-",
+        "profile": "trustoverip"
+      }
     },
     {
       "id": 760897952,
@@ -1180,7 +1540,12 @@
       "default_branch": "main",
       "portfolio": "TSWG",
       "kind": "specification",
-      "lifecycle": "active"
+      "lifecycle": "active",
+      "classification": {
+        "method": "rule",
+        "rule": "portfolio_rules[4].prefix:tswg-",
+        "profile": "trustoverip"
+      }
     },
     {
       "id": 1090174136,
@@ -1196,7 +1561,12 @@
       "default_branch": "main",
       "portfolio": "Unclassified",
       "kind": "repository",
-      "lifecycle": "active"
+      "lifecycle": "active",
+      "classification": {
+        "method": "unclassified",
+        "rule": null,
+        "profile": "trustoverip"
+      }
     },
     {
       "id": 267169742,
@@ -1212,7 +1582,12 @@
       "default_branch": "master",
       "portfolio": "Unclassified",
       "kind": "repository",
-      "lifecycle": "archived"
+      "lifecycle": "archived",
+      "classification": {
+        "method": "unclassified",
+        "rule": null,
+        "profile": "trustoverip"
+      }
     },
     {
       "id": 653618181,
@@ -1228,7 +1603,12 @@
       "default_branch": "main",
       "portfolio": "Unclassified",
       "kind": "repository",
-      "lifecycle": "dormant"
+      "lifecycle": "dormant",
+      "classification": {
+        "method": "unclassified",
+        "rule": null,
+        "profile": "trustoverip"
+      }
     },
     {
       "id": 379307929,
@@ -1244,7 +1624,12 @@
       "default_branch": "main",
       "portfolio": "Unclassified",
       "kind": "workgroup",
-      "lifecycle": "archived"
+      "lifecycle": "archived",
+      "classification": {
+        "method": "unclassified",
+        "rule": null,
+        "profile": "trustoverip"
+      }
     },
     {
       "id": 317303537,
@@ -1260,7 +1645,12 @@
       "default_branch": "main",
       "portfolio": "Unclassified",
       "kind": "repository",
-      "lifecycle": "archived"
+      "lifecycle": "archived",
+      "classification": {
+        "method": "unclassified",
+        "rule": null,
+        "profile": "trustoverip"
+      }
     },
     {
       "id": 745534752,
@@ -1276,7 +1666,12 @@
       "default_branch": "main",
       "portfolio": "Unclassified",
       "kind": "repository",
-      "lifecycle": "active"
+      "lifecycle": "active",
+      "classification": {
+        "method": "unclassified",
+        "rule": null,
+        "profile": "trustoverip"
+      }
     },
     {
       "id": 268527607,
@@ -1292,7 +1687,12 @@
       "default_branch": "master",
       "portfolio": "Unclassified",
       "kind": "workgroup",
-      "lifecycle": "archived"
+      "lifecycle": "archived",
+      "classification": {
+        "method": "unclassified",
+        "rule": null,
+        "profile": "trustoverip"
+      }
     },
     {
       "id": 378077283,
@@ -1308,7 +1708,12 @@
       "default_branch": "main",
       "portfolio": "Unclassified",
       "kind": "repository",
-      "lifecycle": "archived"
+      "lifecycle": "archived",
+      "classification": {
+        "method": "unclassified",
+        "rule": null,
+        "profile": "trustoverip"
+      }
     },
     {
       "id": 377375649,
@@ -1324,7 +1729,12 @@
       "default_branch": "main",
       "portfolio": "Unclassified",
       "kind": "repository",
-      "lifecycle": "archived"
+      "lifecycle": "archived",
+      "classification": {
+        "method": "unclassified",
+        "rule": null,
+        "profile": "trustoverip"
+      }
     },
     {
       "id": 386694107,
@@ -1340,7 +1750,12 @@
       "default_branch": "main",
       "portfolio": "Unclassified",
       "kind": "repository",
-      "lifecycle": "archived"
+      "lifecycle": "archived",
+      "classification": {
+        "method": "unclassified",
+        "rule": null,
+        "profile": "trustoverip"
+      }
     },
     {
       "id": 427149063,
@@ -1356,7 +1771,12 @@
       "default_branch": "main",
       "portfolio": "Unclassified",
       "kind": "workgroup",
-      "lifecycle": "archived"
+      "lifecycle": "archived",
+      "classification": {
+        "method": "unclassified",
+        "rule": null,
+        "profile": "trustoverip"
+      }
     },
     {
       "id": 1193948037,
@@ -1372,7 +1792,12 @@
       "default_branch": "main",
       "portfolio": "Unclassified",
       "kind": "repository",
-      "lifecycle": "active"
+      "lifecycle": "active",
+      "classification": {
+        "method": "unclassified",
+        "rule": null,
+        "profile": "trustoverip"
+      }
     },
     {
       "id": 498224677,
@@ -1388,7 +1813,12 @@
       "default_branch": "main",
       "portfolio": "Unclassified",
       "kind": "workgroup",
-      "lifecycle": "archived"
+      "lifecycle": "archived",
+      "classification": {
+        "method": "unclassified",
+        "rule": null,
+        "profile": "trustoverip"
+      }
     },
     {
       "id": 331333996,
@@ -1404,7 +1834,12 @@
       "default_branch": "main",
       "portfolio": "Unclassified",
       "kind": "repository",
-      "lifecycle": "archived"
+      "lifecycle": "archived",
+      "classification": {
+        "method": "unclassified",
+        "rule": null,
+        "profile": "trustoverip"
+      }
     },
     {
       "id": 677489427,
@@ -1420,7 +1855,12 @@
       "default_branch": "main",
       "portfolio": "Unclassified",
       "kind": "template",
-      "lifecycle": "archived"
+      "lifecycle": "archived",
+      "classification": {
+        "method": "unclassified",
+        "rule": null,
+        "profile": "trustoverip"
+      }
     },
     {
       "id": 267143276,
@@ -1436,7 +1876,12 @@
       "default_branch": "main",
       "portfolio": "Unclassified",
       "kind": "repository",
-      "lifecycle": "active"
+      "lifecycle": "active",
+      "classification": {
+        "method": "unclassified",
+        "rule": null,
+        "profile": "trustoverip"
+      }
     },
     {
       "id": 435614279,
@@ -1452,7 +1897,12 @@
       "default_branch": "main",
       "portfolio": "Unclassified",
       "kind": "repository",
-      "lifecycle": "archived"
+      "lifecycle": "archived",
+      "classification": {
+        "method": "unclassified",
+        "rule": null,
+        "profile": "trustoverip"
+      }
     },
     {
       "id": 314282495,
@@ -1468,7 +1918,12 @@
       "default_branch": "main",
       "portfolio": "Unclassified",
       "kind": "repository",
-      "lifecycle": "archived"
+      "lifecycle": "archived",
+      "classification": {
+        "method": "unclassified",
+        "rule": null,
+        "profile": "trustoverip"
+      }
     },
     {
       "id": 290789325,
@@ -1484,7 +1939,12 @@
       "default_branch": "master",
       "portfolio": "Unclassified",
       "kind": "repository",
-      "lifecycle": "archived"
+      "lifecycle": "archived",
+      "classification": {
+        "method": "unclassified",
+        "rule": null,
+        "profile": "trustoverip"
+      }
     },
     {
       "id": 309505047,
@@ -1500,7 +1960,12 @@
       "default_branch": "main",
       "portfolio": "Unclassified",
       "kind": "repository",
-      "lifecycle": "archived"
+      "lifecycle": "archived",
+      "classification": {
+        "method": "unclassified",
+        "rule": null,
+        "profile": "trustoverip"
+      }
     },
     {
       "id": 780443784,
@@ -1516,7 +1981,12 @@
       "default_branch": "main",
       "portfolio": "Unclassified",
       "kind": "public-review",
-      "lifecycle": "dormant"
+      "lifecycle": "dormant",
+      "classification": {
+        "method": "unclassified",
+        "rule": null,
+        "profile": "trustoverip"
+      }
     },
     {
       "id": 386694363,
@@ -1532,7 +2002,12 @@
       "default_branch": "main",
       "portfolio": "Unclassified",
       "kind": "specification",
-      "lifecycle": "archived"
+      "lifecycle": "archived",
+      "classification": {
+        "method": "unclassified",
+        "rule": null,
+        "profile": "trustoverip"
+      }
     },
     {
       "id": 267160530,
@@ -1548,7 +2023,12 @@
       "default_branch": "master",
       "portfolio": "Unclassified",
       "kind": "repository",
-      "lifecycle": "archived"
+      "lifecycle": "archived",
+      "classification": {
+        "method": "unclassified",
+        "rule": null,
+        "profile": "trustoverip"
+      }
     },
     {
       "id": 731743288,
@@ -1564,7 +2044,12 @@
       "default_branch": "main",
       "portfolio": "Unclassified",
       "kind": "template",
-      "lifecycle": "dormant"
+      "lifecycle": "dormant",
+      "classification": {
+        "method": "unclassified",
+        "rule": null,
+        "profile": "trustoverip"
+      }
     },
     {
       "id": 468473119,
@@ -1580,7 +2065,12 @@
       "default_branch": "main",
       "portfolio": "Unclassified",
       "kind": "template",
-      "lifecycle": "archived"
+      "lifecycle": "archived",
+      "classification": {
+        "method": "unclassified",
+        "rule": null,
+        "profile": "trustoverip"
+      }
     },
     {
       "id": 501335527,
@@ -1596,7 +2086,12 @@
       "default_branch": "main",
       "portfolio": "Unclassified",
       "kind": "repository",
-      "lifecycle": "dormant"
+      "lifecycle": "dormant",
+      "classification": {
+        "method": "unclassified",
+        "rule": null,
+        "profile": "trustoverip"
+      }
     },
     {
       "id": 376154263,
@@ -1612,7 +2107,12 @@
       "default_branch": "main",
       "portfolio": "Unclassified",
       "kind": "template",
-      "lifecycle": "archived"
+      "lifecycle": "archived",
+      "classification": {
+        "method": "unclassified",
+        "rule": null,
+        "profile": "trustoverip"
+      }
     },
     {
       "id": 377375089,
@@ -1628,7 +2128,12 @@
       "default_branch": "main",
       "portfolio": "Unclassified",
       "kind": "repository",
-      "lifecycle": "dormant"
+      "lifecycle": "dormant",
+      "classification": {
+        "method": "unclassified",
+        "rule": null,
+        "profile": "trustoverip"
+      }
     },
     {
       "id": 1177773225,
@@ -1644,7 +2149,12 @@
       "default_branch": "main",
       "portfolio": "Unclassified",
       "kind": "template",
-      "lifecycle": "active"
+      "lifecycle": "active",
+      "classification": {
+        "method": "unclassified",
+        "rule": null,
+        "profile": "trustoverip"
+      }
     },
     {
       "id": 592529577,
@@ -1660,7 +2170,12 @@
       "default_branch": "main",
       "portfolio": "Unclassified",
       "kind": "repository",
-      "lifecycle": "archived"
+      "lifecycle": "archived",
+      "classification": {
+        "method": "unclassified",
+        "rule": null,
+        "profile": "trustoverip"
+      }
     },
     {
       "id": 501309701,
@@ -1676,7 +2191,12 @@
       "default_branch": "main",
       "portfolio": "Unclassified",
       "kind": "workgroup",
-      "lifecycle": "archived"
+      "lifecycle": "archived",
+      "classification": {
+        "method": "unclassified",
+        "rule": null,
+        "profile": "trustoverip"
+      }
     },
     {
       "id": 361840650,
@@ -1692,7 +2212,12 @@
       "default_branch": "main",
       "portfolio": "Unclassified",
       "kind": "repository",
-      "lifecycle": "archived"
+      "lifecycle": "archived",
+      "classification": {
+        "method": "unclassified",
+        "rule": null,
+        "profile": "trustoverip"
+      }
     },
     {
       "id": 268527967,
@@ -1708,7 +2233,12 @@
       "default_branch": "master",
       "portfolio": "Unclassified",
       "kind": "workgroup",
-      "lifecycle": "archived"
+      "lifecycle": "archived",
+      "classification": {
+        "method": "unclassified",
+        "rule": null,
+        "profile": "trustoverip"
+      }
     },
     {
       "id": 383218571,
@@ -1724,7 +2254,12 @@
       "default_branch": "main",
       "portfolio": "Unclassified",
       "kind": "repository",
-      "lifecycle": "archived"
+      "lifecycle": "archived",
+      "classification": {
+        "method": "unclassified",
+        "rule": null,
+        "profile": "trustoverip"
+      }
     },
     {
       "id": 438726462,
@@ -1740,7 +2275,12 @@
       "default_branch": "main",
       "portfolio": "vLEI / EGF",
       "kind": "public-review",
-      "lifecycle": "archived"
+      "lifecycle": "archived",
+      "classification": {
+        "method": "rule",
+        "rule": "portfolio_rules[6].prefix:egf-",
+        "profile": "trustoverip"
+      }
     },
     {
       "id": 927192895,
@@ -1756,7 +2296,12 @@
       "default_branch": "main",
       "portfolio": "vLEI / EGF",
       "kind": "public-review",
-      "lifecycle": "dormant"
+      "lifecycle": "dormant",
+      "classification": {
+        "method": "rule",
+        "rule": "portfolio_rules[6].prefix:vlei-",
+        "profile": "trustoverip"
+      }
     },
     {
       "id": 1118371782,
@@ -1772,7 +2317,12 @@
       "default_branch": "main",
       "portfolio": "vLEI / EGF",
       "kind": "public-review",
-      "lifecycle": "active"
+      "lifecycle": "active",
+      "classification": {
+        "method": "rule",
+        "rule": "portfolio_rules[6].prefix:vlei-",
+        "profile": "trustoverip"
+      }
     },
     {
       "id": 684633732,
@@ -1788,10 +2338,171 @@
       "default_branch": "main",
       "portfolio": "vLEI / EGF",
       "kind": "public-review",
-      "lifecycle": "archived"
+      "lifecycle": "archived",
+      "classification": {
+        "method": "rule",
+        "rule": "portfolio_rules[6].prefix:vlei-",
+        "profile": "trustoverip"
+      }
     }
   ],
   "events": [
+    {
+      "kind": "issue",
+      "repository": "trustoverip/kswg-cesr-specification",
+      "portfolio": "KERI Suite",
+      "repo_kind": "specification",
+      "timestamp": "2026-08-25T12:41:33Z",
+      "title": "Upgrade Spec-Up-T to 1.6.21",
+      "url": "https://github.com/trustoverip/kswg-cesr-specification/issues/167",
+      "number": 167,
+      "sha": null,
+      "state": "closed",
+      "materiality": 3
+    },
+    {
+      "kind": "pull_request",
+      "repository": "trustoverip/kswg-cesr-specification",
+      "portfolio": "KERI Suite",
+      "repo_kind": "specification",
+      "timestamp": "2026-08-25T12:41:32Z",
+      "title": "fix: rapid scroll bug fixed by v1.6.21 of Spec Up T",
+      "url": "https://github.com/trustoverip/kswg-cesr-specification/pull/168",
+      "number": 168,
+      "sha": null,
+      "state": "merged",
+      "materiality": 5
+    },
+    {
+      "kind": "commit",
+      "repository": "trustoverip/kswg-cesr-specification",
+      "portfolio": "KERI Suite",
+      "repo_kind": "specification",
+      "timestamp": "2026-08-25T12:41:31Z",
+      "title": "Merge pull request #168 from kentbull/spec-up-t-rapid-scroll-bugfix",
+      "url": "https://github.com/trustoverip/kswg-cesr-specification/commit/af9ecc7dafd9c008daf36bc11f4289ea88ba9192",
+      "number": null,
+      "sha": "af9ecc7dafd9c008daf36bc11f4289ea88ba9192",
+      "state": null,
+      "materiality": 2
+    },
+    {
+      "kind": "pull_request",
+      "repository": "trustoverip/kswg-cesr-specification",
+      "portfolio": "KERI Suite",
+      "repo_kind": "specification",
+      "timestamp": "2026-08-25T12:40:54Z",
+      "title": "Add post-quantum signature primitives (FN-DSA, ML-DSA, SLH-DSA)",
+      "url": "https://github.com/trustoverip/kswg-cesr-specification/pull/165",
+      "number": 165,
+      "sha": null,
+      "state": "open",
+      "materiality": 4
+    },
+    {
+      "kind": "pull_request",
+      "repository": "trustoverip/kswg-acdc-specification",
+      "portfolio": "KERI Suite",
+      "repo_kind": "specification",
+      "timestamp": "2026-08-25T12:35:02Z",
+      "title": "(on main) Pin the derivation-path index radix to lowercase hexadecimal",
+      "url": "https://github.com/trustoverip/kswg-acdc-specification/pull/206",
+      "number": 206,
+      "sha": null,
+      "state": "merged",
+      "materiality": 5
+    },
+    {
+      "kind": "commit",
+      "repository": "trustoverip/kswg-acdc-specification",
+      "portfolio": "KERI Suite",
+      "repo_kind": "specification",
+      "timestamp": "2026-08-25T12:35:01Z",
+      "title": "Merge pull request #206 from dhh1128/pin-derivation-path-radix",
+      "url": "https://github.com/trustoverip/kswg-acdc-specification/commit/1d066aef0605da85bb10c7187261fd765e265b7a",
+      "number": null,
+      "sha": "1d066aef0605da85bb10c7187261fd765e265b7a",
+      "state": null,
+      "materiality": 2
+    },
+    {
+      "kind": "pull_request",
+      "repository": "trustoverip/kswg-acdc-specification",
+      "portfolio": "KERI Suite",
+      "repo_kind": "specification",
+      "timestamp": "2026-08-25T12:32:59Z",
+      "title": "(on v1.1) Add the `dp` disclosure-paths construct",
+      "url": "https://github.com/trustoverip/kswg-acdc-specification/pull/203",
+      "number": 203,
+      "sha": null,
+      "state": "merged",
+      "materiality": 5
+    },
+    {
+      "kind": "pull_request",
+      "repository": "trustoverip/kswg-acdc-specification",
+      "portfolio": "KERI Suite",
+      "repo_kind": "specification",
+      "timestamp": "2026-08-25T12:31:57Z",
+      "title": "(on v1.1) Restrict `-` and bare `_` in ACDC field labels",
+      "url": "https://github.com/trustoverip/kswg-acdc-specification/pull/202",
+      "number": 202,
+      "sha": null,
+      "state": "merged",
+      "materiality": 5
+    },
+    {
+      "kind": "issue",
+      "repository": "trustoverip/kswg-acdc-specification",
+      "portfolio": "KERI Suite",
+      "repo_kind": "specification",
+      "timestamp": "2026-08-25T12:30:43Z",
+      "title": "Upgrade Spec-Up-T to 1.6.21",
+      "url": "https://github.com/trustoverip/kswg-acdc-specification/issues/195",
+      "number": 195,
+      "sha": null,
+      "state": "closed",
+      "materiality": 3
+    },
+    {
+      "kind": "pull_request",
+      "repository": "trustoverip/kswg-acdc-specification",
+      "portfolio": "KERI Suite",
+      "repo_kind": "specification",
+      "timestamp": "2026-08-25T12:30:42Z",
+      "title": "fix: rapid scroll bug fixed by v1.6.21 of Spec Up T",
+      "url": "https://github.com/trustoverip/kswg-acdc-specification/pull/196",
+      "number": 196,
+      "sha": null,
+      "state": "merged",
+      "materiality": 5
+    },
+    {
+      "kind": "commit",
+      "repository": "trustoverip/kswg-acdc-specification",
+      "portfolio": "KERI Suite",
+      "repo_kind": "specification",
+      "timestamp": "2026-08-25T12:30:41Z",
+      "title": "Merge pull request #196 from kentbull/spec-up-t-rapid-scroll-bugfix",
+      "url": "https://github.com/trustoverip/kswg-acdc-specification/commit/2deae74257af4c04989b38727f6588656c95d82b",
+      "number": null,
+      "sha": "2deae74257af4c04989b38727f6588656c95d82b",
+      "state": null,
+      "materiality": 2
+    },
+    {
+      "kind": "pull_request",
+      "repository": "trustoverip/kswg-acdc-specification",
+      "portfolio": "KERI Suite",
+      "repo_kind": "specification",
+      "timestamp": "2026-08-25T12:30:11Z",
+      "title": "(on v1.1) Rename `u`-field term \"UUID\" to \"unique entropy (UE)\" (#191)",
+      "url": "https://github.com/trustoverip/kswg-acdc-specification/pull/194",
+      "number": 194,
+      "sha": null,
+      "state": "merged",
+      "materiality": 5
+    },
     {
       "kind": "pull_request",
       "repository": "trustoverip/kswg-acdc-specification",
@@ -2625,32 +3336,6 @@
       "materiality": 2
     },
     {
-      "kind": "issue",
-      "repository": "trustoverip/kswg-cesr-specification",
-      "portfolio": "KERI Suite",
-      "repo_kind": "specification",
-      "timestamp": "2026-08-21T06:35:42Z",
-      "title": "Upgrade Spec-Up-T to 1.6.21",
-      "url": "https://github.com/trustoverip/kswg-cesr-specification/issues/167",
-      "number": 167,
-      "sha": null,
-      "state": "open",
-      "materiality": 3
-    },
-    {
-      "kind": "issue",
-      "repository": "trustoverip/kswg-acdc-specification",
-      "portfolio": "KERI Suite",
-      "repo_kind": "specification",
-      "timestamp": "2026-08-21T06:35:06Z",
-      "title": "Upgrade Spec-Up-T to 1.6.21",
-      "url": "https://github.com/trustoverip/kswg-acdc-specification/issues/195",
-      "number": 195,
-      "sha": null,
-      "state": "open",
-      "materiality": 3
-    },
-    {
       "kind": "pull_request",
       "repository": "trustoverip/dtgwg-cred-spec",
       "portfolio": "DTG",
@@ -3309,21 +3994,21 @@
       "evidence": []
     },
     {
-      "id": "toip-collection-351ffd7cc593",
-      "category": "collection",
-      "subject": "trustoverip/kswg-cesr-specification",
-      "status": "open",
-      "materiality": 3,
-      "summary": "trustoverip/kswg-cesr-specification:release: list index out of range",
-      "evidence": []
-    },
-    {
       "id": "toip-collection-67a4f671f830",
       "category": "collection",
       "subject": "trustoverip/kswg-main-glossary",
       "status": "open",
       "materiality": 3,
       "summary": "trustoverip/kswg-main-glossary:commit: GitHub API 409 for /repos/trustoverip/kswg-main-glossary/commits: {\"message\":\"Git Repository is empty.\",\"documentation_url\":\"https://docs.github.com/rest/commits/commits#list-commits\",\"status\":\"409\"}",
+      "evidence": []
+    },
+    {
+      "id": "toip-collection-351ffd7cc593",
+      "category": "collection",
+      "subject": "trustoverip/kswg-cesr-specification",
+      "status": "open",
+      "materiality": 3,
+      "summary": "trustoverip/kswg-cesr-specification:release: list index out of range",
       "evidence": []
     },
     {
@@ -3339,11 +4024,335 @@
   "collection_errors": [
     "trustoverip/dtgwg-rcards-tf:commit: GitHub API 409 for /repos/trustoverip/dtgwg-rcards-tf/commits: {\"message\":\"Git Repository is empty.\",\"documentation_url\":\"https://docs.github.com/rest/commits/commits#list-commits\",\"status\":\"409\"}",
     "trustoverip/dtgwg-ux-tf:commit: GitHub API 409 for /repos/trustoverip/dtgwg-ux-tf/commits: {\"message\":\"Git Repository is empty.\",\"documentation_url\":\"https://docs.github.com/rest/commits/commits#list-commits\",\"status\":\"409\"}",
-    "trustoverip/kswg-cesr-specification:release: list index out of range",
     "trustoverip/kswg-main-glossary:commit: GitHub API 409 for /repos/trustoverip/kswg-main-glossary/commits: {\"message\":\"Git Repository is empty.\",\"documentation_url\":\"https://docs.github.com/rest/commits/commits#list-commits\",\"status\":\"409\"}",
+    "trustoverip/kswg-cesr-specification:release: list index out of range",
     "trustoverip/tswg-did-method-webs-specification:commit: GitHub API 409 for /repos/trustoverip/tswg-did-method-webs-specification/commits: {\"message\":\"Git Repository is empty.\",\"documentation_url\":\"https://docs.github.com/rest/commits/commits#list-commits\",\"status\":\"409\"}"
   ],
   "change_units": [
+    {
+      "id": "toip-change-0149af482e3c",
+      "repository": "trustoverip/kswg-cesr-specification",
+      "portfolio": "KERI Suite",
+      "repo_kind": "specification",
+      "title": "Upgrade Spec-Up-T to 1.6.21",
+      "timestamp": "2026-08-25T12:41:33Z",
+      "materiality": 3,
+      "event_kinds": [
+        "issue"
+      ],
+      "event_count": 1,
+      "evidence": [
+        "https://github.com/trustoverip/kswg-cesr-specification/issues/167"
+      ],
+      "events": [
+        {
+          "kind": "issue",
+          "repository": "trustoverip/kswg-cesr-specification",
+          "portfolio": "KERI Suite",
+          "repo_kind": "specification",
+          "timestamp": "2026-08-25T12:41:33Z",
+          "title": "Upgrade Spec-Up-T to 1.6.21",
+          "url": "https://github.com/trustoverip/kswg-cesr-specification/issues/167",
+          "number": 167,
+          "sha": null,
+          "state": "closed",
+          "materiality": 3
+        }
+      ]
+    },
+    {
+      "id": "toip-change-8d0de3e197f6",
+      "repository": "trustoverip/kswg-cesr-specification",
+      "portfolio": "KERI Suite",
+      "repo_kind": "specification",
+      "title": "fix: rapid scroll bug fixed by v1.6.21 of Spec Up T",
+      "timestamp": "2026-08-25T12:41:32Z",
+      "materiality": 5,
+      "event_kinds": [
+        "commit",
+        "pull_request"
+      ],
+      "event_count": 2,
+      "evidence": [
+        "https://github.com/trustoverip/kswg-cesr-specification/pull/168",
+        "https://github.com/trustoverip/kswg-cesr-specification/commit/af9ecc7dafd9c008daf36bc11f4289ea88ba9192"
+      ],
+      "events": [
+        {
+          "kind": "pull_request",
+          "repository": "trustoverip/kswg-cesr-specification",
+          "portfolio": "KERI Suite",
+          "repo_kind": "specification",
+          "timestamp": "2026-08-25T12:41:32Z",
+          "title": "fix: rapid scroll bug fixed by v1.6.21 of Spec Up T",
+          "url": "https://github.com/trustoverip/kswg-cesr-specification/pull/168",
+          "number": 168,
+          "sha": null,
+          "state": "merged",
+          "materiality": 5
+        },
+        {
+          "kind": "commit",
+          "repository": "trustoverip/kswg-cesr-specification",
+          "portfolio": "KERI Suite",
+          "repo_kind": "specification",
+          "timestamp": "2026-08-25T12:41:31Z",
+          "title": "Merge pull request #168 from kentbull/spec-up-t-rapid-scroll-bugfix",
+          "url": "https://github.com/trustoverip/kswg-cesr-specification/commit/af9ecc7dafd9c008daf36bc11f4289ea88ba9192",
+          "number": null,
+          "sha": "af9ecc7dafd9c008daf36bc11f4289ea88ba9192",
+          "state": null,
+          "materiality": 2
+        }
+      ]
+    },
+    {
+      "id": "toip-change-afbfb7c0c404",
+      "repository": "trustoverip/kswg-cesr-specification",
+      "portfolio": "KERI Suite",
+      "repo_kind": "specification",
+      "title": "Add post-quantum signature primitives (FN-DSA, ML-DSA, SLH-DSA)",
+      "timestamp": "2026-08-25T12:40:54Z",
+      "materiality": 4,
+      "event_kinds": [
+        "pull_request"
+      ],
+      "event_count": 1,
+      "evidence": [
+        "https://github.com/trustoverip/kswg-cesr-specification/pull/165"
+      ],
+      "events": [
+        {
+          "kind": "pull_request",
+          "repository": "trustoverip/kswg-cesr-specification",
+          "portfolio": "KERI Suite",
+          "repo_kind": "specification",
+          "timestamp": "2026-08-25T12:40:54Z",
+          "title": "Add post-quantum signature primitives (FN-DSA, ML-DSA, SLH-DSA)",
+          "url": "https://github.com/trustoverip/kswg-cesr-specification/pull/165",
+          "number": 165,
+          "sha": null,
+          "state": "open",
+          "materiality": 4
+        }
+      ]
+    },
+    {
+      "id": "toip-change-1e631a687d21",
+      "repository": "trustoverip/kswg-acdc-specification",
+      "portfolio": "KERI Suite",
+      "repo_kind": "specification",
+      "title": "(on main) Pin the derivation-path index radix to lowercase hexadecimal",
+      "timestamp": "2026-08-25T12:35:02Z",
+      "materiality": 5,
+      "event_kinds": [
+        "commit",
+        "pull_request"
+      ],
+      "event_count": 2,
+      "evidence": [
+        "https://github.com/trustoverip/kswg-acdc-specification/pull/206",
+        "https://github.com/trustoverip/kswg-acdc-specification/commit/1d066aef0605da85bb10c7187261fd765e265b7a"
+      ],
+      "events": [
+        {
+          "kind": "pull_request",
+          "repository": "trustoverip/kswg-acdc-specification",
+          "portfolio": "KERI Suite",
+          "repo_kind": "specification",
+          "timestamp": "2026-08-25T12:35:02Z",
+          "title": "(on main) Pin the derivation-path index radix to lowercase hexadecimal",
+          "url": "https://github.com/trustoverip/kswg-acdc-specification/pull/206",
+          "number": 206,
+          "sha": null,
+          "state": "merged",
+          "materiality": 5
+        },
+        {
+          "kind": "commit",
+          "repository": "trustoverip/kswg-acdc-specification",
+          "portfolio": "KERI Suite",
+          "repo_kind": "specification",
+          "timestamp": "2026-08-25T12:35:01Z",
+          "title": "Merge pull request #206 from dhh1128/pin-derivation-path-radix",
+          "url": "https://github.com/trustoverip/kswg-acdc-specification/commit/1d066aef0605da85bb10c7187261fd765e265b7a",
+          "number": null,
+          "sha": "1d066aef0605da85bb10c7187261fd765e265b7a",
+          "state": null,
+          "materiality": 2
+        }
+      ]
+    },
+    {
+      "id": "toip-change-2bb38c5e3dfd",
+      "repository": "trustoverip/kswg-acdc-specification",
+      "portfolio": "KERI Suite",
+      "repo_kind": "specification",
+      "title": "(on v1.1) Add the `dp` disclosure-paths construct",
+      "timestamp": "2026-08-25T12:32:59Z",
+      "materiality": 5,
+      "event_kinds": [
+        "pull_request"
+      ],
+      "event_count": 1,
+      "evidence": [
+        "https://github.com/trustoverip/kswg-acdc-specification/pull/203"
+      ],
+      "events": [
+        {
+          "kind": "pull_request",
+          "repository": "trustoverip/kswg-acdc-specification",
+          "portfolio": "KERI Suite",
+          "repo_kind": "specification",
+          "timestamp": "2026-08-25T12:32:59Z",
+          "title": "(on v1.1) Add the `dp` disclosure-paths construct",
+          "url": "https://github.com/trustoverip/kswg-acdc-specification/pull/203",
+          "number": 203,
+          "sha": null,
+          "state": "merged",
+          "materiality": 5
+        }
+      ]
+    },
+    {
+      "id": "toip-change-25b59870670c",
+      "repository": "trustoverip/kswg-acdc-specification",
+      "portfolio": "KERI Suite",
+      "repo_kind": "specification",
+      "title": "(on v1.1) Restrict `-` and bare `_` in ACDC field labels",
+      "timestamp": "2026-08-25T12:31:57Z",
+      "materiality": 5,
+      "event_kinds": [
+        "pull_request"
+      ],
+      "event_count": 1,
+      "evidence": [
+        "https://github.com/trustoverip/kswg-acdc-specification/pull/202"
+      ],
+      "events": [
+        {
+          "kind": "pull_request",
+          "repository": "trustoverip/kswg-acdc-specification",
+          "portfolio": "KERI Suite",
+          "repo_kind": "specification",
+          "timestamp": "2026-08-25T12:31:57Z",
+          "title": "(on v1.1) Restrict `-` and bare `_` in ACDC field labels",
+          "url": "https://github.com/trustoverip/kswg-acdc-specification/pull/202",
+          "number": 202,
+          "sha": null,
+          "state": "merged",
+          "materiality": 5
+        }
+      ]
+    },
+    {
+      "id": "toip-change-dbdda1de6d8b",
+      "repository": "trustoverip/kswg-acdc-specification",
+      "portfolio": "KERI Suite",
+      "repo_kind": "specification",
+      "title": "Upgrade Spec-Up-T to 1.6.21",
+      "timestamp": "2026-08-25T12:30:43Z",
+      "materiality": 3,
+      "event_kinds": [
+        "issue"
+      ],
+      "event_count": 1,
+      "evidence": [
+        "https://github.com/trustoverip/kswg-acdc-specification/issues/195"
+      ],
+      "events": [
+        {
+          "kind": "issue",
+          "repository": "trustoverip/kswg-acdc-specification",
+          "portfolio": "KERI Suite",
+          "repo_kind": "specification",
+          "timestamp": "2026-08-25T12:30:43Z",
+          "title": "Upgrade Spec-Up-T to 1.6.21",
+          "url": "https://github.com/trustoverip/kswg-acdc-specification/issues/195",
+          "number": 195,
+          "sha": null,
+          "state": "closed",
+          "materiality": 3
+        }
+      ]
+    },
+    {
+      "id": "toip-change-22c2eed8ca56",
+      "repository": "trustoverip/kswg-acdc-specification",
+      "portfolio": "KERI Suite",
+      "repo_kind": "specification",
+      "title": "fix: rapid scroll bug fixed by v1.6.21 of Spec Up T",
+      "timestamp": "2026-08-25T12:30:42Z",
+      "materiality": 5,
+      "event_kinds": [
+        "commit",
+        "pull_request"
+      ],
+      "event_count": 2,
+      "evidence": [
+        "https://github.com/trustoverip/kswg-acdc-specification/pull/196",
+        "https://github.com/trustoverip/kswg-acdc-specification/commit/2deae74257af4c04989b38727f6588656c95d82b"
+      ],
+      "events": [
+        {
+          "kind": "pull_request",
+          "repository": "trustoverip/kswg-acdc-specification",
+          "portfolio": "KERI Suite",
+          "repo_kind": "specification",
+          "timestamp": "2026-08-25T12:30:42Z",
+          "title": "fix: rapid scroll bug fixed by v1.6.21 of Spec Up T",
+          "url": "https://github.com/trustoverip/kswg-acdc-specification/pull/196",
+          "number": 196,
+          "sha": null,
+          "state": "merged",
+          "materiality": 5
+        },
+        {
+          "kind": "commit",
+          "repository": "trustoverip/kswg-acdc-specification",
+          "portfolio": "KERI Suite",
+          "repo_kind": "specification",
+          "timestamp": "2026-08-25T12:30:41Z",
+          "title": "Merge pull request #196 from kentbull/spec-up-t-rapid-scroll-bugfix",
+          "url": "https://github.com/trustoverip/kswg-acdc-specification/commit/2deae74257af4c04989b38727f6588656c95d82b",
+          "number": null,
+          "sha": "2deae74257af4c04989b38727f6588656c95d82b",
+          "state": null,
+          "materiality": 2
+        }
+      ]
+    },
+    {
+      "id": "toip-change-efc466fce3ef",
+      "repository": "trustoverip/kswg-acdc-specification",
+      "portfolio": "KERI Suite",
+      "repo_kind": "specification",
+      "title": "(on v1.1) Rename `u`-field term \"UUID\" to \"unique entropy (UE)\" (#191)",
+      "timestamp": "2026-08-25T12:30:11Z",
+      "materiality": 5,
+      "event_kinds": [
+        "pull_request"
+      ],
+      "event_count": 1,
+      "evidence": [
+        "https://github.com/trustoverip/kswg-acdc-specification/pull/194"
+      ],
+      "events": [
+        {
+          "kind": "pull_request",
+          "repository": "trustoverip/kswg-acdc-specification",
+          "portfolio": "KERI Suite",
+          "repo_kind": "specification",
+          "timestamp": "2026-08-25T12:30:11Z",
+          "title": "(on v1.1) Rename `u`-field term \"UUID\" to \"unique entropy (UE)\" (#191)",
+          "url": "https://github.com/trustoverip/kswg-acdc-specification/pull/194",
+          "number": 194,
+          "sha": null,
+          "state": "merged",
+          "materiality": 5
+        }
+      ]
+    },
     {
       "id": "toip-change-d47e2ee36009",
       "repository": "trustoverip/kswg-acdc-specification",
@@ -5041,68 +6050,6 @@
       ]
     },
     {
-      "id": "toip-change-0149af482e3c",
-      "repository": "trustoverip/kswg-cesr-specification",
-      "portfolio": "KERI Suite",
-      "repo_kind": "specification",
-      "title": "Upgrade Spec-Up-T to 1.6.21",
-      "timestamp": "2026-08-21T06:35:42Z",
-      "materiality": 3,
-      "event_kinds": [
-        "issue"
-      ],
-      "event_count": 1,
-      "evidence": [
-        "https://github.com/trustoverip/kswg-cesr-specification/issues/167"
-      ],
-      "events": [
-        {
-          "kind": "issue",
-          "repository": "trustoverip/kswg-cesr-specification",
-          "portfolio": "KERI Suite",
-          "repo_kind": "specification",
-          "timestamp": "2026-08-21T06:35:42Z",
-          "title": "Upgrade Spec-Up-T to 1.6.21",
-          "url": "https://github.com/trustoverip/kswg-cesr-specification/issues/167",
-          "number": 167,
-          "sha": null,
-          "state": "open",
-          "materiality": 3
-        }
-      ]
-    },
-    {
-      "id": "toip-change-dbdda1de6d8b",
-      "repository": "trustoverip/kswg-acdc-specification",
-      "portfolio": "KERI Suite",
-      "repo_kind": "specification",
-      "title": "Upgrade Spec-Up-T to 1.6.21",
-      "timestamp": "2026-08-21T06:35:06Z",
-      "materiality": 3,
-      "event_kinds": [
-        "issue"
-      ],
-      "event_count": 1,
-      "evidence": [
-        "https://github.com/trustoverip/kswg-acdc-specification/issues/195"
-      ],
-      "events": [
-        {
-          "kind": "issue",
-          "repository": "trustoverip/kswg-acdc-specification",
-          "portfolio": "KERI Suite",
-          "repo_kind": "specification",
-          "timestamp": "2026-08-21T06:35:06Z",
-          "title": "Upgrade Spec-Up-T to 1.6.21",
-          "url": "https://github.com/trustoverip/kswg-acdc-specification/issues/195",
-          "number": 195,
-          "sha": null,
-          "state": "open",
-          "materiality": 3
-        }
-      ]
-    },
-    {
       "id": "toip-change-069a19804f86",
       "repository": "trustoverip/dtgwg-cred-spec",
       "portfolio": "DTG",
@@ -6230,6 +7177,62 @@
   "lifecycle_changes": [],
   "cross_portfolio_seams": [
     {
+      "id": "toip-seam-6200fd585395",
+      "strength": "explicit-reference",
+      "source_portfolio": "KERI Suite",
+      "target_portfolio": "Spec-Up",
+      "source_repository": "trustoverip/kswg-cesr-specification",
+      "target_repository": "trustoverip/spec-up",
+      "summary": "trustoverip/kswg-cesr-specification references trustoverip/spec-up in a current change unit.",
+      "materiality": 5,
+      "evidence": [
+        "https://github.com/trustoverip/kswg-cesr-specification/pull/168",
+        "https://github.com/trustoverip/kswg-cesr-specification/commit/af9ecc7dafd9c008daf36bc11f4289ea88ba9192"
+      ]
+    },
+    {
+      "id": "toip-seam-6a02c9bfb184",
+      "strength": "explicit-reference",
+      "source_portfolio": "KERI Suite",
+      "target_portfolio": "Spec-Up",
+      "source_repository": "trustoverip/kswg-cesr-specification",
+      "target_repository": "trustoverip/spec-up-t",
+      "summary": "trustoverip/kswg-cesr-specification references trustoverip/spec-up-t in a current change unit.",
+      "materiality": 5,
+      "evidence": [
+        "https://github.com/trustoverip/kswg-cesr-specification/pull/168",
+        "https://github.com/trustoverip/kswg-cesr-specification/commit/af9ecc7dafd9c008daf36bc11f4289ea88ba9192"
+      ]
+    },
+    {
+      "id": "toip-seam-49051641b0e0",
+      "strength": "explicit-reference",
+      "source_portfolio": "KERI Suite",
+      "target_portfolio": "Spec-Up",
+      "source_repository": "trustoverip/kswg-acdc-specification",
+      "target_repository": "trustoverip/spec-up",
+      "summary": "trustoverip/kswg-acdc-specification references trustoverip/spec-up in a current change unit.",
+      "materiality": 5,
+      "evidence": [
+        "https://github.com/trustoverip/kswg-acdc-specification/pull/196",
+        "https://github.com/trustoverip/kswg-acdc-specification/commit/2deae74257af4c04989b38727f6588656c95d82b"
+      ]
+    },
+    {
+      "id": "toip-seam-f6b71f4f656b",
+      "strength": "explicit-reference",
+      "source_portfolio": "KERI Suite",
+      "target_portfolio": "Spec-Up",
+      "source_repository": "trustoverip/kswg-acdc-specification",
+      "target_repository": "trustoverip/spec-up-t",
+      "summary": "trustoverip/kswg-acdc-specification references trustoverip/spec-up-t in a current change unit.",
+      "materiality": 5,
+      "evidence": [
+        "https://github.com/trustoverip/kswg-acdc-specification/pull/196",
+        "https://github.com/trustoverip/kswg-acdc-specification/commit/2deae74257af4c04989b38727f6588656c95d82b"
+      ]
+    },
+    {
       "id": "toip-seam-c5754e96e3a7",
       "strength": "explicit-reference",
       "source_portfolio": "KERI Suite",
@@ -6255,6 +7258,47 @@
       "evidence": [
         "https://github.com/trustoverip/kswg-keri-specification/commit/6810ea440bb6305b6d1b519c3691d0d66aef3360",
         "https://github.com/trustoverip/kswg-keri-specification/pull/302"
+      ]
+    },
+    {
+      "id": "toip-seam-e16a92224ab6",
+      "strength": "explicit-reference",
+      "source_portfolio": "KERI Suite",
+      "target_portfolio": "Unclassified",
+      "source_repository": "trustoverip/kswg-cesr-specification",
+      "target_repository": "trustoverip/SC",
+      "summary": "trustoverip/kswg-cesr-specification references trustoverip/SC in a current change unit.",
+      "materiality": 5,
+      "evidence": [
+        "https://github.com/trustoverip/kswg-cesr-specification/pull/168",
+        "https://github.com/trustoverip/kswg-cesr-specification/commit/af9ecc7dafd9c008daf36bc11f4289ea88ba9192"
+      ]
+    },
+    {
+      "id": "toip-seam-bd4eea3d0209",
+      "strength": "explicit-reference",
+      "source_portfolio": "KERI Suite",
+      "target_portfolio": "Unclassified",
+      "source_repository": "trustoverip/kswg-acdc-specification",
+      "target_repository": "trustoverip/SC",
+      "summary": "trustoverip/kswg-acdc-specification references trustoverip/SC in a current change unit.",
+      "materiality": 5,
+      "evidence": [
+        "https://github.com/trustoverip/kswg-acdc-specification/pull/203"
+      ]
+    },
+    {
+      "id": "toip-seam-66193b049c61",
+      "strength": "explicit-reference",
+      "source_portfolio": "KERI Suite",
+      "target_portfolio": "Unclassified",
+      "source_repository": "trustoverip/kswg-acdc-specification",
+      "target_repository": "trustoverip/SC",
+      "summary": "trustoverip/kswg-acdc-specification references trustoverip/SC in a current change unit.",
+      "materiality": 5,
+      "evidence": [
+        "https://github.com/trustoverip/kswg-acdc-specification/pull/196",
+        "https://github.com/trustoverip/kswg-acdc-specification/commit/2deae74257af4c04989b38727f6588656c95d82b"
       ]
     },
     {
@@ -6374,12 +7418,12 @@
       "source_portfolio": "DTG",
       "target_portfolio": "KERI Suite",
       "source_repository": "trustoverip/dtgwg-trust-tasks-tf",
-      "target_repository": "trustoverip/kswg-acdc-specification",
+      "target_repository": "trustoverip/kswg-cesr-specification",
       "summary": "Related portfolios DTG and KERI Suite both contain material change units in this observation window; cross-review may be warranted.",
       "materiality": 4,
       "evidence": [
         "https://github.com/trustoverip/dtgwg-trust-tasks-tf/pull/264",
-        "https://github.com/trustoverip/kswg-acdc-specification/pull/192"
+        "https://github.com/trustoverip/kswg-cesr-specification/pull/168"
       ]
     },
     {
@@ -6419,45 +7463,6 @@
       "materiality": 3,
       "evidence": [
         "https://github.com/trustoverip/dtgwg-cred-spec/issues/23"
-      ]
-    },
-    {
-      "id": "toip-seam-964f17d4bbc2",
-      "strength": "explicit-reference",
-      "source_portfolio": "KERI Suite",
-      "target_portfolio": "Spec-Up",
-      "source_repository": "trustoverip/kswg-dossier-specification",
-      "target_repository": "trustoverip/spec-up",
-      "summary": "trustoverip/kswg-dossier-specification references trustoverip/spec-up in a current change unit.",
-      "materiality": 3,
-      "evidence": [
-        "https://github.com/trustoverip/kswg-dossier-specification/issues/5"
-      ]
-    },
-    {
-      "id": "toip-seam-699a596501b1",
-      "strength": "explicit-reference",
-      "source_portfolio": "KERI Suite",
-      "target_portfolio": "Spec-Up",
-      "source_repository": "trustoverip/kswg-keri-specification",
-      "target_repository": "trustoverip/spec-up",
-      "summary": "trustoverip/kswg-keri-specification references trustoverip/spec-up in a current change unit.",
-      "materiality": 3,
-      "evidence": [
-        "https://github.com/trustoverip/kswg-keri-specification/issues/301"
-      ]
-    },
-    {
-      "id": "toip-seam-3ceaf83181c0",
-      "strength": "explicit-reference",
-      "source_portfolio": "KERI Suite",
-      "target_portfolio": "Spec-Up",
-      "source_repository": "trustoverip/kswg-keri-specification",
-      "target_repository": "trustoverip/spec-up-t",
-      "summary": "trustoverip/kswg-keri-specification references trustoverip/spec-up-t in a current change unit.",
-      "materiality": 3,
-      "evidence": [
-        "https://github.com/trustoverip/kswg-keri-specification/issues/301"
       ]
     },
     {
@@ -6510,6 +7515,45 @@
       "materiality": 3,
       "evidence": [
         "https://github.com/trustoverip/kswg-acdc-specification/issues/195"
+      ]
+    },
+    {
+      "id": "toip-seam-964f17d4bbc2",
+      "strength": "explicit-reference",
+      "source_portfolio": "KERI Suite",
+      "target_portfolio": "Spec-Up",
+      "source_repository": "trustoverip/kswg-dossier-specification",
+      "target_repository": "trustoverip/spec-up",
+      "summary": "trustoverip/kswg-dossier-specification references trustoverip/spec-up in a current change unit.",
+      "materiality": 3,
+      "evidence": [
+        "https://github.com/trustoverip/kswg-dossier-specification/issues/5"
+      ]
+    },
+    {
+      "id": "toip-seam-699a596501b1",
+      "strength": "explicit-reference",
+      "source_portfolio": "KERI Suite",
+      "target_portfolio": "Spec-Up",
+      "source_repository": "trustoverip/kswg-keri-specification",
+      "target_repository": "trustoverip/spec-up",
+      "summary": "trustoverip/kswg-keri-specification references trustoverip/spec-up in a current change unit.",
+      "materiality": 3,
+      "evidence": [
+        "https://github.com/trustoverip/kswg-keri-specification/issues/301"
+      ]
+    },
+    {
+      "id": "toip-seam-3ceaf83181c0",
+      "strength": "explicit-reference",
+      "source_portfolio": "KERI Suite",
+      "target_portfolio": "Spec-Up",
+      "source_repository": "trustoverip/kswg-keri-specification",
+      "target_repository": "trustoverip/spec-up-t",
+      "summary": "trustoverip/kswg-keri-specification references trustoverip/spec-up-t in a current change unit.",
+      "materiality": 3,
+      "evidence": [
+        "https://github.com/trustoverip/kswg-keri-specification/issues/301"
       ]
     },
     {
@@ -6632,6 +7676,94 @@
   ],
   "findings": [
     {
+      "id": "toip-finding-0459c6451923",
+      "category": "material-change",
+      "subject": "trustoverip/kswg-acdc-specification",
+      "status": "open",
+      "materiality": 5,
+      "urgency": 2,
+      "assurance_impact": 2,
+      "summary": "(on main) Pin the derivation-path index radix to lowercase hexadecimal",
+      "evidence": [
+        "https://github.com/trustoverip/kswg-acdc-specification/pull/206",
+        "https://github.com/trustoverip/kswg-acdc-specification/commit/1d066aef0605da85bb10c7187261fd765e265b7a"
+      ],
+      "disposition": null
+    },
+    {
+      "id": "toip-finding-0787c45ede93",
+      "category": "cross-portfolio-seam",
+      "subject": "trustoverip/kswg-cesr-specification",
+      "status": "open",
+      "materiality": 5,
+      "urgency": 2,
+      "assurance_impact": 3,
+      "summary": "trustoverip/kswg-cesr-specification references trustoverip/SC in a current change unit.",
+      "evidence": [
+        "https://github.com/trustoverip/kswg-cesr-specification/pull/168",
+        "https://github.com/trustoverip/kswg-cesr-specification/commit/af9ecc7dafd9c008daf36bc11f4289ea88ba9192"
+      ],
+      "disposition": null
+    },
+    {
+      "id": "toip-finding-15eb11b24940",
+      "category": "cross-portfolio-seam",
+      "subject": "trustoverip/kswg-acdc-specification",
+      "status": "open",
+      "materiality": 5,
+      "urgency": 2,
+      "assurance_impact": 3,
+      "summary": "trustoverip/kswg-acdc-specification references trustoverip/spec-up in a current change unit.",
+      "evidence": [
+        "https://github.com/trustoverip/kswg-acdc-specification/pull/196",
+        "https://github.com/trustoverip/kswg-acdc-specification/commit/2deae74257af4c04989b38727f6588656c95d82b"
+      ],
+      "disposition": null
+    },
+    {
+      "id": "toip-finding-21bb5ed96c8f",
+      "category": "cross-portfolio-seam",
+      "subject": "trustoverip/kswg-cesr-specification",
+      "status": "open",
+      "materiality": 5,
+      "urgency": 2,
+      "assurance_impact": 3,
+      "summary": "trustoverip/kswg-cesr-specification references trustoverip/spec-up in a current change unit.",
+      "evidence": [
+        "https://github.com/trustoverip/kswg-cesr-specification/pull/168",
+        "https://github.com/trustoverip/kswg-cesr-specification/commit/af9ecc7dafd9c008daf36bc11f4289ea88ba9192"
+      ],
+      "disposition": null
+    },
+    {
+      "id": "toip-finding-292c9836a3e0",
+      "category": "cross-portfolio-seam",
+      "subject": "trustoverip/kswg-acdc-specification",
+      "status": "open",
+      "materiality": 5,
+      "urgency": 2,
+      "assurance_impact": 3,
+      "summary": "trustoverip/kswg-acdc-specification references trustoverip/SC in a current change unit.",
+      "evidence": [
+        "https://github.com/trustoverip/kswg-acdc-specification/pull/203"
+      ],
+      "disposition": null
+    },
+    {
+      "id": "toip-finding-315cc2955eb4",
+      "category": "material-change",
+      "subject": "trustoverip/kswg-acdc-specification",
+      "status": "open",
+      "materiality": 5,
+      "urgency": 2,
+      "assurance_impact": 2,
+      "summary": "(on v1.1) Add the `dp` disclosure-paths construct",
+      "evidence": [
+        "https://github.com/trustoverip/kswg-acdc-specification/pull/203"
+      ],
+      "disposition": null
+    },
+    {
       "id": "toip-finding-37e4795fdd5b",
       "category": "material-change",
       "subject": "trustoverip/kswg-keri-specification",
@@ -6672,6 +7804,21 @@
       "summary": "Fix three defects in the seal illustrations",
       "evidence": [
         "https://github.com/trustoverip/kswg-keri-specification/pull/309"
+      ],
+      "disposition": null
+    },
+    {
+      "id": "toip-finding-4cfd808bba04",
+      "category": "cross-portfolio-seam",
+      "subject": "trustoverip/kswg-cesr-specification",
+      "status": "open",
+      "materiality": 5,
+      "urgency": 2,
+      "assurance_impact": 3,
+      "summary": "trustoverip/kswg-cesr-specification references trustoverip/spec-up-t in a current change unit.",
+      "evidence": [
+        "https://github.com/trustoverip/kswg-cesr-specification/pull/168",
+        "https://github.com/trustoverip/kswg-cesr-specification/commit/af9ecc7dafd9c008daf36bc11f4289ea88ba9192"
       ],
       "disposition": null
     },
@@ -6750,6 +7897,21 @@
       "disposition": null
     },
     {
+      "id": "toip-finding-8e738096e16f",
+      "category": "cross-portfolio-seam",
+      "subject": "trustoverip/kswg-acdc-specification",
+      "status": "open",
+      "materiality": 5,
+      "urgency": 2,
+      "assurance_impact": 3,
+      "summary": "trustoverip/kswg-acdc-specification references trustoverip/spec-up-t in a current change unit.",
+      "evidence": [
+        "https://github.com/trustoverip/kswg-acdc-specification/pull/196",
+        "https://github.com/trustoverip/kswg-acdc-specification/commit/2deae74257af4c04989b38727f6588656c95d82b"
+      ],
+      "disposition": null
+    },
+    {
       "id": "toip-finding-92cd1a4f7edb",
       "category": "material-change",
       "subject": "trustoverip/kswg-acdc-specification",
@@ -6761,6 +7923,79 @@
       "evidence": [
         "https://github.com/trustoverip/kswg-acdc-specification/pull/192",
         "https://github.com/trustoverip/kswg-acdc-specification/commit/56b2b68475646e0f1f324a22ce98b16e1524084a"
+      ],
+      "disposition": null
+    },
+    {
+      "id": "toip-finding-aae42c9eb8fc",
+      "category": "material-change",
+      "subject": "trustoverip/kswg-acdc-specification",
+      "status": "open",
+      "materiality": 5,
+      "urgency": 2,
+      "assurance_impact": 2,
+      "summary": "(on v1.1) Restrict `-` and bare `_` in ACDC field labels",
+      "evidence": [
+        "https://github.com/trustoverip/kswg-acdc-specification/pull/202"
+      ],
+      "disposition": null
+    },
+    {
+      "id": "toip-finding-cc5daa15f5e1",
+      "category": "material-change",
+      "subject": "trustoverip/kswg-acdc-specification",
+      "status": "open",
+      "materiality": 5,
+      "urgency": 2,
+      "assurance_impact": 2,
+      "summary": "(on v1.1) Rename `u`-field term \"UUID\" to \"unique entropy (UE)\" (#191)",
+      "evidence": [
+        "https://github.com/trustoverip/kswg-acdc-specification/pull/194"
+      ],
+      "disposition": null
+    },
+    {
+      "id": "toip-finding-cfd51b4f922d",
+      "category": "material-change",
+      "subject": "trustoverip/kswg-acdc-specification",
+      "status": "open",
+      "materiality": 5,
+      "urgency": 2,
+      "assurance_impact": 2,
+      "summary": "fix: rapid scroll bug fixed by v1.6.21 of Spec Up T",
+      "evidence": [
+        "https://github.com/trustoverip/kswg-acdc-specification/pull/196",
+        "https://github.com/trustoverip/kswg-acdc-specification/commit/2deae74257af4c04989b38727f6588656c95d82b"
+      ],
+      "disposition": null
+    },
+    {
+      "id": "toip-finding-ebce806e22db",
+      "category": "material-change",
+      "subject": "trustoverip/kswg-cesr-specification",
+      "status": "open",
+      "materiality": 5,
+      "urgency": 2,
+      "assurance_impact": 2,
+      "summary": "fix: rapid scroll bug fixed by v1.6.21 of Spec Up T",
+      "evidence": [
+        "https://github.com/trustoverip/kswg-cesr-specification/pull/168",
+        "https://github.com/trustoverip/kswg-cesr-specification/commit/af9ecc7dafd9c008daf36bc11f4289ea88ba9192"
+      ],
+      "disposition": null
+    },
+    {
+      "id": "toip-finding-ee55fc54fd4f",
+      "category": "cross-portfolio-seam",
+      "subject": "trustoverip/kswg-acdc-specification",
+      "status": "open",
+      "materiality": 5,
+      "urgency": 2,
+      "assurance_impact": 3,
+      "summary": "trustoverip/kswg-acdc-specification references trustoverip/SC in a current change unit.",
+      "evidence": [
+        "https://github.com/trustoverip/kswg-acdc-specification/pull/196",
+        "https://github.com/trustoverip/kswg-acdc-specification/commit/2deae74257af4c04989b38727f6588656c95d82b"
       ],
       "disposition": null
     },
@@ -7241,6 +8476,7 @@
     "display_name": "Trust Over IP Foundation",
     "monitor_title": "ToIP Portfolio Monitor",
     "weekly_brief_title": "ToIP Weekly Portfolio Brief",
-    "disclaimer": "This repository is independently maintained and is not an official Trust Over IP Foundation publication."
+    "disclaimer": "This repository is independently maintained and is not an official Trust Over IP Foundation publication.",
+    "repository_override_count": 0
   }
 }
