@@ -1,0 +1,17 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "toip-portfolio-monitor"
+version = "0.1.0.dev0"
+description = "Independent weekly portfolio observatory for the TrustOverIP GitHub organization"
+requires-python = ">=3.11"
+license = {text = "Apache-2.0"}
+authors = [{name = "Sankarshan Mukhopadhyay"}]
+
+[project.scripts]
+toip-monitor = "toip_monitor.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["toip_monitor*"]
