@@ -1,0 +1,81 @@
+schema_version = "1"
+id = "decentralized-identity"
+organization = "decentralized-identity"
+display_name = "Decentralized Identity Foundation"
+monitor_title = "Trust Ecosystem Monitor"
+weekly_brief_title = "DIF Weekly Ecosystem Brief"
+disclaimer = "Independent observatory; not an official Decentralized Identity Foundation publication."
+
+# Initial DIF taxonomy grounded in DIF working-group and work-item structure.
+# This is intentionally conservative: unmatched repositories remain Unclassified
+# so taxonomy gaps are visible rather than silently assigned.
+
+[[portfolio_rules]]
+portfolio = "DIDComm"
+prefixes = ["didcomm"]
+contains = ["didcomm"]
+
+[[portfolio_rules]]
+portfolio = "Identifiers & Discovery"
+prefixes = ["universal-resolver", "universal-registrar", "did-resolver", "peer-did-method", "identifiers-discovery"]
+contains = ["universal-resolver", "universal-registrar", "identifiers-discovery"]
+
+[[portfolio_rules]]
+portfolio = "DID Methods"
+prefixes = ["didwebvh", "did-webvh", "did-method", "did-methods"]
+contains = ["did-method"]
+
+[[portfolio_rules]]
+portfolio = "Claims & Credentials"
+prefixes = ["presentation-exchange", "credential-manifest", "claims-credentials", "waci", "did-jwt-vc"]
+contains = ["presentation-exchange", "credential-manifest", "claims-credentials"]
+
+[[portfolio_rules]]
+portfolio = "Applied Crypto"
+prefixes = ["bbs", "crypto", "zkp"]
+contains = ["bbs-signature", "applied-crypto"]
+
+[[portfolio_rules]]
+portfolio = "Trusted AI Agents"
+prefixes = ["trusted-ai-agents", "trusted-ai"]
+contains = ["trusted-ai-agent"]
+
+[[portfolio_rules]]
+portfolio = "Creator Assertions"
+prefixes = ["creator-assertions"]
+contains = ["creator-assertion"]
+
+[[portfolio_rules]]
+portfolio = "Hospitality & Travel"
+prefixes = ["hospitality", "travel"]
+contains = ["hospitality-travel"]
+
+[[portfolio_rules]]
+portfolio = "Labs"
+prefixes = ["labs", "lab-"]
+contains = ["-labs"]
+
+[[portfolio_rules]]
+portfolio = "Secure Data Storage / DWN"
+prefixes = ["decentralized-web-node", "dwn", "web5"]
+contains = ["decentralized-web-node"]
+
+[[portfolio_rules]]
+portfolio = "Wallet Security"
+prefixes = ["wallet-security", "universal-wallet-backup"]
+contains = ["wallet-security"]
+
+[[portfolio_rules]]
+portfolio = "Sidetree / ION"
+prefixes = ["sidetree", "ion"]
+contains = ["sidetree"]
+
+[[portfolio_rules]]
+portfolio = "Organization & Governance"
+prefixes = ["org", ".github", "decentralized-identity.github.io", "community", "website"]
+contains = ["governance"]
+
+[[portfolio_rules]]
+portfolio = "Implementations & Tooling"
+prefixes = ["veramo", "did-jwt", "ethr-did", "web-did", "did-common", "helm-charts", "interoperability"]
+contains = ["sdk", "toolkit"]
