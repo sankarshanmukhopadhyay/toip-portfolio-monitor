@@ -14,6 +14,8 @@ from datetime import datetime, timedelta, timezone
 from pathlib import Path
 from typing import Any
 
+from .intelligence import analyze_snapshot
+
 ORG = "trustoverip"
 API = "https://api.github.com"
 
@@ -48,7 +50,7 @@ class GitHubClient:
         url = f"{API}{path}" + (f"?{query}" if query else "")
         headers = {
             "Accept": "application/vnd.github+json",
-            "User-Agent": "toip-portfolio-monitor/0.1",
+            "User-Agent": "toip-portfolio-monitor/0.2",
             "X-GitHub-Api-Version": "2022-11-28",
         }
         if self.token:
@@ -120,6 +122,7 @@ def lifecycle(repo: dict[str, Any], now: datetime) -> str:
 
 def repo_record(repo: dict[str, Any], now: datetime) -> dict[str, Any]:
     return {
+        "id": repo.get("id"),
         "name": repo["name"],
         "full_name": repo["full_name"],
         "url": repo["html_url"],
@@ -136,8 +139,18 @@ def repo_record(repo: dict[str, Any], now: datetime) -> dict[str, Any]:
     }
 
 
+def _commit_timestamp(item: dict[str, Any]) -> str | None:
+    commit = item.get("commit") or {}
+    committer = commit.get("committer") or {}
+    author = commit.get("author") or {}
+    return committer.get("date") or author.get("date")
+
+
 def normalize_event(kind: str, repo: dict[str, Any], item: dict[str, Any]) -> dict[str, Any]:
-    timestamp = item.get("published_at") or item.get("merged_at") or item.get("closed_at") or item.get("updated_at")
+    timestamp = (
+        _commit_timestamp(item) if kind == "commit" else
+        item.get("published_at") or item.get("merged_at") or item.get("closed_at") or item.get("updated_at")
+    )
     title = item.get("name") or item.get("title") or (item.get("commit") or {}).get("message", "").splitlines()[0]
     url = item.get("html_url") or ""
     state = item.get("state")
@@ -152,6 +165,7 @@ def normalize_event(kind: str, repo: dict[str, Any], item: dict[str, Any]) -> di
         "title": title or "(untitled)",
         "url": url,
         "number": item.get("number"),
+        "sha": item.get("sha") if kind == "commit" else None,
         "state": state,
     }
 
@@ -162,7 +176,6 @@ def collect_repo_activity(client: GitHubClient, repo: dict[str, Any], since: dat
     since_iso = since.isoformat().replace("+00:00", "Z")
     events: list[dict[str, Any]] = []
     errors: list[str] = []
-
     endpoints = (
         ("commit", f"{path}/commits", {"since": since_iso, "per_page": 100}),
         ("issue", f"{path}/issues", {"state": "all", "since": since_iso, "per_page": 100}),
@@ -171,17 +184,14 @@ def collect_repo_activity(client: GitHubClient, repo: dict[str, Any], since: dat
     )
     for kind, endpoint, params in endpoints:
         try:
-            items = client.get(endpoint, params)
-            for item in items:
+            for item in client.get(endpoint, params):
                 if kind == "issue" and "pull_request" in item:
                     continue
                 event = normalize_event(kind, repo, item)
                 timestamp = parse_dt(event.get("timestamp"))
-                if kind in {"pull_request", "release"} and timestamp and timestamp < since:
-                    continue
                 if timestamp and timestamp >= since:
                     events.append(event)
-        except Exception as exc:  # isolate individual streams
+        except Exception as exc:
             errors.append(f"{owner_repo}:{kind}: {exc}")
     return events, errors
 
@@ -205,55 +215,34 @@ def build_assertions(repos: list[dict[str, Any]], events: list[dict[str, Any]], 
     for repo in repos:
         created = parse_dt(repo.get("created_at"))
         if created and created >= since:
-            assertions.append({
-                "id": assertion_id("new-repository", repo["full_name"], repo["created_at"]),
-                "category": "new-repository",
-                "subject": repo["full_name"],
-                "status": "open",
-                "materiality": 4,
-                "summary": f"New repository discovered in {repo['portfolio']}: {repo['name']}",
-                "evidence": [repo["url"]],
-            })
+            assertions.append({"id": assertion_id("new-repository", repo["full_name"], repo["created_at"]), "category": "new-repository", "subject": repo["full_name"], "status": "open", "materiality": 4, "summary": f"New repository discovered in {repo['portfolio']}: {repo['name']}", "evidence": [repo["url"]]})
         if repo["portfolio"] == "Unclassified" and repo["lifecycle"] == "active":
-            assertions.append({
-                "id": assertion_id("classification", repo["full_name"], "unclassified"),
-                "category": "classification",
-                "subject": repo["full_name"],
-                "status": "open",
-                "materiality": 2,
-                "summary": "Active repository requires portfolio classification.",
-                "evidence": [repo["url"]],
-            })
+            assertions.append({"id": assertion_id("classification", repo["full_name"], "unclassified"), "category": "classification", "subject": repo["full_name"], "status": "open", "materiality": 2, "summary": "Active repository requires portfolio classification.", "evidence": [repo["url"]]})
     for event in events:
-        materiality = score_event(event)
-        event["materiality"] = materiality
-        if materiality >= 4:
-            assertions.append({
-                "id": assertion_id("material-change", event["repository"], event["url"] or event["title"]),
-                "category": "material-change",
-                "subject": event["repository"],
-                "status": "open",
-                "materiality": materiality,
-                "summary": f"{event['kind'].replace('_', ' ').title()}: {event['title']}",
-                "evidence": [event["url"]] if event["url"] else [],
-            })
+        event["materiality"] = score_event(event)
     for error in errors:
         subject = error.split(":", 1)[0]
-        assertions.append({
-            "id": assertion_id("collection", subject, error),
-            "category": "collection",
-            "subject": subject,
-            "status": "open",
-            "materiality": 3,
-            "summary": error,
-            "evidence": [],
-        })
+        assertions.append({"id": assertion_id("collection", subject, error), "category": "collection", "subject": subject, "status": "open", "materiality": 3, "summary": error, "evidence": []})
     return assertions
+
+
+def _previous_snapshot(snapshot_dir: Path) -> dict[str, Any] | None:
+    snapshots = sorted(snapshot_dir.glob("*.json"), reverse=True)
+    if not snapshots:
+        return None
+    try:
+        return json.loads(snapshots[0].read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError):
+        return None
 
 
 def collect(lookback_days: int = 7, output_root: str | Path = ".") -> Path:
     now = datetime.now(timezone.utc)
     since = now - timedelta(days=lookback_days)
+    root = Path(output_root)
+    snapshot_dir = root / "data" / "snapshots"
+    snapshot_dir.mkdir(parents=True, exist_ok=True)
+    previous = _previous_snapshot(snapshot_dir)
     client = GitHubClient(os.environ.get("GITHUB_TOKEN"))
     repositories = [repo_record(repo, now) for repo in client.org_repositories()]
     repositories.sort(key=lambda r: (r["portfolio"], r["name"].lower()))
@@ -269,22 +258,18 @@ def collect(lookback_days: int = 7, output_root: str | Path = ".") -> Path:
             errors.extend(repo_errors)
     events.sort(key=lambda e: e.get("timestamp") or "", reverse=True)
     assertions = build_assertions(repositories, events, errors, since)
-
     snapshot = {
-        "schema_version": "0.1",
+        "schema_version": "0.2",
         "organization": ORG,
         "generated_at": now.isoformat(),
         "period": {"since": since.isoformat(), "until": now.isoformat(), "lookback_days": lookback_days},
-        "provenance": {"source": "GitHub REST API", "collector": "toip-portfolio-monitor", "deterministic_classification": True},
+        "provenance": {"source": "GitHub REST API", "collector": "toip-portfolio-monitor", "deterministic_classification": True, "previous_snapshot": previous.get("generated_at") if previous else None},
         "repositories": repositories,
         "events": events,
         "assertions": assertions,
         "collection_errors": errors,
     }
-
-    root = Path(output_root)
-    snapshot_dir = root / "data" / "snapshots"
-    snapshot_dir.mkdir(parents=True, exist_ok=True)
+    snapshot = analyze_snapshot(snapshot, previous)
     path = snapshot_dir / f"{now.date().isoformat()}.json"
     path.write_text(json.dumps(snapshot, indent=2) + "\n", encoding="utf-8")
     render(snapshot, root)
@@ -293,8 +278,7 @@ def collect(lookback_days: int = 7, output_root: str | Path = ".") -> Path:
 
 
 def retain_snapshots(directory: Path, keep: int) -> None:
-    snapshots = sorted(directory.glob("*.json"), reverse=True)
-    for old in snapshots[keep:]:
+    for old in sorted(directory.glob("*.json"), reverse=True)[keep:]:
         old.unlink()
 
 
@@ -306,52 +290,41 @@ def link(url: str, label: str) -> str:
     return f'<a href="{esc(url)}">{esc(label)}</a>' if url else esc(label)
 
 
+def _list(values: list[str], empty: str) -> str:
+    return "<ul>" + "".join(f"<li>{value}</li>" for value in values) + "</ul>" if values else f"<p class=\"muted\">{esc(empty)}</p>"
+
+
 def render(snapshot: dict[str, Any], root: Path) -> None:
     repos = snapshot["repositories"]
     events = snapshot["events"]
+    units = snapshot.get("change_units", [])
     assertions = snapshot["assertions"]
     portfolios = sorted({r["portfolio"] for r in repos})
-    material = [e for e in events if e.get("materiality", score_event(e)) >= 4]
+    material_units = [u for u in units if u.get("materiality", 0) >= 4]
     new_repos = [a for a in assertions if a["category"] == "new-repository"]
     attention = [a for a in assertions if a["category"] in {"classification", "collection"}]
-
     rows = []
     for portfolio in portfolios:
         members = [r for r in repos if r["portfolio"] == portfolio]
-        portfolio_events = [e for e in events if e["portfolio"] == portfolio]
-        rows.append(
-            f"<tr><td>{esc(portfolio)}</td><td>{len(members)}</td><td>{sum(r['lifecycle']=='active' for r in members)}</td>"
-            f"<td>{len(portfolio_events)}</td><td>{sum(score_event(e)>=4 for e in portfolio_events)}</td></tr>"
-        )
+        p_units = [u for u in units if u["portfolio"] == portfolio]
+        rows.append(f"<tr><td>{esc(portfolio)}</td><td>{len(members)}</td><td>{sum(r['lifecycle']=='active' for r in members)}</td><td>{len(p_units)}</td><td>{sum(u.get('materiality',0)>=4 for u in p_units)}</td></tr>")
 
-    spec_items = [e for e in events if e["repo_kind"] == "specification" and score_event(e) >= 3][:40]
-    evidence_items = events[:200]
     generated = snapshot["generated_at"]
     period = snapshot["period"]
     week = datetime.fromisoformat(generated).isocalendar()
     week_label = f"{week.year}-W{week.week:02d}"
-
-    def items(values: list[str], empty: str) -> str:
-        return "<ul>" + "".join(f"<li>{value}</li>" for value in values) + "</ul>" if values else f"<p>{esc(empty)}</p>"
-
-    body = f"""<!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>ToIP Weekly Portfolio Brief — {esc(week_label)}</title>
-<style>body{{font:16px/1.55 system-ui,sans-serif;max-width:1180px;margin:auto;padding:2rem;color:#1f2937}}h1,h2{{color:#111827}}table{{border-collapse:collapse;width:100%;margin:1rem 0}}th,td{{border-bottom:1px solid #ddd;padding:.55rem;text-align:left}}.metric{{display:inline-block;margin:.25rem 1rem .25rem 0;padding:.6rem .8rem;background:#f3f4f6;border-radius:.4rem}}.muted{{color:#6b7280}}code{{background:#f3f4f6;padding:.1rem .25rem}}</style></head><body>
-<h1>ToIP Weekly Portfolio Brief</h1>
-<p class="muted">Independent observatory · {esc(week_label)} · generated {esc(generated)}</p>
-<p>This report summarizes public GitHub activity across the <code>trustoverip</code> organization. It is independently maintained and is not an official Trust Over IP Foundation publication.</p>
-<h2>Executive pulse</h2>
-<div class="metric"><strong>{len(repos)}</strong> repositories discovered</div><div class="metric"><strong>{sum(r['lifecycle']=='active' for r in repos)}</strong> active</div><div class="metric"><strong>{len(events)}</strong> evidence events</div><div class="metric"><strong>{len(material)}</strong> material changes</div><div class="metric"><strong>{len(new_repos)}</strong> new repositories</div>
-<p>Observation window: {esc(period['since'])} to {esc(period['until'])}.</p>
-<h2>Portfolio movement</h2><table><thead><tr><th>Portfolio</th><th>Repos</th><th>Active</th><th>Events</th><th>Material</th></tr></thead><tbody>{''.join(rows)}</tbody></table>
-<h2>Specifications advancing</h2>{items([f"{link(e['url'], e['repository'])}: {esc(e['title'])} ({esc(e['kind'])})" for e in spec_items], 'No specification activity crossed the reporting threshold.')}
-<h2>New work and repository discovery</h2>{items([f"{esc(a['summary'])} — {link(a['evidence'][0], a['subject'])}" for a in new_repos], 'No newly created repositories were discovered in the observation window.')}
-<h2>Attention required</h2>{items([f"<strong>{esc(a['subject'])}</strong>: {esc(a['summary'])}" for a in attention], 'No classification or collection attention items were generated.')}
-<h2>Evidence register</h2><table><thead><tr><th>Time</th><th>Portfolio</th><th>Repository</th><th>Type</th><th>Materiality</th><th>Evidence</th></tr></thead><tbody>{''.join(f"<tr><td>{esc(e['timestamp'])}</td><td>{esc(e['portfolio'])}</td><td>{esc(e['repository'])}</td><td>{esc(e['kind'])}</td><td>{score_event(e)}</td><td>{link(e['url'], e['title'])}</td></tr>" for e in evidence_items)}</tbody></table>
-<h2>Method boundary</h2><p>Classification and materiality are deterministic and machine-addressable. Generated narrative remains subordinate to source evidence. The monitor does not modify upstream repositories or automatically file findings with ToIP projects.</p>
-</body></html>"""
-
+    spec_units = [u for u in units if u["repo_kind"] == "specification" and u["materiality"] >= 3][:40]
+    body = f"""<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>ToIP Weekly Portfolio Brief — {esc(week_label)}</title>
+<style>body{{font:16px/1.55 system-ui,sans-serif;max-width:1180px;margin:auto;padding:2rem;color:#1f2937}}h1,h2{{color:#111827}}a{{color:#075985}}table{{border-collapse:collapse;width:100%;margin:1rem 0}}th,td{{border-bottom:1px solid #ddd;padding:.55rem;text-align:left;vertical-align:top}}.metric{{display:inline-block;margin:.25rem .5rem .25rem 0;padding:.65rem .8rem;background:#f3f4f6;border-radius:.45rem}}.muted{{color:#6b7280}}code{{background:#f3f4f6;padding:.1rem .25rem}}</style></head><body>
+<h1>ToIP Weekly Portfolio Brief</h1><p class="muted">Independent observatory · {esc(week_label)} · generated {esc(generated)}</p><p>This report summarizes public GitHub activity across the <code>trustoverip</code> organization. It is independently maintained and is not an official Trust Over IP Foundation publication.</p>
+<h2>Executive pulse</h2><div class="metric"><strong>{len(repos)}</strong> repositories</div><div class="metric"><strong>{sum(r['lifecycle']=='active' for r in repos)}</strong> active</div><div class="metric"><strong>{len(events)}</strong> raw events</div><div class="metric"><strong>{len(units)}</strong> change units</div><div class="metric"><strong>{len(material_units)}</strong> material units</div><div class="metric"><strong>{len(new_repos)}</strong> new repositories</div><p>Observation window: {esc(period['since'])} to {esc(period['until'])}.</p>
+<h2>Portfolio movement</h2><table><thead><tr><th>Portfolio</th><th>Repos</th><th>Active</th><th>Change units</th><th>Material</th></tr></thead><tbody>{''.join(rows)}</tbody></table>
+<h2>Material changes</h2>{_list([f"<strong>{esc(u['portfolio'])}</strong> · {esc(u['repository'])}: {link(u['evidence'][0] if u['evidence'] else '', u['title'])} <span class='muted'>({', '.join(u['event_kinds'])}; {u['event_count']} evidence event(s))</span>" for u in material_units[:60]], 'No consolidated change units crossed the materiality threshold.')}
+<h2>Specifications advancing</h2>{_list([f"{esc(u['repository'])}: {link(u['evidence'][0] if u['evidence'] else '', u['title'])}" for u in spec_units], 'No specification change unit crossed the reporting threshold.')}
+<h2>New work and repository discovery</h2>{_list([f"{esc(a['summary'])} — {link(a['evidence'][0], a['subject'])}" for a in new_repos], 'No newly created repositories were discovered in the observation window.')}
+<h2>Attention required</h2>{_list([f"<strong>{esc(a['subject'])}</strong>: {esc(a['summary'])}" for a in attention], 'No classification or collection attention items were generated.')}
+<h2>Evidence register</h2><table><thead><tr><th>Time</th><th>Portfolio</th><th>Repository</th><th>Type</th><th>Materiality</th><th>Evidence</th></tr></thead><tbody>{''.join(f"<tr><td>{esc(e['timestamp'])}</td><td>{esc(e['portfolio'])}</td><td>{esc(e['repository'])}</td><td>{esc(e['kind'])}</td><td>{e.get('materiality',score_event(e))}</td><td>{link(e['url'], e['title'])}</td></tr>" for e in events[:250])}</tbody></table>
+<h2>Method boundary</h2><p>Raw GitHub events are preserved as evidence but reporting is organized around conservative consolidated change units. Classification and materiality are deterministic. The monitor does not modify upstream repositories or automatically file findings with ToIP projects.</p></body></html>"""
     docs = root / "docs"
     reports = docs / "reports"
     data = docs / "data"
@@ -367,14 +340,14 @@ def render(snapshot: dict[str, Any], root: Path) -> None:
 def validate(root: str | Path = ".") -> list[str]:
     root = Path(root)
     errors: list[str] = []
-    required = ["README.md", "LICENSE", "LICENSE-CONTENT.md", "LICENSES.md", "pyproject.toml"]
-    for rel in required:
+    for rel in ["README.md", "LICENSE", "LICENSE-CONTENT.md", "LICENSES.md", "pyproject.toml"]:
         if not (root / rel).exists():
             errors.append(f"missing required file: {rel}")
-    if (root / "docs" / "data" / "latest.json").exists():
+    latest = root / "docs" / "data" / "latest.json"
+    if latest.exists():
         try:
-            payload = json.loads((root / "docs" / "data" / "latest.json").read_text(encoding="utf-8"))
-            for key in ("schema_version", "organization", "repositories", "events", "assertions", "provenance"):
+            payload = json.loads(latest.read_text(encoding="utf-8"))
+            for key in ("schema_version", "organization", "repositories", "events", "change_units", "assertions", "provenance"):
                 if key not in payload:
                     errors.append(f"latest snapshot missing key: {key}")
         except json.JSONDecodeError as exc:
