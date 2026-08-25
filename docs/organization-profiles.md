@@ -1,31 +1,17 @@
 # Organization profiles
 
-The monitor is transitioning from a TrustOverIP-specific implementation to a reusable organization-monitoring engine. This document records the architecture at the **pre-rename compatibility point**.
+Trust Ecosystem Monitor uses organization profiles to separate reusable monitoring machinery from ecosystem-specific discovery and taxonomy.
 
-The visible project identity remains **ToIP Portfolio Monitor** for now. The repository name, Python package, CLI command, workflow names, generated Pages branding, assertion identifiers, and existing snapshot schema are intentionally unchanged until the maintainer performs the planned manual rename.
+The project itself is organization-neutral. Each monitored ecosystem supplies a TOML profile under:
 
-## What has been generalized
+```text
+organizations/<profile-id>/profile.toml
+```
 
-Organization discovery and portfolio taxonomy are now selected through an external TOML profile. The default profile is:
+The first profile is:
 
 ```text
 organizations/trustoverip/profile.toml
-```
-
-It carries the GitHub organization identifier and the ordered portfolio-classification rules that were previously maintained directly in Python.
-
-The collection entry point loads that profile and configures the existing collector runtime before discovery begins. As a result, the default command remains backward compatible:
-
-```bash
-python -m toip_monitor collect --lookback-days 7
-```
-
-The equivalent explicit form is:
-
-```bash
-python -m toip_monitor collect \
-  --profile organizations/trustoverip/profile.toml \
-  --lookback-days 7
 ```
 
 ## Profile contract
@@ -34,41 +20,61 @@ A profile currently defines:
 
 - a stable profile identifier;
 - the public GitHub organization to discover;
-- display/product metadata reserved for the later rename/generalization step; and
+- ecosystem display metadata and weekly-brief title;
+- an ecosystem-specific independence/disclaimer statement; and
 - ordered portfolio rules using repository-name prefixes and contained fragments.
 
-Repositories that match no rule remain explicitly `Unclassified`. The first matching rule wins, preserving the current deterministic semantics.
+Repositories that match no rule remain explicitly `Unclassified`. The first matching rule wins, preserving deterministic semantics.
 
-## Compatibility boundary
+## Runtime boundary
 
-This stage deliberately does **not** change the generated ToIP report. The current profile retains the same organization (`trustoverip`), portfolio names, matching order, visible report identity, snapshot schema, evidence model, lifecycle logic, change-unit logic, findings, dispositions, and Pages information architecture.
+The canonical collection path is:
 
-`tests/test_profile_compatibility.py` treats the currently retained `docs/data/latest.json` snapshot as a compatibility fixture: every retained repository classification must be reproduced by `organizations/trustoverip/profile.toml`. Representative historical mappings are also locked explicitly.
-
-This means the externalization can be reviewed as an architectural change without silently re-baselining the ToIP taxonomy.
-
-## What remains intentionally ToIP-specific
-
-Until the manual rename, the following remain intentionally unchanged:
-
-- repository and product name;
-- `toip_monitor` Python package;
-- `toip-monitor` CLI entry point;
-- GitHub Actions workflow names;
-- rendered Pages branding and disclaimer;
-- current assertion/finding identifier namespace; and
-- current generated data locations.
-
-Those names are compatibility surfaces, not evidence that the organization/taxonomy engine is still hard-wired to TrustOverIP.
-
-## Adding another ecosystem later
-
-After the project is renamed, a new organization should normally be introduced as another profile rather than by cloning the repository. A future profile can live under, for example:
-
-```text
-organizations/<profile-id>/profile.toml
+```bash
+python -m trust_ecosystem_monitor collect \
+  --profile organizations/trustoverip/profile.toml \
+  --lookback-days 7
 ```
 
-Before such a profile is admitted, its taxonomy should be grounded in that ecosystem's own governance and lifecycle model, and it should receive its own baseline compatibility and classification review.
+The engine loads the profile before repository discovery and configures the collector with the selected GitHub organization and portfolio rules. Evidence normalization, change-unit construction, lifecycle comparison, review seams, findings, dispositions, retention, validation, and publication remain shared engine behavior.
 
-Cross-ecosystem reporting is a separate capability and should not be inferred merely because more than one organization profile exists.
+## Product identity versus ecosystem identity
+
+The product shell is **Trust Ecosystem Monitor**. A profile does not rename the product.
+
+Profile-specific content includes the monitored organization, taxonomy, ecosystem labels, weekly brief title, and disclaimer. This lets the same engine monitor different organizations without implying that one ecosystem's governance model applies to another.
+
+The former `toip_monitor` package and `toip-monitor` console command remain temporary compatibility aliases after the repository rename. New work should use `trust_ecosystem_monitor` and `trust-ecosystem-monitor`.
+
+## TrustOverIP compatibility contract
+
+`tests/test_profile_compatibility.py` treats the retained `docs/data/latest.json` TrustOverIP snapshot as a compatibility fixture: every retained repository classification must be reproduced by `organizations/trustoverip/profile.toml`. Representative historical mappings are also locked explicitly.
+
+A mismatch fails CI. Changes to the TrustOverIP taxonomy therefore remain explicit review decisions rather than accidental side effects of engine changes.
+
+Historical `toip-*` assertion/finding identifiers are retained so existing dispositions and longitudinal references remain stable. The project rename does not rewrite historical evidence.
+
+## Adding another ecosystem
+
+A new ecosystem should normally be introduced as another profile rather than by cloning this repository. Before admission, its taxonomy should be grounded in that ecosystem's own governance, working-group, work-item, specification, and lifecycle model.
+
+For example:
+
+```text
+organizations/decentralized-identity/profile.toml
+```
+
+should be based on DIF's own working-group and work-item lifecycle semantics rather than copied from TrustOverIP.
+
+A new profile should include:
+
+1. explicit organization identity;
+2. evidence-backed taxonomy rules and any curated overrides required by repository naming;
+3. representative classification tests;
+4. an initial baseline review of `Unclassified` repositories;
+5. a profile-specific disclaimer; and
+6. documentation of any lifecycle semantics that differ from the shared default.
+
+## Cross-ecosystem reporting
+
+Supporting multiple profiles does not itself prove relationships between ecosystems. Cross-ecosystem seams, convergence, or dependency reporting should remain a separate evidence-graded capability and should only be added once at least two ecosystem profiles have stable baselines.
