@@ -12,14 +12,11 @@ def _unit_id(repository: str, key: str) -> str:
 
 
 def _reference_key(event: dict[str, Any]) -> str | None:
-    """Prefer an explicit issue/PR number when an event supplies one."""
     number = event.get("number")
     if number is not None:
         return f"number:{number}"
     match = re.search(r"#(\d+)", event.get("title") or "")
-    if match:
-        return f"number:{match.group(1)}"
-    return None
+    return f"number:{match.group(1)}" if match else None
 
 
 def _semantic_key(event: dict[str, Any]) -> str:
@@ -31,54 +28,49 @@ def _semantic_key(event: dict[str, Any]) -> str:
 
 
 def consolidate_change_units(events: list[dict[str, Any]]) -> list[dict[str, Any]]:
-    """Collapse overlapping GitHub events into reviewable change units.
-
-    Pull requests/issues are primarily grouped by repository + number. Commits and
-    releases without an explicit number use a conservative normalized-title key.
-    This intentionally favors false separation over accidental over-merging.
-    """
     buckets: dict[tuple[str, str], list[dict[str, Any]]] = defaultdict(list)
     for event in events:
-        repo = event["repository"]
         key = _reference_key(event) or _semantic_key(event)
-        buckets[(repo, key)].append(event)
-
+        buckets[(event["repository"], key)].append(event)
     units: list[dict[str, Any]] = []
     for (repo, key), members in buckets.items():
         members.sort(key=lambda item: item.get("timestamp") or "", reverse=True)
-        kinds = sorted({m["kind"] for m in members})
-        materiality = max(int(m.get("materiality", 1)) for m in members)
-        primary = max(
-            members,
-            key=lambda m: (
-                int(m.get("materiality", 1)),
-                {"release": 4, "pull_request": 3, "issue": 2, "commit": 1}.get(m["kind"], 0),
-            ),
-        )
-        evidence = [m["url"] for m in members if m.get("url")]
-        units.append(
-            {
-                "id": _unit_id(repo, key),
-                "repository": repo,
-                "portfolio": primary["portfolio"],
-                "repo_kind": primary["repo_kind"],
-                "title": primary["title"],
-                "timestamp": members[0].get("timestamp"),
-                "materiality": materiality,
-                "event_kinds": kinds,
-                "event_count": len(members),
-                "evidence": list(dict.fromkeys(evidence)),
-                "events": members,
-            }
-        )
+        primary = max(members, key=lambda m: (int(m.get("materiality", 1)), {"release": 4, "pull_request": 3, "issue": 2, "commit": 1}.get(m["kind"], 0)))
+        units.append({
+            "id": _unit_id(repo, key), "repository": repo, "portfolio": primary["portfolio"], "repo_kind": primary["repo_kind"],
+            "title": primary["title"], "timestamp": members[0].get("timestamp"),
+            "materiality": max(int(m.get("materiality", 1)) for m in members),
+            "event_kinds": sorted({m["kind"] for m in members}), "event_count": len(members),
+            "evidence": list(dict.fromkeys(m["url"] for m in members if m.get("url"))), "events": members,
+        })
     units.sort(key=lambda unit: unit.get("timestamp") or "", reverse=True)
     return units
 
 
+def detect_lifecycle_changes(current: list[dict[str, Any]], previous: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    old = {r["full_name"]: r for r in previous}
+    new = {r["full_name"]: r for r in current}
+    changes: list[dict[str, Any]] = []
+    for name, repo in new.items():
+        if name not in old:
+            changes.append({"type": "discovered", "repository": name, "portfolio": repo["portfolio"], "from": None, "to": repo["lifecycle"], "url": repo["url"]})
+            continue
+        prior = old[name]
+        if repo["lifecycle"] != prior.get("lifecycle"):
+            changes.append({"type": "lifecycle", "repository": name, "portfolio": repo["portfolio"], "from": prior.get("lifecycle"), "to": repo["lifecycle"], "url": repo["url"]})
+        if repo["portfolio"] != prior.get("portfolio"):
+            changes.append({"type": "portfolio", "repository": name, "portfolio": repo["portfolio"], "from": prior.get("portfolio"), "to": repo["portfolio"], "url": repo["url"]})
+        if repo.get("default_branch") != prior.get("default_branch"):
+            changes.append({"type": "default-branch", "repository": name, "portfolio": repo["portfolio"], "from": prior.get("default_branch"), "to": repo.get("default_branch"), "url": repo["url"]})
+    for name, repo in old.items():
+        if name not in new:
+            changes.append({"type": "missing", "repository": name, "portfolio": repo.get("portfolio", "Unclassified"), "from": repo.get("lifecycle"), "to": None, "url": repo.get("url", "")})
+    return sorted(changes, key=lambda c: (c["type"], c["repository"]))
+
+
 def analyze_snapshot(snapshot: dict[str, Any], previous: dict[str, Any] | None = None) -> dict[str, Any]:
-    """Extension point for portfolio intelligence layers."""
     snapshot["change_units"] = consolidate_change_units(snapshot.get("events", []))
-    snapshot.setdefault("lifecycle_changes", [])
+    snapshot["lifecycle_changes"] = detect_lifecycle_changes(snapshot.get("repositories", []), (previous or {}).get("repositories", [])) if previous else []
     snapshot.setdefault("cross_portfolio_seams", [])
     snapshot.setdefault("findings", [])
     return snapshot
